@@ -1,142 +1,149 @@
-# Review Notes: Homepage Browser Proof
+# Review Notes: Full Site Build
 
-Phase 1 proof for Wild & Free Behavior, built from `docs/BUILD-PROMPT.md` and `docs/WEBSITE-BUILD-PLAN.md`. Local only, noindex, nothing deployed.
+The complete Wild & Free Behavior website: 14 pages, the insurance and fit screener, structured data, and launch switches. It is built and verified but not deployed. Intake runs in demo mode until HighLevel's HIPAA setup exists.
+
+Strategy and the original brief are in `docs/`. Screenshots are in `review/`.
 
 ## Run it
 
 ```
 npm install
 npm run dev          # http://localhost:3000
-npm test             # screener routing, 19 unit tests
+npm test             # 26 unit tests (screener routing, intake validation)
 npm run typecheck
+npm run lint
 npm run build && npm start
 ```
 
-Rebuild photo derivatives (originals stay outside the repo in `../homepage-mockup/assets`):
+### Environment switches (all optional; defaults are safe)
 
-```
-npm run images                 # all
-ONLY=cabin npm run images      # one entry
-```
-
-## Design direction
-
-**"A cabin, a garden, and a plan."** The practice is a log cabin with a porch, a stone sign, pine-walled rooms, and a children's garden. The page is built like arriving there: the garden (hero), inside (what therapy can focus on), the path in (getting started), a steady week (rhythm), paying for it, the people on the porch, and how to find the cabin.
-
-Quality carriers, all visible in the proof:
-
-1. **Arch-window hero.** The photo sits in the logo's own arch: a circle segment measured from `logo.png` (chord 280, rise 90.1), not a generic rounded rectangle. The cabin's arched window echoes the same shape.
-2. **Sun rays from the logo.** All 18 rays were measured from the logo raster and redrawn as real lines (`src/lib/sun.ts`). They draw outward once on load, form the screener's progress meter, open sections, and make the favicon.
-3. **Log-course rules.** Hairlines with deliberately uneven spacing, used as dividers and as texture inside forest-green panels.
-4. **Field notes.** Short White Angelica captions ("out in the garden", "circle time", "same time every week", "say hello", "look for the stone sign"). Decorative only: `aria-hidden`, and each idea is also said in body text.
-5. **Weekly rhythm strip.** A Monday to Friday example schedule with session blocks at the same time, plus the Friday reminder. Clearly labeled as an example.
-6. **Getting-started path.** Five steps with arch markers on one continuous line, beside a real table-work photo.
-7. **Mobile composition.** A wider arch crop of a different photo (`IMG_9479`) so photo, H1, sentence, and CTA all fit the 390×844 first screen (CTA bottom at 802px). A sticky Call / Get started bar appears once the hero buttons scroll away.
-8. **Inline first question.** The insurance section shows "How will you pay for services?" with live options. Each opens the screener with that answer already chosen.
-
-Not used on purpose: centered pill-badge hero, icon card grids, testimonials, stats, stock imagery, gradients, glass, fade-up on every block, generic icon sets. Copy has no em or en dashes and none of the banned words in the build prompt.
-
-## Source assets
-
-| Asset | Use |
-|---|---|
-| `logo.png` (1080px, opaque white background) | Wordmark traced to SVG (`public/brand/wordmark.svg`), full logo rebuilt as SVG (`logo-cream.svg`, `logo-forest.svg`) from the traced wordmark plus measured sun geometry, favicon (`src/app/icon.svg`), and `apple-icon.png`. **Request a vector original.** The trace is faithful at header and footer sizes but shows slight edge wobble when very large. |
-| `rovey.otf` | Converted to `src/fonts/rovey-free-demo.woff2`. See Fonts. |
-| `white-angelica.ttf` | Converted to `src/fonts/white-angelica.woff2`. |
-| `raleway.ttf` | Not used directly. Raleway is OFL; `next/font/google` self-hosts a Latin subset at build time, and browsers never contact Google. |
-| 18 photos | 13 used. Crops and focal points are listed in `scripts/images.mjs`. AVIF and WebP at several widths, EXIF and GPS stripped. |
-
-### Photos and crops
-
-| Key | File | Crop and role |
+| Variable | Default | Set at launch |
 |---|---|---|
-| heroGarden | IMG_9484 | Desktop hero arch (0.8). Adult and two children among the corn. |
-| heroGardenMobile | IMG_9479 | Mobile hero arch (1.4). Three children in the garden, heads well below the arch curve. |
-| routines | IMG_9513 | Approach: everyday routines (check-in board, "circle time" sign). |
-| communication | IMG_9539 | Approach: worksheet. |
-| learning | IMG_9485 | Approach: learning and connection. |
-| tableWork | IMG_9541 | Getting started. Black and white kept deliberately as a contrast beat. Ask whether a color original exists. |
-| tomato | IMG_9487 | "Week by week" full-bleed pause. |
-| portraitA/B/C | IMG_9454, 9457, 9460 | People. **No names attached.** |
-| cabin | IMG_9473 | Visit. Desktop crop shows the arched window, porch, and stone sign; the card sits left so the sign stays visible. |
-| wallScript | IMG_9554 | Final call to action. |
-| (share image) | IMG_9472 | `opengraph-image.jpg`, the stone sign. No faces in social previews. |
+| `SITE_INDEXABLE` | off: every page `noindex`, robots.txt disallows all, footer says "Preview build" | `true` on the production deployment only |
+| `NEXT_PUBLIC_INTAKE_MODE` | `demo`: the screener sends nothing | `webhook`, once HighLevel's HIPAA add-on and BAA are in place |
+| `NEXT_PUBLIC_INTAKE_WEBHOOK_URL` | none | The HighLevel inbound webhook URL (`https://` only). Also added to the CSP `connect-src`. |
 
-Unused: IMG_9467 (family group, identities unknown), IMG_9475 (the cabin photo covers place; IMG_9472 is used only as the share image), IMG_9510 (dark backlit, held for a later page), IMG_9519 (good, held for the ABA Therapy page), IMG_9527 (merch tee, retro style not adopted).
+## Pages
 
-## Fonts
+| URL | Purpose | Target search intent |
+|---|---|---|
+| `/` | Homepage | ABA therapy New Albany MS, brand |
+| `/aba-therapy` | What ABA looks like at the cabin, focus areas, who it's for | ABA therapy for young children, New Albany |
+| `/getting-started` | Six steps from first message to weekly rhythm, what to have ready | how to start ABA therapy |
+| `/insurance` | BCBS of Mississippi, other plans, Medicaid/CHIP, private pay, questions for your insurer | ABA insurance, BCBS Mississippi ABA |
+| `/about` | Anna Claire Waldrop's credentials, team photos, the cabin, what families can count on | who runs it, trust |
+| `/visit` | Address, directions, driving distances from nearby towns, first-visit prep | directions, nearby towns |
+| `/faq` | 15 answers in four groups | long-tail questions |
+| `/resources` | Guide hub plus statewide resources | |
+| `/resources/after-an-autism-diagnosis` | Steps after a diagnosis in North Mississippi | after autism diagnosis Mississippi |
+| `/resources/autism-evaluation-north-mississippi` | Who diagnoses, First Steps and school evaluations, evaluators listed in the state guide | autism testing Tupelo / North Mississippi |
+| `/resources/does-bcbs-of-mississippi-cover-aba-therapy` | State law, plan types, BCBS approval steps, questions to ask | does BCBS of Mississippi cover ABA |
+| `/resources/your-first-visit` | Printable picture story of the sign, cabin, and rooms | |
+| `/privacy`, `/accessibility` | Policies | |
+| `404` | Custom "This path goes nowhere." page | |
 
-- **Rovey (demo).** The local file is literally named "RoveyFree-Regular". It has 60 glyphs: letters and space only. No numerals, no punctuation. Every Rovey line in the proof is letters-only, and this was checked by script. Screener headings use Raleway because they need question marks and commas. **Buy the full Rovey license with web-embedding rights (Craft Supply Co.) before launch.**
-- **White Angelica.** Personal-use license. **Buy the commercial license with web rights (Creatype Studio) before launch.** Missing glyph: en dash, which is not used.
-- **Raleway.** Medium (500) for body, per the brand sheet. `lining-nums` on phone numbers, addresses, and ages, because Raleway defaults to old-style figures. `display: optional` keeps body text from repainting late on slow connections, which took mobile LCP from paragraph text to the hero photo.
+Old URLs from the previous site redirect with 301: `/abouta4ae63fc` and `/about-us` go to `/about`, `/contact` and `/contact-us` go to `/visit`, and `/home` goes to `/`.
 
-## Color
+## What changed from the homepage proof
 
-The brand sheet's printed RGB and CMYK values disagree with its hex codes in places. The hex codes are the source of truth: Forest `#0a4040`, Modern Cafe `#322d2a`, Blushed Sand `#dbb199`, Cultured Beige `#f9f8f4`. Two tints were added for surfaces only: `#f1ece3` and `#efe2d8`. Sand is never used as text on light grounds.
+- **Client answers applied:** the phone number is confirmed, there is no Horn Lake location (single-location schema), and photo waivers are signed (all 18 photos are cleared, including the porch family group now on About).
+- **Fonts used fully.** Rovey draws every letter, and headings now include punctuation and numbers. The only Rovey file available is the free release, which has no numerals or punctuation, so Gilda Display (open license, chosen to match Rovey's weight and lining figures) supplies exactly those characters. It only downloads on pages that need it. If a full Rovey file is ever dropped into `src/fonts/rovey.woff2`, it takes over automatically. White Angelica now carries the brand sheet's "Subtitle" role above every section heading, as well as the handwritten notes. Raleway Medium stays the body face.
+- **Screener headings** are back in Rovey.
+- **Intake:** live mode (validation, honeypot, sending, failure with retry, success) is behind an env switch.
+- **Events:** a privacy-safe event layer with no provider installed.
 
-## Interactive vs. demonstration-only
+## SEO
 
-**Interactive:** anchor navigation, the mobile menu (Escape closes, focus returns), the sticky mobile bar, FAQ accordions (native `details`), Get directions (Google Maps search, new tab), tap to call, and the full screener: every branch, back with preserved answers, close, Escape, restart, sample data, and completion.
+- One H1 per page. Unique titles that all say MS or Mississippi. Parent-focused meta descriptions. Self-referencing canonicals on `https://www.wildandfreebehavior.com`.
+- `sitemap.xml` (14 URLs) and `robots.txt` follow `SITE_INDEXABLE`. Verified: with the flag on, Lighthouse SEO scores 100.
+- Structured data, only from visible facts:
+  - `MedicalClinic` with geo coordinates (OpenStreetMap match for 403 Doctors Drive) and areaServed matching the Visit page
+  - `WebSite`
+  - `Person` with credentials (About)
+  - `BreadcrumbList` (all interior pages)
+  - `FAQPage` (/faq)
+  - `Article` (guides)
+  - No ratings, reviews, prices, or hours.
+- Internal links: every page links into Getting Started or opens the screener, articles cross-link to the service and insurance pages, and the footer lists every page and guide.
+- Article facts are sourced and dated on the page. Sources: Mississippi Insurance Department autism page, BCBSMS's 2018 response to MID, MSDH First Steps, the DMH Autism Resource Guide (April 2026). Driving distances were computed with OpenStreetMap routing.
 
-**Demonstration only:** the screener and contact step. Nothing is sent, stored, or tracked. Verified: zero network requests and empty localStorage, sessionStorage, and cookies after every path. Autofill is off on the demo fields so a reviewer's real details are never filled in. In production, turn autofill back on.
+## Intake, events, and privacy
 
-**Screener logic** lives in `src/lib/screener.ts` (pure functions, 19 unit tests). Wording is in `src/components/screener/copy.ts`. No path ever says accepted, approved, booked, or "you qualify". Ages outside 2 to 6 and an uncertain diagnosis route to staff review and keep the insurance context.
+- **Demo mode (default):** zero network requests and no browser storage. Verified on every screener branch.
+- **Live mode:** the browser posts JSON directly to the HighLevel webhook, so intake data never passes through the website host. That avoids needing Vercel's BAA. Payload: source, timestamp, page, contact (name, phone, email, method, note), screener answers, and result.
+  - Before launch, check that HighLevel's inbound webhook accepts a cross-origin POST from the site's domain. It was tested here against an intercepted mock endpoint.
+  - If HighLevel blocks CORS, switch to a HighLevel form embed for the contact step, or a server route with Vercel's BAA.
+- **Events** (`src/lib/track.ts`): `screener_open`, `screener_step` (number), `screener_result` (type), `contact_submit` (type), `call_click`, `directions_click`. Verified to carry no personal or health details. No provider is installed. When one is chosen (cookieless, such as Plausible), wire it in `send()` and add its origin to the CSP. Never ad pixels or session replay.
+- **Security headers (production):** CSP, HSTS, nosniff, frame denial, strict referrer, and a permissions policy. `'unsafe-inline'` scripts are required by static Next.js pages.
 
-## Unverified facts and placeholders
+## Next.js 16 note
 
-All business facts are in `src/config/site.ts`.
+With Cache Components on (the create-next-app default, and slated to become standard), visited pages stay in the DOM hidden by React `<Activity>`. Every id and `aria-labelledby` reference is therefore unique per route, and the sticky mobile bar only watches the hero on `/`. Both bugs were found and fixed in QA, and a soft-navigation audit now checks them. End-to-end tests should use role-based or visibility-filtered locators.
 
-| Item | Status in proof |
+## Content to review
+
+**BCBA review** (Anna Claire), before launch:
+- `/aba-therapy`: focus areas, "What ABA looks like here", "You're part of the plan", "A plan that grows with your child", "Who we work with".
+- `/getting-started` step text, especially the approval wording and "What helps".
+- `/insurance` BCBS steps ("We check your benefits", the approval sequence).
+- `/about`: "oversees each child's assessment and treatment plan", the credential dates (December 2020 and March 2021, from the earlier website), and "What you can count on".
+- All four guides. The picture story is written for children, so check the wording.
+- FAQ answers and screener copy (`src/components/screener/copy.ts`).
+
+**Legal review:** `/privacy` (written to match how the site behaves, including the HighLevel BAA requirement) and `/accessibility`.
+
+**Business decision:** the evaluation guide lists four North Mississippi evaluators from the DMH guide. Practices that also provide ABA were left out on purpose; the page notes that more are in the guide.
+
+## Still open (does not block review; some block launch)
+
+| Item | Status |
 |---|---|
-| Phone 662-539-7129 | Shown. From NPPES (2022). **Confirm.** |
-| 403 Doctors Drive address | Shown. Verified by NPPES and the sign. |
-| Anna Claire Waldrop, M.S., BCBA, LBA, owner | Shown. **Re-verify on the BACB registry and MS Autism Board.** |
-| Jimbo | First name only. Role, last name, and credentials unknown. |
-| Ages | Copy says "young children". Screener bands are 2 to 3 and 4 to 6, with under 2 and 7+ routed to staff. **Confirm the range and the "but..." exception.** |
-| Medicaid or CHIP | Option routes to staff review. **Confirm whether it's accepted.** |
-| BCBS approval language | "Plans often need to approve the assessment and therapy." Based on a Mississippi state publication. **BCBA review.** |
-| Hours | Not shown. `site.hours` renders nothing while null. |
-| Garden | Note says "out in the garden", not "the garden out back". **Confirm it is at the clinic and used with children.** |
-| Friday reminders | Described as a heads-up each Friday. **Planned HighLevel feature, not built.** |
-| "The first conversation is free" | From meeting notes. Confirm the wording. |
-| Social links, email | Not shown. |
-| Horn Lake address | Not shown. **Ask if a second location exists.** |
-| Privacy and accessibility pages | Not linked yet (no dead links). |
+| Ages served and the "but..." exception | Copy says "young children". Screener routes under 2 and 7+ to staff. |
+| Jimbo's full name, role, credentials | First name only, everywhere |
+| Who is in each portrait | Captions are group-level only |
+| Medicaid / CHIP acceptance | Routes to staff review |
+| Hours | Hidden until `site.hours` is set |
+| Garden used in sessions | Described as "a garden" outside, nothing more |
+| Friday reminders | Described as part of the process. Needs the HighLevel workflow. |
+| Vector logo | Wordmark is traced from the 1080px PNG |
+| HighLevel HIPAA add-on, BAA, inbound webhook, CORS check | Required before live intake |
+| Aurex BAA with the practice, legal review | Recommended |
+| Google Business Profile, DMH guide listing, BCBS directory check | Plan section 6 |
+| Analytics provider | Not chosen |
+| Deployment, DNS, Search Console | Not started. Never touch MX on `wildandfreebehaviorllc.com`. |
 
-### Clinical copy for BCBA review
+## Launch steps
 
-- Approach areas: everyday routines, communication (words, signs, pictures, or a device), learning and connection, family priorities.
-- Getting started step 3 ("Your insurance may need to approve this step first") and step 5 ("reviewed and updated as they grow").
-- "Week by week" paragraph (garden comparison).
-- Screener result and note wording in `copy.ts`.
+1. HighLevel: enable the HIPAA add-on, sign the BAA, create an inbound-webhook workflow, and confirm it accepts a CORS POST from the domain.
+2. Vercel production env: `SITE_INDEXABLE=true`, `NEXT_PUBLIC_INTAKE_MODE=webhook`, `NEXT_PUBLIC_INTAKE_WEBHOOK_URL=...`. Leave previews unset so they stay noindex and demo.
+3. Deploy, then submit one real test lead end to end.
+4. With approval, point `wildandfreebehavior.com` and `www` at Vercel in GoDaddy DNS.
+5. Verify Search Console and Bing, submit `sitemap.xml`, and update the Google Business Profile website link.
 
-## Prelaunch requirements (deferred to the full build)
+## Verification (evidence)
 
-1. Font licenses: Rovey full version and White Angelica commercial, with web rights. Replace the demo woff2 and remove the letters-only constraint.
-2. Signed photo releases for every adult and child pictured. Confirm whether any child is a client; if so, written HIPAA authorization is required.
-3. Vector logo from the client's designer.
-4. **HighLevel HIPAA add-on and signed BAA before any live intake.** Intake data goes from the browser to HighLevel only, never through Vercel (Vercel's BAA is a paid add-on). Aurex likely becomes a business associate, so get legal review.
-5. No ad pixels, session replay, or heatmaps. Analytics events carry step numbers and result types only.
-6. Notice of Privacy Practices link and website privacy policy.
-7. Credential verification on the BACB and MS Autism Board registries.
-8. Set `site.indexable = true` and the real URL at launch, then add a sitemap and the redirects from the plan (`/abouta4ae63fc` to `/about`, `/contact` to `/visit`).
+- Unit tests: 26 of 26 pass. Typecheck and ESLint are clean. Production build: 21 static routes.
+- Screener, demo build: 35 of 35 checks. Every branch, keyboard, Escape and focus return, back, restart, inline preselect, no requests, no storage, no errors. The 390×844 first screen shows the CTA (bottom at 799px).
+- Live intake build: 17 of 17. Validation and `aria-invalid`, nothing sent while invalid, 500 shows a recoverable error that keeps answers, retry succeeds, payload shape, no CSP violations, events carry no personal or health details.
+- Navigation: 12 of 12. Current page marked, soft navigation, breadcrumbs, 15 FAQ items, 404 status, sticky bar on interior pages, mobile menu, print view.
+- Soft-navigation audit: no duplicate ids, and every label resolves to visible text across five routes.
+- Routes: all 14 pages return 200, unknown paths 404, legacy URLs 301. Security headers present.
+- Structured data parses on every page tested.
+- Full-page screenshots at 1440 and 390 for every page: no horizontal overflow, no console errors.
+- Lighthouse mobile, production build:
 
-## Verdicts
+| Page | Performance | Accessibility | Best Practices |
+|---|---|---|---|
+| Home | 90 | 100 | 100 |
+| ABA Therapy | 93 | 100 | 100 |
+| Insurance | 95 | 100 | 100 |
+| BCBS guide | 94 | 100 | 100 |
+| Visit | 92 | 100 | 100 |
 
-**Technical: PASS (proof scope).**
-- `npm test`: 19 of 19 pass. Typecheck and ESLint are clean. Production build: all routes static.
-- Headless Chrome e2e: 35 of 35 checks pass (two of them are informational measurements at 360 and 430). Every screener branch, keyboard open, focus to heading, error on empty continue, arrow keys between options, Escape closes with focus returned, back preserves answers, sample data, completion, restart, inline preselect, zero network requests, no storage, no console errors.
-- Keyboard: logical tab order, a 3px focus ring on every stop, skip link works.
-- No horizontal overflow at 360, 390, 430, 768, 1024, 1440, 1920, or 2560. Reduced motion shows rays fully drawn with no animation.
-- Lighthouse on the production build. Mobile: Performance 92, Accessibility 100, Best Practices 100, SEO 69. Desktop: 100 / 100 / 100 / 69. SEO is 69 only because of the deliberate noindex (`is-crawlable`). Mobile LCP is 3.3s simulated slow 4G (hero photo), CLS 0, TBT about 70ms.
-- Bug found and fixed during QA: React reused the footer button node, so "Continue to contact details" turned into a submit button mid-click and skipped the contact step. The buttons now have distinct keys.
+  SEO scores 69 in preview because of the intentional noindex, and 100 with `SITE_INDEXABLE=true`.
 
-**Visual: READY FOR HUMAN REVIEW.** Desktop and mobile were composed and reviewed at real scroll states. Kalob approves or redirects. Screenshots are in `review/`.
+**Verdicts**
 
-**Business/content: REVISE (expected at this stage).** The copy stays within known facts, but the items in "Unverified facts" need client answers, and the clinical copy needs BCBA review.
-
-## Screenshots (`review/`)
-
-- `desktop-1440-hero.jpg`, `desktop-1440-full.jpg`
-- `mobile-390-first-screen.jpg`, `mobile-390-full.jpg`
-- `dialog-payment-1280.jpg`, `dialog-mobile-390.jpg`, `menu-open-390.jpg`
+- **Technical:** PASS.
+- **Visual:** READY FOR HUMAN REVIEW. All pages were reviewed at desktop and phone widths and the fixes were applied. Approval is Kalob's.
+- **Business/content:** REVISE. BCBA review, legal review, and the open items above are needed before launch.

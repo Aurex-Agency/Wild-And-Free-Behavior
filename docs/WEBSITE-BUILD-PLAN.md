@@ -1,5 +1,7 @@
 # Wild & Free Behavior: Website Build Plan
 
+> **Update 2026-10-27:** the client confirmed the phone number is current, there is no Horn Lake location, and photo waivers are signed. The full site is now built (see `REVIEW-NOTES.md`). Fonts: the only Rovey file available is the free release, so Gilda Display fills its missing numerals and punctuation.
+
 Prepared 2026-10-27 for Aurex Agency. Companion to `BUILD-PROMPT.md` (the phase 1 build prompt).
 
 This plan covers strategy, search, design direction, architecture, compliance, the build sequence, and launch. It follows the Aurex Website OS (`/Users/kalobadair/Aurex/Aurex-Website-OS/CLAUDE.md`). Facts are labeled **Verified**, **Client-stated**, **Old site (stale)**, or **Unverified**.

@@ -5,80 +5,78 @@
 **Project:** Wild & Free Behavior (ABA therapy, New Albany, MS)
 **Operating mode:** DEEP (new website)
 **Branch:** `proof/homepage`
-**PR/deployment:** PR against `main`; not deployed
-**Stage:** Browser proof
+**PR/deployment:** PR #1 against `main`; not deployed
+**Stage:** Full build complete, awaiting human visual approval, BCBA/legal review, and launch prerequisites
 **Last updated:** 2026-10-27
 
 ## Approved decisions
 
-- verified strategy and conversion: plan in `docs/WEBSITE-BUILD-PLAN.md` (not yet client-reviewed)
-- site architecture: launch sitemap in plan section 5 (proposed)
-- creative direction: "A cabin, a garden, and a plan" (proposed, awaiting Kalob)
-- desktop homepage: awaiting human review
-- mobile homepage: awaiting human review
-- page-category patterns: none yet
-- engineering approach: Next.js 16 App Router, TypeScript, Tailwind 4, fully static; screener is the only meaningful client island
+- verified strategy and conversion: `docs/WEBSITE-BUILD-PLAN.md`
+- site architecture: 14 pages built per plan section 5 (see REVIEW-NOTES.md)
+- creative direction: "A cabin, a garden, and a plan" (awaiting Kalob's visual approval)
+- client confirmations (2026-10-27, via Kalob): phone 662-539-7129 is current; no Horn Lake location; photo waivers signed; use the brand fonts fully
+- engineering approach: Next.js 16 App Router, TypeScript, Tailwind 4, all routes static; intake demo by default, HighLevel webhook behind env switch
 
 ## Asset truth
 
-- authentic evidence approved for publication: none yet (photo releases pending)
+- authentic evidence approved for publication: all 18 client photos (waivers signed)
 - interface assets: traced wordmark, rebuilt logo SVGs, measured sun geometry, log-course rules, arch clip paths
-- art-direction references: none used
-- temporary stand-ins: Rovey demo font (letters only), White Angelica personal-use font
-- retired assets: none
-- unresolved rights or identity questions: who is in each portrait; releases for all children; whether any child is a client; font licenses; vector logo
+- fonts: Rovey (free release, letters only) + Gilda Display companion for numerals and punctuation; White Angelica; Raleway
+- unresolved identity questions: who is in each portrait; Jimbo's full name and role
 
 ## Most recent work
 
-**Task:** Phase 1 homepage proof plus screener demo
-**Result:** Built and verified; see `REVIEW-NOTES.md`
-**Files/areas changed:** whole app (`src/`), `scripts/images.mjs`, `public/`, `docs/`, `review/`
+**Task:** Complete the build after client answers
+**Result:** All pages, guides, SEO plumbing, live-intake path, and tests done; see REVIEW-NOTES.md
+**Files/areas changed:** `src/app/*` (new routes), `src/components/*`, `src/content/*`, `src/lib/intake.ts`, `src/lib/track.ts`, `src/lib/schema.ts`, `next.config.ts`, `scripts/images.mjs`, `review/`
 
 ## Independent verdicts
 
-**Technical:** Pass (proof scope)
+**Technical:** Pass
 **Visual:** Ready for human review
-**Business/content:** Revise (client facts and BCBA review outstanding)
+**Business/content:** Revise (BCBA review of clinical copy, legal review of privacy page, open items)
 
 ## Browser evidence
 
 - [x] 360px
 - [x] 390/393px
 - [x] 430px
-- [x] 768px
-- [x] 1024px
-- [x] 1440px
-- [x] 1920px
-- [x] 2560px or wider when full-bleed
+- [x] 768px (homepage)
+- [x] 1024px (homepage)
+- [x] 1440px (all pages)
+- [x] 1920px (homepage)
+- [x] 2560px (homepage)
 - [x] motion-enabled state
 - [x] static/reduced-motion state
 - [x] keyboard/focus and mobile navigation
 - [x] build/typecheck
-- [x] primary conversion flow (demo only; no live intake by design)
+- [x] primary conversion flow (demo and mocked live webhook)
 
 ## Known issues
 
-### Blockers
+### Blockers (launch only)
 
-- Launch only: font licenses, photo releases, HighLevel HIPAA add-on and BAA, client fact confirmations
+- HighLevel HIPAA add-on, BAA, inbound webhook, CORS check
+- BCBA review of clinical copy; legal review of privacy page
+- Ages, Jimbo's role, Medicaid/CHIP, hours
 
 ### Important
 
-- Mobile LCP is 3.3s on simulated slow 4G (Lighthouse Performance 92). Measure field data after deploy before tuning further.
-- Logo is a trace of a 1080px PNG; request vector
+- Interior pages checked at 1440 and 390; 768/1024/1920 checked on the homepage only
+- Logo is a trace of a 1080px PNG; request a vector
 
 ### Polish
 
-- Hero rays bleed past the viewport edge on phones by design; confirm Kalob likes it
+- none
 
 ## Current human decision
 
-**Decision needed:** Approve or redirect the visual direction on desktop and mobile.
-**Recommendation:** Approve the direction; keep the arch, rays, and photo-led rhythm for interior pages.
-**Evidence to review:** `review/` screenshots or `npm run dev`
+**Decision needed:** Approve the visual direction across the full site.
+**Recommendation:** Approve; then send the BCBA review packet and the open-questions list to the client.
+**Evidence to review:** `review/` or `npm run dev`
 
 ## Next action
 
-**Next action:** After visual approval, send the client question list (plan section 14), then build the interior page bundle (ABA Therapy, Getting Started, Insurance, About, Visit, FAQ).
+**Next action:** Client review round (BCBA copy, open facts), then launch steps 1 to 5 in REVIEW-NOTES.md.
 **Suggested model/class:** STANDARD
-**Why:** Direction and system exist; interior pages reuse them.
+**Why:** Build is complete; remaining work is review and configuration.

@@ -12,6 +12,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 - Follow the Aurex Website OS (`/Users/kalobadair/Aurex/Aurex-Website-OS/CLAUDE.md`). Read `AUREX-STATUS.md` and `REVIEW-NOTES.md` before changing anything.
 - Business facts live only in `src/config/site.ts`. Never invent hours, prices, reviews, emails, or insurance outcomes.
-- Rovey is the demo font until the license is bought: any text set with the `display` class must be letters and spaces only.
+- Rovey (free release) has letters only; Gilda Display fills numerals and punctuation through the font stack. Don't remove `--font-rovey-companion` unless a full Rovey file replaces `src/fonts/rovey.woff2`.
+- Cache Components keeps visited pages in the DOM (hidden). Keep ids unique per route and use role-based or visible-filtered locators in tests.
 - No em or en dashes in site copy. No ad pixels or session replay. The screener sends nothing until a HIPAA-covered HighLevel intake exists.
 - Camera originals stay outside the repo; regenerate derivatives with `npm run images`.
