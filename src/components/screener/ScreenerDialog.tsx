@@ -11,6 +11,8 @@ import {
   type Answers,
   type StepId,
 } from "@/lib/screener";
+import { intakeMode, submitIntake, validateContact, type Contact, type ContactErrors } from "@/lib/intake";
+import { track } from "@/lib/track";
 import { site } from "@/config/site";
 import { SunMark } from "@/components/brand";
 import { OPEN_EVENT, type OpenDetail } from "./events";
@@ -24,7 +26,7 @@ import {
   results,
 } from "./copy";
 
-type Contact = { name: string; phone: string; email: string; method: "" | "call" | "text" | "email"; note: string };
+const live = intakeMode === "webhook";
 
 const emptyContact: Contact = { name: "", phone: "", email: "", method: "", note: "" };
 
@@ -42,8 +44,10 @@ const stepTitles: Record<Exclude<StepId, "result">, string> = {
   "other-insurance": "What would help most right now?",
   child: "A little about your child",
   contact: "How should we reach you?",
-  done: "That's the whole preview",
+  done: live ? "Thank you. We have your details." : "That's the whole preview.",
 };
+
+type SendState = "idle" | "sending" | "failed";
 
 function OptionGroup<T extends string>({
   name,
@@ -100,6 +104,9 @@ export function ScreenerDialog() {
   const [step, setStep] = useState<StepId>("payment");
   const [answers, setAnswers] = useState<Answers>({});
   const [contact, setContact] = useState<Contact>(emptyContact);
+  const [contactErrors, setContactErrors] = useState<ContactErrors>({});
+  const [honeypot, setHoneypot] = useState("");
+  const [send, setSend] = useState<SendState>("idle");
   const [error, setError] = useState<string | null>(null);
   const [announcement, setAnnouncement] = useState("");
   const moved = useRef(false);
@@ -108,37 +115,42 @@ export function ScreenerDialog() {
   const title = step === "result" ? results[result.type].title : stepTitles[step];
   const current = stepNumber(step);
 
-  const restart = useCallback(() => {
+  const reset = useCallback(() => {
     setAnswers({});
     setContact(emptyContact);
+    setContactErrors({});
+    setHoneypot("");
+    setSend("idle");
     setError(null);
+  }, []);
+
+  const restart = useCallback(() => {
+    reset();
     moved.current = true;
     setStep("payment");
-  }, []);
+  }, [reset]);
 
   useEffect(() => {
     function onOpen(e: Event) {
       const detail = (e as CustomEvent<OpenDetail>).detail ?? {};
       returnFocusRef.current = document.activeElement as HTMLElement | null;
       setError(null);
+      if (step === "done") reset();
       if (detail.payment) {
-        setAnswers((a) => ({ ...a, payment: detail.payment }));
+        setAnswers((a) => ({ ...(step === "done" ? {} : a), payment: detail.payment }));
         setStep("payment");
-      } else {
-        setStep((s) => (s === "done" ? "payment" : s));
-        if (step === "done") {
-          setAnswers({});
-          setContact(emptyContact);
-        }
+      } else if (step === "done") {
+        setStep("payment");
       }
       const dialog = dialogRef.current;
       if (dialog && !dialog.open) dialog.showModal();
+      track("screener_open", { page: location.pathname });
       moved.current = true;
       requestAnimationFrame(() => headingRef.current?.focus());
     }
     window.addEventListener(OPEN_EVENT, onOpen);
     return () => window.removeEventListener(OPEN_EVENT, onOpen);
-  }, [step]);
+  }, [step, reset]);
 
   // Move focus to the new step's heading and announce progress.
   useEffect(() => {
@@ -172,7 +184,10 @@ export function ScreenerDialog() {
       );
       return;
     }
-    go(nextStep(step, answers));
+    const to = nextStep(step, answers);
+    track("screener_step", { step: stepNumber(step) });
+    if (to === "result") track("screener_result", { result: getResult(answers).type });
+    go(to);
   }
 
   function back() {
@@ -180,10 +195,45 @@ export function ScreenerDialog() {
     if (to) go(to);
   }
 
-  function finish(e: SubmitEvent<HTMLFormElement>) {
-    // Preview only: nothing is sent anywhere.
+  async function finish(e: SubmitEvent<HTMLFormElement>) {
     e.preventDefault();
-    go("done");
+    if (!live) {
+      // Preview only: nothing is sent anywhere.
+      go("done");
+      return;
+    }
+    if (send === "sending") return;
+    const errors = validateContact(contact);
+    setContactErrors(errors);
+    if (errors.name || errors.reach) {
+      setError("Please fix the highlighted fields.");
+      return;
+    }
+    // Bots fill hidden fields; people never see this one.
+    if (honeypot) {
+      go("done");
+      return;
+    }
+    setSend("sending");
+    setError(null);
+    const outcome = await submitIntake({
+      source: "website-screener",
+      submittedAt: new Date().toISOString(),
+      page: location.pathname,
+      contact,
+      answers,
+      result,
+    });
+    if (outcome.ok) {
+      track("contact_submit", { result: result.type });
+      setSend("idle");
+      go("done");
+    } else {
+      setSend("failed");
+      setError(
+        `We couldn't send that just now. Your answers are still here, so you can try again, or call us at ${site.phone.display}.`,
+      );
+    }
   }
 
   const set = (patch: Partial<Answers>) => {
@@ -191,8 +241,15 @@ export function ScreenerDialog() {
     setAnswers((a) => ({ ...a, ...patch }));
   };
 
+  const setField = (patch: Partial<Contact>) => {
+    setContact((c) => ({ ...c, ...patch }));
+    if (contactErrors.name || contactErrors.reach) setContactErrors({});
+  };
+
   const chosenPayment = paymentOptions.find((o) => o.value === answers.payment);
-  const showEvalLink = result.notes.includes("diagnosis-evaluation") || result.type === "resources" || result.notes.includes("medicaid-unconfirmed");
+  const showEvalLink =
+    result.notes.includes("diagnosis-evaluation") || result.type === "resources" || result.notes.includes("medicaid-unconfirmed");
+  const auto = (value: string) => (live ? value : "off");
 
   return (
     <dialog ref={dialogRef} className="screener" aria-labelledby="screener-title" onClose={onClose}>
@@ -210,16 +267,18 @@ export function ScreenerDialog() {
         </button>
       </div>
 
-      <p className="bg-sand-soft px-5 py-2 text-[0.9375rem] font-semibold text-cafe sm:px-8">
-        Design preview. Nothing you choose here is sent or saved.
-      </p>
+      {!live && (
+        <p className="bg-sand-soft px-5 py-2 text-[0.9375rem] font-semibold text-cafe sm:px-8">
+          Design preview. Nothing you choose here is sent or saved.
+        </p>
+      )}
 
       <div className="flex-1 overflow-y-auto px-5 py-6 sm:px-8 sm:py-8">
         <h2
           id="screener-title"
           ref={headingRef}
           tabIndex={-1}
-          className="mb-6 text-[1.5rem] font-bold leading-tight text-forest focus:outline-none md:text-[1.75rem]"
+          className="display display-m mb-6 text-forest focus:outline-none"
         >
           {title}
         </h2>
@@ -279,7 +338,7 @@ export function ScreenerDialog() {
                 className="field"
                 value={answers.town ?? ""}
                 onChange={(e) => set({ town: e.target.value })}
-                autoComplete="off"
+                autoComplete={auto("address-level2")}
               />
             </div>
           </div>
@@ -311,7 +370,9 @@ export function ScreenerDialog() {
         {step === "contact" && (
           <form id="screener-contact" onSubmit={finish} noValidate className="grid gap-5">
             <p className="text-cafe-soft">
-              In the live version, these details go to our team so we can reach out. For this preview, use the sample data.
+              {live
+                ? "We'll use these details only to reach you about your child. Please leave out medical records and insurance numbers."
+                : "In the live version, these details go to our team so we can reach out. For this preview, use the sample data."}
             </p>
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="sm:col-span-2">
@@ -319,20 +380,57 @@ export function ScreenerDialog() {
                   Parent or caregiver name
                 </label>
                 {/* Autofill is off in the preview so a reviewer's real details are never filled in. */}
-                <input id="c-name" className="field" autoComplete="off" value={contact.name} onChange={(e) => setContact({ ...contact, name: e.target.value })} />
+                <input
+                  id="c-name"
+                  className="field"
+                  autoComplete={auto("name")}
+                  value={contact.name}
+                  aria-invalid={contactErrors.name ? true : undefined}
+                  aria-describedby={contactErrors.name ? "c-name-error" : undefined}
+                  onChange={(e) => setField({ name: e.target.value })}
+                />
+                {contactErrors.name && (
+                  <p id="c-name-error" className="mt-1.5 text-[0.9375rem] font-semibold text-[#8a2f1d]">
+                    {contactErrors.name}
+                  </p>
+                )}
               </div>
               <div>
                 <label htmlFor="c-phone" className="mb-2 block font-semibold">
                   Phone
                 </label>
-                <input id="c-phone" type="tel" className="field nums" autoComplete="off" value={contact.phone} onChange={(e) => setContact({ ...contact, phone: e.target.value })} />
+                <input
+                  id="c-phone"
+                  type="tel"
+                  inputMode="tel"
+                  className="field nums"
+                  autoComplete={auto("tel")}
+                  value={contact.phone}
+                  aria-invalid={contactErrors.reach ? true : undefined}
+                  aria-describedby={contactErrors.reach ? "c-reach-error" : undefined}
+                  onChange={(e) => setField({ phone: e.target.value })}
+                />
               </div>
               <div>
                 <label htmlFor="c-email" className="mb-2 block font-semibold">
                   Email
                 </label>
-                <input id="c-email" type="email" className="field" autoComplete="off" value={contact.email} onChange={(e) => setContact({ ...contact, email: e.target.value })} />
+                <input
+                  id="c-email"
+                  type="email"
+                  className="field"
+                  autoComplete={auto("email")}
+                  value={contact.email}
+                  aria-invalid={contactErrors.reach ? true : undefined}
+                  aria-describedby={contactErrors.reach ? "c-reach-error" : undefined}
+                  onChange={(e) => setField({ email: e.target.value })}
+                />
               </div>
+              {contactErrors.reach && (
+                <p id="c-reach-error" className="text-[0.9375rem] font-semibold text-[#8a2f1d] sm:col-span-2">
+                  {contactErrors.reach}
+                </p>
+              )}
             </div>
             <OptionGroup
               name="contact-method"
@@ -343,7 +441,7 @@ export function ScreenerDialog() {
                 { value: "email" as const, label: "Email" },
               ]}
               value={contact.method || undefined}
-              onChange={(v) => setContact({ ...contact, method: v })}
+              onChange={(v) => setField({ method: v })}
             />
             <div>
               <label htmlFor="c-note" className="mb-2 block font-semibold">
@@ -358,27 +456,50 @@ export function ScreenerDialog() {
                 rows={3}
                 className="field"
                 value={contact.note}
-                onChange={(e) => setContact({ ...contact, note: e.target.value })}
+                onChange={(e) => setField({ note: e.target.value })}
               />
             </div>
-            <div>
-              <button type="button" className="btn btn-outline" onClick={() => setContact(sampleContact)}>
-                Fill sample data
-              </button>
+            {/* Spam trap: hidden from people and assistive tech. */}
+            <div aria-hidden="true" className="absolute -left-[9999px] h-px w-px overflow-hidden">
+              <label htmlFor="c-company">Company</label>
+              <input id="c-company" tabIndex={-1} autoComplete="off" value={honeypot} onChange={(e) => setHoneypot(e.target.value)} />
             </div>
+            {!live && (
+              <div>
+                <button type="button" className="btn btn-outline" onClick={() => setContact(sampleContact)}>
+                  Fill sample data
+                </button>
+              </div>
+            )}
           </form>
         )}
 
         {step === "done" && (
           <div className="grid gap-4">
-            <p className="lede">This is a preview. Nothing was sent or saved.</p>
-            <p>
-              In the live version, this is where your details would go to our team, and this screen would tell you when to expect a call. You can also reach us at{" "}
-              <a className="link nums" href={site.phone.href}>
-                {site.phone.display}
-              </a>
-              .
-            </p>
+            {live ? (
+              <>
+                <p className="lede">Someone from our team will reach out to talk about your child and the next step.</p>
+                <p>
+                  Nothing has been scheduled yet, and you&apos;re not committed to anything. If you&apos;d rather talk now, call us at{" "}
+                  <a className="link nums" href={site.phone.href} data-track="call">
+                    {site.phone.display}
+                  </a>
+                  .
+                </p>
+              </>
+            ) : (
+              <>
+                <p className="lede">This is a preview. Nothing was sent or saved.</p>
+                <p>
+                  In the live version, this is where your details would go to our team, and this screen would tell you what
+                  happens next. You can also reach us at{" "}
+                  <a className="link nums" href={site.phone.href} data-track="call">
+                    {site.phone.display}
+                  </a>
+                  .
+                </p>
+              </>
+            )}
           </div>
         )}
 
@@ -396,14 +517,14 @@ export function ScreenerDialog() {
               Start over
             </button>
             <button type="button" className="btn btn-primary" onClick={close}>
-              Close preview
+              {live ? "Close" : "Close preview"}
             </button>
           </>
         ) : (
           <>
             <div className="flex items-center gap-1">
               {prevStep(step, answers) && (
-                <button type="button" className="btn px-3 text-forest" onClick={back}>
+                <button type="button" className="btn px-3 text-forest" onClick={back} disabled={send === "sending"}>
                   Back
                 </button>
               )}
@@ -415,8 +536,14 @@ export function ScreenerDialog() {
             </div>
             {/* Distinct keys stop React reusing one node, which would flip it to "submit" mid-click. */}
             {step === "contact" ? (
-              <button key="finish" type="submit" form="screener-contact" className="btn btn-primary">
-                Finish preview
+              <button
+                key="finish"
+                type="submit"
+                form="screener-contact"
+                className="btn btn-primary"
+                aria-disabled={send === "sending" ? true : undefined}
+              >
+                {live ? (send === "sending" ? "Sending..." : send === "failed" ? "Try again" : "Send to our team") : "Finish preview"}
               </button>
             ) : (
               <button key="next" type="button" className="btn btn-primary" onClick={next}>
