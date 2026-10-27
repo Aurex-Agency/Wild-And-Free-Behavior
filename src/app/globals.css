@@ -16,7 +16,9 @@
 }
 
 @theme inline {
-  --font-display: var(--font-rovey), "Times New Roman", serif;
+  /* Rovey draws every letter; Gilda Display fills the numerals and punctuation the
+     available Rovey file lacks. */
+  --font-display: var(--font-rovey), var(--font-rovey-companion), "Times New Roman", serif;
   --font-sans: var(--font-raleway), ui-sans-serif, system-ui, sans-serif;
   --font-note: var(--font-angelica), cursive;
 }
@@ -116,6 +118,15 @@
     line-height: 1;
   }
 
+  /* Brand sheet "Subtitle" role: White Angelica, written like a handwritten lead-in. */
+  .subtitle {
+    font-family: var(--font-note);
+    font-weight: 400;
+    font-size: clamp(2rem, 1.55rem + 1.3vw, 2.85rem);
+    line-height: 1;
+    letter-spacing: 0;
+  }
+
   .eyebrow {
     font-family: var(--font-sans);
     font-weight: 650;
@@ -141,6 +152,10 @@
     font-size: clamp(1.9rem, 1.5rem + 1vw, 2.5rem);
     line-height: 1;
     font-weight: 400;
+  }
+
+  .display-hero {
+    font-size: clamp(2.6rem, 1.6rem + 4.4vw, 5.4rem);
   }
 
   .nums {
@@ -220,6 +235,10 @@
    keeps the logo's proportions at every aspect ratio. */
 .arch-frame {
   clip-path: url(#arch-desktop);
+}
+
+.arch-portrait {
+  clip-path: url(#arch-portrait);
 }
 
 @media (max-width: 47.99rem) {
@@ -415,5 +434,133 @@
 @media (prefers-reduced-motion: reduce) {
   .action-bar {
     transition: none;
+  }
+}
+
+/* Long-form copy: articles, policies, page bodies */
+.prose {
+  max-width: 40rem;
+}
+
+.prose > * + * {
+  margin-top: 1.15em;
+}
+
+.prose h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.75rem, 1.4rem + 1.2vw, 2.4rem);
+  line-height: 1.02;
+  letter-spacing: 0.01em;
+  color: var(--color-forest);
+  margin-top: 2.2em;
+  text-wrap: balance;
+}
+
+.prose h3 {
+  font-weight: 700;
+  font-size: 1.1875rem;
+  line-height: 1.35;
+  color: var(--color-cafe);
+  margin-top: 1.8em;
+}
+
+.prose h2 + *,
+.prose h3 + * {
+  margin-top: 0.6em;
+}
+
+.prose ul,
+.prose ol {
+  padding-left: 1.25em;
+}
+
+.prose ul {
+  list-style: none;
+}
+
+.prose ul > li {
+  position: relative;
+}
+
+.prose ul > li::before {
+  content: "";
+  position: absolute;
+  left: -1.1em;
+  top: 0.78em;
+  width: 0.55em;
+  height: 1.5px;
+  background: var(--color-sand);
+}
+
+.prose ol {
+  list-style: decimal;
+}
+
+.prose ol > li::marker {
+  font-weight: 700;
+  color: var(--color-forest);
+  font-variant-numeric: lining-nums;
+}
+
+.prose li + li {
+  margin-top: 0.5em;
+}
+
+.prose a:not(.btn) {
+  color: var(--color-forest);
+  font-weight: 650;
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.25em;
+  text-decoration-color: color-mix(in srgb, var(--color-forest) 45%, transparent);
+}
+
+.prose a:not(.btn):hover {
+  text-decoration-color: currentColor;
+}
+
+.prose strong {
+  font-weight: 700;
+  color: var(--color-cafe);
+}
+
+.prose blockquote,
+.prose .callout {
+  border-left: 2px solid var(--color-sand);
+  padding-left: 1.1rem;
+}
+
+@media print {
+  @page {
+    margin: 14mm;
+  }
+
+  body {
+    background: #fff;
+    font-size: 12pt;
+  }
+
+  .no-print,
+  header,
+  footer,
+  .action-bar,
+  dialog {
+    display: none !important;
+  }
+
+  .print-story {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10mm;
+  }
+
+  .print-story li {
+    break-inside: avoid;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
   }
 }
