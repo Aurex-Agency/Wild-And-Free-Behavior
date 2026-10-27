@@ -1,7 +1,6 @@
+import Link from "next/link";
 import { site } from "@/config/site";
-import { SunMark } from "@/components/brand";
-import { ScreenerTrigger } from "@/components/screener/ScreenerTrigger";
-import { paymentOptions } from "@/components/screener/copy";
+import { InsuranceQuestion } from "@/components/InsuranceQuestion";
 
 const paths = [
   {
@@ -23,7 +22,7 @@ export function Insurance() {
     <section id="insurance" aria-labelledby="insurance-title" className="py-20 md:py-28">
       <div className="wrap grid gap-14 lg:grid-cols-12 lg:gap-x-12">
         <div className="lg:col-span-6">
-          <p className="eyebrow text-forest">Insurance and private pay</p>
+          <p className="subtitle text-forest">costs and coverage</p>
           <h2 id="insurance-title" className="display display-l mt-4 text-forest">
             Paying for therapy
           </h2>
@@ -39,30 +38,13 @@ export function Insurance() {
               </div>
             ))}
           </dl>
+          <Link href="/insurance" className="link mt-7 inline-block">
+            More about insurance and private pay
+          </Link>
         </div>
 
-        {/* A live first question: choosing an answer opens the screener with it selected */}
         <div className="lg:col-span-5 lg:col-start-8">
-          <div className="relative bg-sand-soft px-6 pb-8 pt-9 md:px-10 md:pb-10 md:pt-12">
-            <SunMark className="absolute -top-5 left-6 h-10 w-16 text-forest md:left-10" />
-            <p className="eyebrow text-forest">Check your options</p>
-            <h3 className="mt-3 text-[1.5rem] font-bold leading-tight text-cafe">How will you pay for services?</h3>
-            <p className="mt-2 text-[0.9375rem] text-cafe-soft">
-              Three short questions. Nothing is booked, and this preview doesn&apos;t send anything.
-            </p>
-            <ul className="mt-6 grid gap-2.5">
-              {paymentOptions.map((o) => (
-                <li key={o.value}>
-                  <ScreenerTrigger
-                    payment={o.value}
-                    className="option w-full text-left font-semibold leading-snug text-cafe"
-                  >
-                    {o.label}
-                  </ScreenerTrigger>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <InsuranceQuestion />
         </div>
       </div>
     </section>

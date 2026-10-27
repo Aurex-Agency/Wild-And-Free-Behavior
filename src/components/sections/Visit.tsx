@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { site } from "@/config/site";
 import { FieldNote } from "@/components/brand";
 import { Photo } from "@/components/Photo";
@@ -14,7 +15,7 @@ export function Visit() {
       <div className="wrap relative">
         <div className="grid gap-10 bg-beige pb-4 pt-10 md:-mt-40 md:max-w-[46rem] md:grid-cols-2 md:gap-8 md:p-12 lg:-mt-56">
           <div>
-            <p className="eyebrow text-forest">Visit</p>
+            <p className="subtitle text-forest">come on in</p>
             <h2 id="visit-title" className="display display-l mt-4 text-forest">
               Find the cabin
             </h2>
@@ -31,7 +32,7 @@ export function Visit() {
               <span className="block">
                 {site.address.city}, {site.address.region} {site.address.postalCode}
               </span>
-              <a href={site.phone.href} className="link mt-3 inline-block">
+              <a href={site.phone.href} className="link mt-3 inline-block" data-track="call">
                 {site.phone.display}
               </a>
             </address>
@@ -50,10 +51,16 @@ export function Visit() {
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-primary mt-7 w-full md:w-auto"
+              data-track="directions"
             >
               Get directions
               <span className="sr-only"> (opens Google Maps in a new tab)</span>
             </a>
+            <p className="mt-4">
+              <Link href="/visit" className="link">
+                Visiting and driving in
+              </Link>
+            </p>
           </div>
         </div>
       </div>

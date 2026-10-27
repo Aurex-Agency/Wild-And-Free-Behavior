@@ -35,7 +35,7 @@ export function Rhythm() {
         <LogRules className="absolute inset-0 h-full w-full text-beige/[0.06]" />
         <div className="wrap relative grid gap-12 md:grid-cols-12 md:gap-x-8 lg:gap-x-12">
           <div className="md:col-span-5">
-            <p className="eyebrow text-sand">Scheduling</p>
+            <p className="subtitle text-sand">scheduling</p>
             <h2 id="rhythm-title" className="display display-l mt-4">
               Same time every week
             </h2>

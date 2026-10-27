@@ -19,7 +19,7 @@ export function FinalCta() {
         </p>
         <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
           <ScreenerTrigger className="btn btn-light w-full sm:w-auto">Find your next step</ScreenerTrigger>
-          <a href={site.phone.href} className="btn nums w-full text-beige shadow-[inset_0_0_0_1.5px_var(--color-sand)] hover:bg-forest-deep sm:w-auto">
+          <a href={site.phone.href} data-track="call" className="btn nums w-full text-beige shadow-[inset_0_0_0_1.5px_var(--color-sand)] hover:bg-forest-deep sm:w-auto">
             Call {site.phone.display}
           </a>
         </div>

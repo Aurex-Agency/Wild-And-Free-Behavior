@@ -1,4 +1,5 @@
-import { FieldNote, LogRules, SunMark } from "@/components/brand";
+import Link from "next/link";
+import { LogRules } from "@/components/brand";
 import { Photo } from "@/components/Photo";
 
 // Focus areas are possibilities shaped by each child's assessment, not promised outcomes.
@@ -19,8 +20,7 @@ export function Approach() {
       <div className="wrap">
         <div className="grid gap-10 md:grid-cols-12 md:gap-x-8 lg:gap-x-12">
           <div className="md:col-span-5 lg:col-span-4">
-            <SunMark className="h-7 w-11 text-forest" />
-            <p className="eyebrow mt-4 text-forest">What therapy can focus on</p>
+            <p className="subtitle text-forest">what we work on</p>
             <h2 id="approach-title" className="display display-l mt-4 text-forest">
               Built around your child
             </h2>
@@ -28,6 +28,9 @@ export function Approach() {
               ABA therapy here starts with an assessment and with what matters most to your family. From there, your
               child&apos;s plan might focus on a few of these areas.
             </p>
+            <Link href="/aba-therapy" className="link mt-6 inline-block">
+              How ABA therapy works at the cabin
+            </Link>
           </div>
 
           {/* Routines: tall photo with its text alongside */}
@@ -36,7 +39,6 @@ export function Approach() {
               <div className="aspect-[0.79] overflow-hidden">
                 <Photo image="routines" sizes="(min-width: 64rem) 26vw, (min-width: 40rem) 45vw, 100vw" />
               </div>
-              <FieldNote className="absolute -bottom-6 left-3 hidden rotate-[-3deg] text-forest sm:block">circle time</FieldNote>
             </figure>
             <div className="self-end pb-2 sm:pt-24">
               <Area title="Everyday routines">

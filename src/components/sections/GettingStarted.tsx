@@ -1,8 +1,8 @@
+import Link from "next/link";
 import { SUN_ARCH } from "@/lib/sun";
 import { Photo } from "@/components/Photo";
 import { ScreenerTrigger } from "@/components/screener/ScreenerTrigger";
 
-// Step titles are set in Rovey, so they stay letters-only (no apostrophes or numerals).
 const steps = [
   {
     title: "Reach out",
@@ -43,7 +43,7 @@ export function GettingStarted() {
     <section id="getting-started" aria-labelledby="start-title" className="py-20 md:py-28">
       <div className="wrap grid gap-12 md:grid-cols-12 md:gap-x-8 lg:gap-x-12">
         <div className="md:col-span-5 lg:col-span-5">
-          <p className="eyebrow text-forest">Getting started</p>
+          <p className="subtitle text-forest">getting started</p>
           <h2 id="start-title" className="display display-l mt-4 text-forest">
             How it begins
           </h2>
@@ -79,6 +79,9 @@ export function GettingStarted() {
           </ol>
           <div className="mt-12 flex flex-wrap items-center gap-x-6 gap-y-4 pl-[4.25rem] sm:pl-[4.75rem]">
             <ScreenerTrigger>Start with step one</ScreenerTrigger>
+            <Link href="/getting-started" className="link">
+              What to expect at each step
+            </Link>
           </div>
         </div>
       </div>

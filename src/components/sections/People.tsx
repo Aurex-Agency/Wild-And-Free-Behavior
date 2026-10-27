@@ -1,5 +1,6 @@
 import { site } from "@/config/site";
-import { FieldNote, LogRules } from "@/components/brand";
+import Link from "next/link";
+import { LogRules } from "@/components/brand";
 import { Photo } from "@/components/Photo";
 import { ScreenerTrigger } from "@/components/screener/ScreenerTrigger";
 
@@ -11,7 +12,7 @@ export function People() {
       <div className="wrap">
         <div className="grid gap-10 md:grid-cols-12 md:gap-x-8 lg:gap-x-12">
           <div className="md:col-span-6 lg:col-span-5">
-            <p className="eyebrow text-forest">Our team</p>
+            <p className="subtitle text-forest">our team</p>
             <h2 id="people-title" className="display display-l mt-4 text-forest">
               The people on the porch
             </h2>
@@ -26,7 +27,12 @@ export function People() {
               anything else happens. Bring your questions, and bring your child&apos;s story.
             </p>
             <div className="mt-7">
-              <ScreenerTrigger className="btn btn-outline">Start with a conversation</ScreenerTrigger>
+              <div className="flex flex-wrap items-center gap-x-6 gap-y-4">
+                <ScreenerTrigger className="btn btn-outline">Start with a conversation</ScreenerTrigger>
+                <Link href="/about" className="link">
+                  About our team
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -45,9 +51,6 @@ export function People() {
             </div>
           </div>
           <figcaption className="mt-4 text-[0.9375rem] text-cafe-soft">Our team on the cabin porch.</figcaption>
-          <FieldNote className="absolute -top-10 right-2 rotate-[-4deg] text-forest md:-top-12 md:left-[66%] md:right-auto">
-            say hello
-          </FieldNote>
         </figure>
       </div>
     </section>

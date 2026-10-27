@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { site } from "@/config/site";
 import { ArchRays, FieldNote, raysHeadroom } from "@/components/brand";
 import { Photo } from "@/components/Photo";
@@ -48,13 +49,13 @@ export function Hero() {
           </p>
           <div id="hero-actions" className="mt-6 flex md:mt-7 flex-wrap items-center gap-x-6 gap-y-4">
             <ScreenerTrigger>Find your next step</ScreenerTrigger>
-            <a href="#people" className="link">
+            <Link href="/about" className="link">
               Meet the team
-            </a>
+            </Link>
           </div>
           <p className="nums mt-8 flex flex-wrap gap-x-5 gap-y-1 border-t border-cafe/15 pt-4 text-[0.9375rem] text-cafe-soft">
             <span>{site.address.street}, New Albany</span>
-            <a href={site.phone.href} className="font-semibold text-forest hover:underline">
+            <a href={site.phone.href} className="font-semibold text-forest hover:underline" data-track="call">
               {site.phone.display}
             </a>
           </p>
