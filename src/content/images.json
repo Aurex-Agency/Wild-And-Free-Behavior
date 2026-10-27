@@ -1,0 +1,666 @@
+{
+  "heroGarden": {
+    "alt": "A woman shows two young children the tall corn growing in raised garden bags",
+    "source": "IMG_9484.JPG",
+    "variants": {
+      "desktop": {
+        "width": 3901,
+        "height": 4875,
+        "aspect": 0.8002,
+        "focus": "40% 30%",
+        "files": [
+          {
+            "w": 560,
+            "h": 700,
+            "avif": "/images/heroGarden-desktop-560.avif",
+            "webp": "/images/heroGarden-desktop-560.webp"
+          },
+          {
+            "w": 800,
+            "h": 1000,
+            "avif": "/images/heroGarden-desktop-800.avif",
+            "webp": "/images/heroGarden-desktop-800.webp"
+          },
+          {
+            "w": 1100,
+            "h": 1375,
+            "avif": "/images/heroGarden-desktop-1100.avif",
+            "webp": "/images/heroGarden-desktop-1100.webp"
+          },
+          {
+            "w": 1400,
+            "h": 1750,
+            "avif": "/images/heroGarden-desktop-1400.avif",
+            "webp": "/images/heroGarden-desktop-1400.webp"
+          }
+        ]
+      }
+    }
+  },
+  "heroGardenMobile": {
+    "alt": "Three young children stand among tomato plants and garden bags on a summer day",
+    "source": "IMG_9479.JPG",
+    "variants": {
+      "mobile": {
+        "width": 5035,
+        "height": 3554,
+        "aspect": 1.4167,
+        "focus": "50% 35%",
+        "files": [
+          {
+            "w": 400,
+            "h": 282,
+            "avif": "/images/heroGardenMobile-mobile-400.avif",
+            "webp": "/images/heroGardenMobile-mobile-400.webp"
+          },
+          {
+            "w": 520,
+            "h": 367,
+            "avif": "/images/heroGardenMobile-mobile-520.avif",
+            "webp": "/images/heroGardenMobile-mobile-520.webp"
+          },
+          {
+            "w": 680,
+            "h": 480,
+            "avif": "/images/heroGardenMobile-mobile-680.avif",
+            "webp": "/images/heroGardenMobile-mobile-680.webp"
+          },
+          {
+            "w": 820,
+            "h": 579,
+            "avif": "/images/heroGardenMobile-mobile-820.avif",
+            "webp": "/images/heroGardenMobile-mobile-820.webp"
+          },
+          {
+            "w": 1000,
+            "h": 706,
+            "avif": "/images/heroGardenMobile-mobile-1000.avif",
+            "webp": "/images/heroGardenMobile-mobile-1000.webp"
+          }
+        ]
+      }
+    }
+  },
+  "cabin": {
+    "alt": "The Wild & Free Behavior log cabin on Doctors Drive, with its porch, arched window, and stone sign",
+    "source": "IMG_9473.JPG",
+    "variants": {
+      "desktop": {
+        "width": 4000,
+        "height": 2430,
+        "aspect": 1.6461,
+        "focus": "50% 60%",
+        "files": [
+          {
+            "w": 800,
+            "h": 486,
+            "avif": "/images/cabin-desktop-800.avif",
+            "webp": "/images/cabin-desktop-800.webp"
+          },
+          {
+            "w": 1200,
+            "h": 729,
+            "avif": "/images/cabin-desktop-1200.avif",
+            "webp": "/images/cabin-desktop-1200.webp"
+          },
+          {
+            "w": 1600,
+            "h": 972,
+            "avif": "/images/cabin-desktop-1600.avif",
+            "webp": "/images/cabin-desktop-1600.webp"
+          },
+          {
+            "w": 2000,
+            "h": 1215,
+            "avif": "/images/cabin-desktop-2000.avif",
+            "webp": "/images/cabin-desktop-2000.webp"
+          }
+        ]
+      },
+      "mobile": {
+        "width": 4000,
+        "height": 3600,
+        "aspect": 1.1111,
+        "focus": "50% 50%",
+        "files": [
+          {
+            "w": 400,
+            "h": 360,
+            "avif": "/images/cabin-mobile-400.avif",
+            "webp": "/images/cabin-mobile-400.webp"
+          },
+          {
+            "w": 520,
+            "h": 468,
+            "avif": "/images/cabin-mobile-520.avif",
+            "webp": "/images/cabin-mobile-520.webp"
+          },
+          {
+            "w": 680,
+            "h": 612,
+            "avif": "/images/cabin-mobile-680.avif",
+            "webp": "/images/cabin-mobile-680.webp"
+          },
+          {
+            "w": 820,
+            "h": 738,
+            "avif": "/images/cabin-mobile-820.avif",
+            "webp": "/images/cabin-mobile-820.webp"
+          },
+          {
+            "w": 1000,
+            "h": 900,
+            "avif": "/images/cabin-mobile-1000.avif",
+            "webp": "/images/cabin-mobile-1000.webp"
+          }
+        ]
+      }
+    }
+  },
+  "sign": {
+    "alt": "The stone sign out front reads Wild & Free Behavior, 403 Doctors Drive",
+    "source": "IMG_9472.JPG",
+    "variants": {
+      "mobile": {
+        "width": 4560,
+        "height": 3440,
+        "aspect": 1.3256,
+        "focus": "50% 50%",
+        "files": [
+          {
+            "w": 400,
+            "h": 302,
+            "avif": "/images/sign-mobile-400.avif",
+            "webp": "/images/sign-mobile-400.webp"
+          },
+          {
+            "w": 520,
+            "h": 392,
+            "avif": "/images/sign-mobile-520.avif",
+            "webp": "/images/sign-mobile-520.webp"
+          },
+          {
+            "w": 680,
+            "h": 513,
+            "avif": "/images/sign-mobile-680.avif",
+            "webp": "/images/sign-mobile-680.webp"
+          },
+          {
+            "w": 820,
+            "h": 619,
+            "avif": "/images/sign-mobile-820.avif",
+            "webp": "/images/sign-mobile-820.webp"
+          }
+        ]
+      }
+    }
+  },
+  "tomato": {
+    "alt": "A child holds out a small tomato from the garden",
+    "source": "IMG_9487.JPG",
+    "variants": {
+      "desktop": {
+        "width": 5654,
+        "height": 2488,
+        "aspect": 2.2725,
+        "focus": "55% 60%",
+        "files": [
+          {
+            "w": 1000,
+            "h": 440,
+            "avif": "/images/tomato-desktop-1000.avif",
+            "webp": "/images/tomato-desktop-1000.webp"
+          },
+          {
+            "w": 1500,
+            "h": 660,
+            "avif": "/images/tomato-desktop-1500.avif",
+            "webp": "/images/tomato-desktop-1500.webp"
+          },
+          {
+            "w": 2000,
+            "h": 880,
+            "avif": "/images/tomato-desktop-2000.avif",
+            "webp": "/images/tomato-desktop-2000.webp"
+          },
+          {
+            "w": 2600,
+            "h": 1144,
+            "avif": "/images/tomato-desktop-2600.avif",
+            "webp": "/images/tomato-desktop-2600.webp"
+          }
+        ]
+      },
+      "mobile": {
+        "width": 3392,
+        "height": 3769,
+        "aspect": 0.9,
+        "focus": "50% 60%",
+        "files": [
+          {
+            "w": 400,
+            "h": 444,
+            "avif": "/images/tomato-mobile-400.avif",
+            "webp": "/images/tomato-mobile-400.webp"
+          },
+          {
+            "w": 520,
+            "h": 578,
+            "avif": "/images/tomato-mobile-520.avif",
+            "webp": "/images/tomato-mobile-520.webp"
+          },
+          {
+            "w": 680,
+            "h": 756,
+            "avif": "/images/tomato-mobile-680.avif",
+            "webp": "/images/tomato-mobile-680.webp"
+          },
+          {
+            "w": 820,
+            "h": 911,
+            "avif": "/images/tomato-mobile-820.avif",
+            "webp": "/images/tomato-mobile-820.webp"
+          },
+          {
+            "w": 1000,
+            "h": 1111,
+            "avif": "/images/tomato-mobile-1000.avif",
+            "webp": "/images/tomato-mobile-1000.webp"
+          }
+        ]
+      }
+    }
+  },
+  "routines": {
+    "alt": "Three children sit on floor cushions in front of a morning check-in board on the pine wall",
+    "source": "IMG_9513.JPG",
+    "variants": {
+      "desktop": {
+        "width": 4000,
+        "height": 5040,
+        "aspect": 0.7937,
+        "focus": "50% 60%",
+        "files": [
+          {
+            "w": 500,
+            "h": 630,
+            "avif": "/images/routines-desktop-500.avif",
+            "webp": "/images/routines-desktop-500.webp"
+          },
+          {
+            "w": 680,
+            "h": 857,
+            "avif": "/images/routines-desktop-680.avif",
+            "webp": "/images/routines-desktop-680.webp"
+          },
+          {
+            "w": 860,
+            "h": 1084,
+            "avif": "/images/routines-desktop-860.avif",
+            "webp": "/images/routines-desktop-860.webp"
+          },
+          {
+            "w": 1100,
+            "h": 1386,
+            "avif": "/images/routines-desktop-1100.avif",
+            "webp": "/images/routines-desktop-1100.webp"
+          }
+        ]
+      }
+    }
+  },
+  "communication": {
+    "alt": "A young child traces letters on a worksheet with a blue marker",
+    "source": "IMG_9539.JPG",
+    "variants": {
+      "desktop": {
+        "width": 6000,
+        "height": 4000,
+        "aspect": 1.5,
+        "focus": "40% 50%",
+        "files": [
+          {
+            "w": 500,
+            "h": 333,
+            "avif": "/images/communication-desktop-500.avif",
+            "webp": "/images/communication-desktop-500.webp"
+          },
+          {
+            "w": 680,
+            "h": 453,
+            "avif": "/images/communication-desktop-680.avif",
+            "webp": "/images/communication-desktop-680.webp"
+          },
+          {
+            "w": 860,
+            "h": 573,
+            "avif": "/images/communication-desktop-860.avif",
+            "webp": "/images/communication-desktop-860.webp"
+          },
+          {
+            "w": 1100,
+            "h": 733,
+            "avif": "/images/communication-desktop-1100.avif",
+            "webp": "/images/communication-desktop-1100.webp"
+          }
+        ]
+      }
+    }
+  },
+  "learning": {
+    "alt": "A woman points out a seedling to a boy in the garden",
+    "source": "IMG_9485.JPG",
+    "variants": {
+      "desktop": {
+        "width": 5881,
+        "height": 3294,
+        "aspect": 1.7854,
+        "focus": "55% 45%",
+        "files": [
+          {
+            "w": 600,
+            "h": 336,
+            "avif": "/images/learning-desktop-600.avif",
+            "webp": "/images/learning-desktop-600.webp"
+          },
+          {
+            "w": 760,
+            "h": 426,
+            "avif": "/images/learning-desktop-760.avif",
+            "webp": "/images/learning-desktop-760.webp"
+          },
+          {
+            "w": 960,
+            "h": 538,
+            "avif": "/images/learning-desktop-960.avif",
+            "webp": "/images/learning-desktop-960.webp"
+          },
+          {
+            "w": 1300,
+            "h": 728,
+            "avif": "/images/learning-desktop-1300.avif",
+            "webp": "/images/learning-desktop-1300.webp"
+          },
+          {
+            "w": 1700,
+            "h": 952,
+            "avif": "/images/learning-desktop-1700.avif",
+            "webp": "/images/learning-desktop-1700.webp"
+          }
+        ]
+      }
+    }
+  },
+  "tableWork": {
+    "alt": "A man sits at a small table with two children working on worksheets",
+    "source": "IMG_9541.JPG",
+    "variants": {
+      "desktop": {
+        "width": 5535,
+        "height": 3690,
+        "aspect": 1.5,
+        "focus": "55% 45%",
+        "files": [
+          {
+            "w": 600,
+            "h": 400,
+            "avif": "/images/tableWork-desktop-600.avif",
+            "webp": "/images/tableWork-desktop-600.webp"
+          },
+          {
+            "w": 760,
+            "h": 507,
+            "avif": "/images/tableWork-desktop-760.avif",
+            "webp": "/images/tableWork-desktop-760.webp"
+          },
+          {
+            "w": 960,
+            "h": 640,
+            "avif": "/images/tableWork-desktop-960.avif",
+            "webp": "/images/tableWork-desktop-960.webp"
+          },
+          {
+            "w": 1300,
+            "h": 867,
+            "avif": "/images/tableWork-desktop-1300.avif",
+            "webp": "/images/tableWork-desktop-1300.webp"
+          }
+        ]
+      },
+      "mobile": {
+        "width": 4539,
+        "height": 3690,
+        "aspect": 1.2301,
+        "focus": "50% 45%",
+        "files": [
+          {
+            "w": 400,
+            "h": 325,
+            "avif": "/images/tableWork-mobile-400.avif",
+            "webp": "/images/tableWork-mobile-400.webp"
+          },
+          {
+            "w": 520,
+            "h": 423,
+            "avif": "/images/tableWork-mobile-520.avif",
+            "webp": "/images/tableWork-mobile-520.webp"
+          },
+          {
+            "w": 680,
+            "h": 553,
+            "avif": "/images/tableWork-mobile-680.avif",
+            "webp": "/images/tableWork-mobile-680.webp"
+          },
+          {
+            "w": 820,
+            "h": 667,
+            "avif": "/images/tableWork-mobile-820.avif",
+            "webp": "/images/tableWork-mobile-820.webp"
+          }
+        ]
+      }
+    }
+  },
+  "portraitA": {
+    "alt": "A smiling team member seated in a rocking chair on the cabin porch",
+    "source": "IMG_9454.JPG",
+    "variants": {
+      "desktop": {
+        "width": 3393,
+        "height": 4239,
+        "aspect": 0.8004,
+        "focus": "50% 30%",
+        "files": [
+          {
+            "w": 360,
+            "h": 450,
+            "avif": "/images/portraitA-desktop-360.avif",
+            "webp": "/images/portraitA-desktop-360.webp"
+          },
+          {
+            "w": 480,
+            "h": 600,
+            "avif": "/images/portraitA-desktop-480.avif",
+            "webp": "/images/portraitA-desktop-480.webp"
+          },
+          {
+            "w": 620,
+            "h": 775,
+            "avif": "/images/portraitA-desktop-620.avif",
+            "webp": "/images/portraitA-desktop-620.webp"
+          },
+          {
+            "w": 760,
+            "h": 949,
+            "avif": "/images/portraitA-desktop-760.avif",
+            "webp": "/images/portraitA-desktop-760.webp"
+          },
+          {
+            "w": 960,
+            "h": 1199,
+            "avif": "/images/portraitA-desktop-960.avif",
+            "webp": "/images/portraitA-desktop-960.webp"
+          }
+        ]
+      }
+    }
+  },
+  "portraitB": {
+    "alt": "A team member in a black shirt seated on the cabin porch",
+    "source": "IMG_9457.JPG",
+    "variants": {
+      "desktop": {
+        "width": 4000,
+        "height": 4998,
+        "aspect": 0.8003,
+        "focus": "50% 30%",
+        "files": [
+          {
+            "w": 360,
+            "h": 450,
+            "avif": "/images/portraitB-desktop-360.avif",
+            "webp": "/images/portraitB-desktop-360.webp"
+          },
+          {
+            "w": 480,
+            "h": 600,
+            "avif": "/images/portraitB-desktop-480.avif",
+            "webp": "/images/portraitB-desktop-480.webp"
+          },
+          {
+            "w": 620,
+            "h": 775,
+            "avif": "/images/portraitB-desktop-620.avif",
+            "webp": "/images/portraitB-desktop-620.webp"
+          },
+          {
+            "w": 760,
+            "h": 950,
+            "avif": "/images/portraitB-desktop-760.avif",
+            "webp": "/images/portraitB-desktop-760.webp"
+          },
+          {
+            "w": 960,
+            "h": 1200,
+            "avif": "/images/portraitB-desktop-960.avif",
+            "webp": "/images/portraitB-desktop-960.webp"
+          }
+        ]
+      }
+    }
+  },
+  "portraitC": {
+    "alt": "A team member in a bright floral shirt seated on the cabin porch",
+    "source": "IMG_9460.JPG",
+    "variants": {
+      "desktop": {
+        "width": 2967,
+        "height": 3708,
+        "aspect": 0.8002,
+        "focus": "50% 30%",
+        "files": [
+          {
+            "w": 360,
+            "h": 450,
+            "avif": "/images/portraitC-desktop-360.avif",
+            "webp": "/images/portraitC-desktop-360.webp"
+          },
+          {
+            "w": 480,
+            "h": 600,
+            "avif": "/images/portraitC-desktop-480.avif",
+            "webp": "/images/portraitC-desktop-480.webp"
+          },
+          {
+            "w": 620,
+            "h": 775,
+            "avif": "/images/portraitC-desktop-620.avif",
+            "webp": "/images/portraitC-desktop-620.webp"
+          },
+          {
+            "w": 760,
+            "h": 950,
+            "avif": "/images/portraitC-desktop-760.avif",
+            "webp": "/images/portraitC-desktop-760.webp"
+          },
+          {
+            "w": 960,
+            "h": 1200,
+            "avif": "/images/portraitC-desktop-960.avif",
+            "webp": "/images/portraitC-desktop-960.webp"
+          }
+        ]
+      }
+    }
+  },
+  "wallScript": {
+    "alt": "Wild & Free Behavior lettering on a pine wall inside the cabin",
+    "source": "IMG_9554.JPG",
+    "variants": {
+      "desktop": {
+        "width": 5852,
+        "height": 1951,
+        "aspect": 2.9995,
+        "focus": "50% 50%",
+        "files": [
+          {
+            "w": 800,
+            "h": 267,
+            "avif": "/images/wallScript-desktop-800.avif",
+            "webp": "/images/wallScript-desktop-800.webp"
+          },
+          {
+            "w": 1200,
+            "h": 400,
+            "avif": "/images/wallScript-desktop-1200.avif",
+            "webp": "/images/wallScript-desktop-1200.webp"
+          },
+          {
+            "w": 1600,
+            "h": 533,
+            "avif": "/images/wallScript-desktop-1600.avif",
+            "webp": "/images/wallScript-desktop-1600.webp"
+          },
+          {
+            "w": 2000,
+            "h": 667,
+            "avif": "/images/wallScript-desktop-2000.avif",
+            "webp": "/images/wallScript-desktop-2000.webp"
+          }
+        ]
+      },
+      "mobile": {
+        "width": 5384,
+        "height": 2575,
+        "aspect": 2.0909,
+        "focus": "50% 50%",
+        "files": [
+          {
+            "w": 400,
+            "h": 191,
+            "avif": "/images/wallScript-mobile-400.avif",
+            "webp": "/images/wallScript-mobile-400.webp"
+          },
+          {
+            "w": 520,
+            "h": 249,
+            "avif": "/images/wallScript-mobile-520.avif",
+            "webp": "/images/wallScript-mobile-520.webp"
+          },
+          {
+            "w": 680,
+            "h": 325,
+            "avif": "/images/wallScript-mobile-680.avif",
+            "webp": "/images/wallScript-mobile-680.webp"
+          },
+          {
+            "w": 820,
+            "h": 392,
+            "avif": "/images/wallScript-mobile-820.avif",
+            "webp": "/images/wallScript-mobile-820.webp"
+          }
+        ]
+      }
+    }
+  }
+}
