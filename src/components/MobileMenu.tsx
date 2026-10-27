@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { nav, site } from "@/config/site";
+import { site } from "@/config/site";
+import { NavLinks } from "./NavLinks";
 import { openScreener } from "./screener/events";
 
 export function MobileMenu() {
@@ -48,15 +49,7 @@ export function MobileMenu() {
         className="absolute inset-x-0 top-full z-40 border-y border-cafe/15 bg-beige shadow-[0_24px_40px_-24px_rgb(6_43_43/0.35)]"
       >
         <nav aria-label="Main" className="wrap py-3">
-          <ul>
-            {nav.map((item) => (
-              <li key={item.href} className="border-b border-cafe/10 last:border-0">
-                <a href={item.href} onClick={() => setOpen(false)} className="flex min-h-13 items-center text-lg font-semibold text-forest">
-                  {item.label}
-                </a>
-              </li>
-            ))}
-          </ul>
+          <NavLinks variant="mobile" onNavigate={() => setOpen(false)} />
           <div className="grid gap-2 pb-3 pt-4 xs:grid-cols-2">
             <button
               type="button"
@@ -68,7 +61,7 @@ export function MobileMenu() {
             >
               Get started
             </button>
-            <a href={site.phone.href} className="btn btn-outline nums">
+            <a href={site.phone.href} className="btn btn-outline nums" data-track="call">
               Call {site.phone.display}
             </a>
           </div>

@@ -1,14 +1,17 @@
 // Every business fact the site displays lives here, so the header, footer, copy,
-// and structured data never drift apart. Anything marked `verified: false` still
-// needs client confirmation before launch (see REVIEW-NOTES.md).
+// and structured data never drift apart. Anything still marked `verified: false`
+// needs client confirmation (see REVIEW-NOTES.md).
+
+// Search engines only index the production deployment, and only when this is set at launch.
+const indexable = process.env.SITE_INDEXABLE === "true";
 
 export const site = {
   name: "Wild & Free Behavior",
   legalName: "Wild & Free Behavior, LLC",
-  // Placeholder until the production domain is pointed at this site.
   url: "https://www.wildandfreebehavior.com",
-  // Proof builds stay out of search. Flip to true only at launch.
-  indexable: false,
+  indexable,
+  // Preview builds say so in the footer.
+  preview: !indexable,
 
   address: {
     street: "403 Doctors Drive",
@@ -17,15 +20,17 @@ export const site = {
     regionName: "Mississippi",
     postalCode: "38652",
     county: "Union County",
-    // Source: NPPES NPI 1760190078 and the stone sign out front.
+    // NPPES NPI 1760190078 and the stone sign out front. Single location (confirmed: no Horn Lake office).
     verified: true,
+    // OpenStreetMap Nominatim, house-level match for 403 Doctors Drive (2026-10-27).
+    geo: { latitude: 34.4966, longitude: -89.028 },
   },
 
   phone: {
     display: "662-539-7129",
     href: "tel:+16625397129",
-    // Source: NPPES (last updated 2022). Confirm it is the line families should call.
-    verified: false,
+    e164: "+1-662-539-7129",
+    verified: true,
   },
 
   // Google Maps search for the street address. No embed, no tracking.
@@ -37,13 +42,16 @@ export const site = {
 
   owner: {
     name: "Anna Claire Waldrop",
+    firstName: "Anna Claire",
     credentials: "M.S., BCBA, LBA",
     role: "Owner and Board Certified Behavior Analyst",
-    // NPPES lists M.S., BCBA, LBA. Re-verify on the BACB registry and the MS Autism Board.
+    // Dates from the practice's earlier website. Credentials match NPPES.
+    bcbaSince: "December 2020",
+    lbaSince: "March 2021",
     verified: false,
   },
 
-  // Named in the meeting notes. Last name, role, and credentials are unknown.
+  // Named in the meeting notes. Last name, role, and credentials are not confirmed.
   partner: { name: "Jimbo", role: null as string | null },
 
   insurance: {
@@ -51,18 +59,31 @@ export const site = {
     primaryShort: "BCBS of Mississippi",
   },
 
-  // Keep to what the page states. Add nearby towns once the client confirms where families come from.
-  areaServed: ["New Albany", "Union County"],
+  // Matches what the Visit page states.
+  areaServed: ["New Albany", "Union County", "Tupelo", "Pontotoc", "Ripley", "Oxford"],
 
   resources: {
     dmhAutismGuide: "https://www.dmh.ms.gov/wp-content/uploads/2026/04/Autism-Resource-Guide.pdf",
+    bacbRegistry: "https://www.bacb.com/find-a-certificant/",
+    msAutismBoardLookup: "https://www.msautismboard.ms.gov/secure/licenseverification.asp",
   },
 } as const;
 
 export const nav = [
-  { label: "ABA Therapy", href: "#approach" },
-  { label: "Getting Started", href: "#getting-started" },
-  { label: "Insurance", href: "#insurance" },
-  { label: "About", href: "#people" },
-  { label: "Visit", href: "#visit" },
+  { label: "ABA Therapy", href: "/aba-therapy" },
+  { label: "Getting Started", href: "/getting-started" },
+  { label: "Insurance", href: "/insurance" },
+  { label: "About", href: "/about" },
+  { label: "Visit", href: "/visit" },
+] as const;
+
+export const footerNav = [
+  ...nav,
+  { label: "Questions", href: "/faq" },
+  { label: "Resources", href: "/resources" },
+] as const;
+
+export const legalNav = [
+  { label: "Privacy", href: "/privacy" },
+  { label: "Accessibility", href: "/accessibility" },
 ] as const;

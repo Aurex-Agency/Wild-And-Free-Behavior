@@ -1,28 +1,33 @@
 import type { Metadata, Viewport } from "next";
 import { site } from "@/config/site";
-import { angelica, raleway, rovey } from "./fonts";
+import { angelica, raleway, rovey, roveyCompanion } from "./fonts";
 import { ArchClipPaths } from "@/components/brand";
+import { SiteHeader } from "@/components/SiteHeader";
+import { SiteFooter } from "@/components/SiteFooter";
+import { ActionBar } from "@/components/ActionBar";
+import { ScreenerDialog } from "@/components/screener/ScreenerDialog";
+import { TrackClicks } from "@/components/TrackClicks";
+import { JsonLd } from "@/components/JsonLd";
+import { clinicNode, graph, websiteNode } from "@/lib/schema";
 import "./globals.css";
 
-const title = "ABA Therapy in New Albany, MS | Wild & Free Behavior";
 const description =
   "ABA therapy for young children in a log cabin on Doctors Drive in New Albany, Mississippi. Start with a free conversation, and we'll help you check your insurance or private-pay options.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title,
+  title: {
+    default: "ABA Therapy in New Albany, MS | Wild & Free Behavior",
+    template: "%s | Wild & Free Behavior",
+  },
   description,
-  alternates: { canonical: "/" },
   robots: site.indexable ? { index: true, follow: true } : { index: false, follow: false, nocache: true },
   openGraph: {
     type: "website",
-    url: "/",
     siteName: site.name,
-    title,
-    description,
     locale: "en_US",
   },
-  twitter: { card: "summary_large_image", title, description },
+  twitter: { card: "summary_large_image" },
   formatDetection: { telephone: false },
 };
 
@@ -32,7 +37,10 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${rovey.variable} ${angelica.variable} ${raleway.variable}`}>
+    <html
+      lang="en"
+      className={`${rovey.variable} ${roveyCompanion.variable} ${angelica.variable} ${raleway.variable}`}
+    >
       <body className="min-h-dvh">
         <a
           href="#main"
@@ -41,7 +49,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           Skip to content
         </a>
         <ArchClipPaths />
-        {children}
+        <SiteHeader />
+        <main id="main">{children}</main>
+        <SiteFooter />
+        <ActionBar />
+        <ScreenerDialog />
+        <TrackClicks />
+        <JsonLd data={graph(clinicNode(), websiteNode())} />
       </body>
     </html>
   );
