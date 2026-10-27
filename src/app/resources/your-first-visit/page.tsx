@@ -35,13 +35,13 @@ export default function Page() {
 
       <ol className="print-story !mt-10 !list-none !pl-0">
         {story.map((s, i) => (
-          <li key={i} className="border-t border-cafe/20 py-6 first:border-t-0 first:pt-0">
+          <li key={i} className="border-t border-line py-6 first:border-t-0 first:pt-0">
             {s.image && (
               <div className={`${s.aspect ?? "aspect-[1.5]"} overflow-hidden`}>
                 <Photo image={s.image} sizes="(min-width: 64rem) 40rem, 100vw" />
               </div>
             )}
-            <p className="mt-4 text-[1.375rem] font-semibold leading-snug text-cafe">{s.text}</p>
+            <p className="mt-4 text-[1.375rem] font-semibold leading-snug text-body">{s.text}</p>
           </li>
         ))}
       </ol>

@@ -28,10 +28,10 @@ export default function FaqPage() {
 
       <div className="wrap grid gap-12 pb-20 md:grid-cols-12 md:gap-x-8 md:pb-28 lg:gap-x-12">
         <nav aria-label="Question topics" className="md:col-span-3">
-          <ul className="grid gap-2 md:sticky md:top-8">
+          <ul className="grid gap-2 md:sticky md:top-28">
             {faqGroups.map((g) => (
               <li key={g.title}>
-                <a href={`#${slugify(g.title)}`} className="font-semibold text-forest hover:underline">
+                <a href={`#${slugify(g.title)}`} className="font-semibold text-ink hover:underline">
                   {g.title}
                 </a>
               </li>
@@ -40,8 +40,8 @@ export default function FaqPage() {
         </nav>
         <div className="grid gap-14 md:col-span-9 lg:col-span-8">
           {faqGroups.map((g) => (
-            <section key={g.title} id={slugify(g.title)} aria-labelledby={`${slugify(g.title)}-title`} className="scroll-mt-8">
-              <h2 id={`${slugify(g.title)}-title`} className="display display-m mb-5 text-forest">
+            <section key={g.title} id={slugify(g.title)} aria-labelledby={`${slugify(g.title)}-title`}>
+              <h2 id={`${slugify(g.title)}-title`} className="display display-m mb-5 text-ink">
                 {g.title}
               </h2>
               <FaqList items={g.items} />

@@ -66,7 +66,7 @@ function OptionGroup<T extends string>({
 }) {
   return (
     <fieldset className="min-w-0">
-      <legend className={hideLegend ? "sr-only" : "mb-3 font-semibold text-cafe"}>{legend}</legend>
+      <legend className={hideLegend ? "sr-only" : "mb-3 font-semibold text-body"}>{legend}</legend>
       <div className="grid gap-2.5">
         {options.map((o) => (
           <label key={o.value} className="option">
@@ -79,7 +79,7 @@ function OptionGroup<T extends string>({
             />
             <span className="leading-snug">
               <span className="block">{o.label}</span>
-              {o.hint && <span className="mt-0.5 block text-[0.9375rem] font-medium text-cafe-soft">{o.hint}</span>}
+              {o.hint && <span className="mt-0.5 block text-[0.9375rem] font-medium text-muted">{o.hint}</span>}
             </span>
           </label>
         ))}
@@ -252,23 +252,23 @@ export function ScreenerDialog() {
   const auto = (value: string) => (live ? value : "off");
 
   return (
-    <dialog ref={dialogRef} className="screener" aria-labelledby="screener-title" onClose={onClose}>
-      <div className="flex items-center justify-between gap-4 border-b border-cafe/15 px-5 py-3.5 sm:px-8">
+    <dialog ref={dialogRef} className="screener tone-paper" data-lenis-prevent aria-labelledby="screener-title" onClose={onClose}>
+      <div className="flex items-center justify-between gap-4 border-b border-line px-5 py-3.5 sm:px-8">
         <div className="flex items-center gap-3">
-          <span className="ray-meter text-forest" data-step={current}>
+          <span className="ray-meter text-ink" data-step={current}>
             <SunMark groups className="h-7 w-11" />
           </span>
-          <p className="eyebrow nums text-forest">
+          <p className="eyebrow nums text-ink">
             Step {current} of {TOTAL_STEPS}
           </p>
         </div>
-        <button type="button" onClick={close} className="btn min-h-11 px-3 text-forest hover:bg-sand-soft">
+        <button type="button" onClick={close} className="btn btn-text min-h-11">
           Close
         </button>
       </div>
 
       {!live && (
-        <p className="bg-sand-soft px-5 py-2 text-[0.9375rem] font-semibold text-cafe sm:px-8">
+        <p className="bg-sand/35 px-5 py-2 text-[0.9375rem] font-semibold text-body sm:px-8">
           Design preview. Nothing you choose here is sent or saved.
         </p>
       )}
@@ -278,7 +278,7 @@ export function ScreenerDialog() {
           id="screener-title"
           ref={headingRef}
           tabIndex={-1}
-          className="display display-m mb-6 text-forest focus:outline-none"
+          className="display display-m mb-6 text-ink focus:outline-none"
         >
           {title}
         </h2>
@@ -294,7 +294,7 @@ export function ScreenerDialog() {
               onChange={(v) => set({ payment: v })}
             />
             {chosenPayment && (
-              <p aria-live="polite" className="border-l-2 border-sand pl-4 text-cafe">
+              <p aria-live="polite" className="border-l-2 border-sand pl-4 text-body">
                 {chosenPayment.feedback}
               </p>
             )}
@@ -331,7 +331,7 @@ export function ScreenerDialog() {
             />
             <div>
               <label htmlFor="screener-town" className="mb-2 block font-semibold">
-                Town or county <span className="font-medium text-cafe-soft">(optional)</span>
+                Town or county <span className="font-medium text-muted">(optional)</span>
               </label>
               <input
                 id="screener-town"
@@ -360,7 +360,7 @@ export function ScreenerDialog() {
               </p>
             )}
             {result.type === "resources" && (
-              <p className="text-[0.9375rem] text-cafe-soft">
+              <p className="text-[0.9375rem] text-muted">
                 We don&apos;t recommend a specific provider through this tool. If you&apos;d still like to talk, we&apos;re glad to.
               </p>
             )}
@@ -369,7 +369,7 @@ export function ScreenerDialog() {
 
         {step === "contact" && (
           <form id="screener-contact" onSubmit={finish} noValidate className="grid gap-5">
-            <p className="text-cafe-soft">
+            <p className="text-muted">
               {live
                 ? "We'll use these details only to reach you about your child. Please leave out medical records and insurance numbers."
                 : "In the live version, these details go to our team so we can reach out. For this preview, use the sample data."}
@@ -445,9 +445,9 @@ export function ScreenerDialog() {
             />
             <div>
               <label htmlFor="c-note" className="mb-2 block font-semibold">
-                Anything you&apos;d like us to know <span className="font-medium text-cafe-soft">(optional)</span>
+                Anything you&apos;d like us to know <span className="font-medium text-muted">(optional)</span>
               </label>
-              <p id="c-note-hint" className="mb-2 text-[0.9375rem] text-cafe-soft">
+              <p id="c-note-hint" className="mb-2 text-[0.9375rem] text-muted">
                 Please don&apos;t include medical records or insurance numbers.
               </p>
               <textarea
@@ -466,7 +466,7 @@ export function ScreenerDialog() {
             </div>
             {!live && (
               <div>
-                <button type="button" className="btn btn-outline" onClick={() => setContact(sampleContact)}>
+                <button type="button" className="btn btn-ghost" onClick={() => setContact(sampleContact)}>
                   Fill sample data
                 </button>
               </div>
@@ -510,10 +510,10 @@ export function ScreenerDialog() {
         )}
       </div>
 
-      <div className="flex flex-wrap items-center justify-between gap-3 border-t border-cafe/15 px-5 py-4 sm:px-8">
+      <div className="flex flex-wrap items-center justify-between gap-3 border-t border-line px-5 py-4 sm:px-8">
         {step === "done" ? (
           <>
-            <button type="button" className="btn px-3 text-forest underline underline-offset-4" onClick={restart}>
+            <button type="button" className="btn px-3 text-ink underline underline-offset-4" onClick={restart}>
               Start over
             </button>
             <button type="button" className="btn btn-primary" onClick={close}>
@@ -524,12 +524,12 @@ export function ScreenerDialog() {
           <>
             <div className="flex items-center gap-1">
               {prevStep(step, answers) && (
-                <button type="button" className="btn px-3 text-forest" onClick={back} disabled={send === "sending"}>
+                <button type="button" className="btn px-3 text-ink" onClick={back} disabled={send === "sending"}>
                   Back
                 </button>
               )}
               {(step === "result" || step === "contact") && (
-                <button type="button" className="btn px-3 text-cafe-soft underline underline-offset-4" onClick={restart}>
+                <button type="button" className="btn px-3 text-muted underline underline-offset-4" onClick={restart}>
                   Start over
                 </button>
               )}

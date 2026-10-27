@@ -67,12 +67,12 @@ export default function GettingStartedPage() {
           </p>
         }
         aside={
-          <div className="bg-sand-soft p-7 md:p-9">
-            <h2 className="display display-m text-forest">What to have ready</h2>
+          <div className="tone-paper rounded-[1.5rem] p-7 md:p-9">
+            <h2 className="display display-m text-ink">What to have ready</h2>
             <ul className="mt-5 grid gap-3">
               {ready.map((r) => (
                 <li key={r} className="grid grid-cols-[1.1rem_1fr] gap-3">
-                  <span aria-hidden="true" className="mt-[0.7em] h-[1.5px] w-full bg-forest" />
+                  <span aria-hidden="true" className="mt-[0.7em] h-[1.5px] w-full bg-accent" />
                   <span>{r}</span>
                 </li>
               ))}
@@ -84,7 +84,7 @@ export default function GettingStartedPage() {
       <section aria-labelledby="steps-title" className="pb-20 md:pb-28">
         <div className="wrap grid gap-12 md:grid-cols-12 md:gap-x-8 lg:gap-x-12">
           <div className="md:col-span-5 lg:col-span-4">
-            <div className="md:sticky md:top-8">
+            <div className="md:sticky md:top-28">
               <h2 id="steps-title" className="sr-only">
                 The steps
               </h2>
@@ -92,7 +92,7 @@ export default function GettingStartedPage() {
                 <div className="arch-portrait aspect-[0.8] overflow-hidden">
                   <Photo image="cabinPortrait" sizes="(min-width: 64rem) 26rem, (min-width: 48rem) 40vw, 100vw" />
                 </div>
-                <figcaption className="nums mt-3 text-[0.9375rem] text-cafe-soft">
+                <figcaption className="nums mt-3 text-[0.9375rem] text-muted">
                   {site.address.street}, {site.address.city}
                 </figcaption>
               </figure>
@@ -100,19 +100,19 @@ export default function GettingStartedPage() {
           </div>
           <ol className="md:col-span-7 lg:col-span-7 lg:col-start-6">
             {steps.map((s, i) => (
-              <li key={s.title} className="grid grid-cols-[3.5rem_1fr] gap-x-5 border-t border-cafe/20 py-9 first:border-t-0 first:pt-0 sm:grid-cols-[5rem_1fr] sm:gap-x-8">
-                <span aria-hidden="true" className="display text-[2.6rem] leading-none text-sand sm:text-[3.4rem]">
+              <li key={s.title} className="grid grid-cols-[3.5rem_1fr] gap-x-5 border-t border-line py-9 first:border-t-0 first:pt-0 sm:grid-cols-[5rem_1fr] sm:gap-x-8">
+                <span aria-hidden="true" className="display text-[2.6rem] leading-none text-accent sm:text-[3.4rem]">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <div>
-                  <h3 className="display display-m text-forest">
+                  <h3 className="display display-m text-ink">
                     <span className="sr-only">Step {i + 1}: </span>
                     {s.title}
                   </h3>
                   <p className="mt-3">{s.body}</p>
                   {s.helps && (
                     <p className="mt-4 border-l-2 border-sand pl-4 text-[0.9875rem]">
-                      <span className="font-bold text-cafe">What helps: </span>
+                      <span className="font-bold text-body">What helps: </span>
                       {s.helps}
                     </p>
                   )}
@@ -132,7 +132,7 @@ export default function GettingStartedPage() {
         </div>
       </section>
 
-      <section aria-labelledby="gs-faq-title" className="bg-beige-deep py-20 md:py-28">
+      <section aria-labelledby="gs-faq-title" className="tone-forest py-24 md:py-32">
         <div className="wrap grid gap-10 md:grid-cols-12 md:gap-x-8 lg:gap-x-12">
           <div className="md:col-span-4">
             <SectionHeading id="gs-faq-title" subtitle="questions">

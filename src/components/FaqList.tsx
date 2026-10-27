@@ -1,23 +1,26 @@
 import Link from "next/link";
 import type { Faq } from "@/content/faqs";
 
-/** Native disclosure accordions. Works without JavaScript. */
+/** Native disclosure accordions. Works without JavaScript; opens smoothly where supported. */
 export function FaqList({ items }: { items: Faq[] }) {
   return (
-    <div className="border-t border-cafe/20">
+    <div className="border-t border-line">
       {items.map((f) => (
-        <details key={f.id} className="group border-b border-cafe/20">
-          <summary className="flex min-h-16 cursor-pointer list-none items-center justify-between gap-6 py-4 text-[1.125rem] font-bold text-cafe marker:hidden hover:text-forest md:text-[1.1875rem] [&::-webkit-details-marker]:hidden">
+        <details key={f.id} className="group border-b border-line">
+          <summary className="flex min-h-[4.5rem] cursor-pointer list-none items-center justify-between gap-6 py-5 text-[1.15rem] font-bold text-ink transition-colors duration-300 marker:hidden hover:text-accent md:text-[1.25rem] [&::-webkit-details-marker]:hidden">
             {f.q}
-            <span aria-hidden="true" className="relative h-4 w-4 shrink-0">
-              <span className="absolute inset-x-0 top-1/2 h-[1.5px] -translate-y-1/2 bg-forest" />
-              <span className="absolute inset-y-0 left-1/2 w-[1.5px] -translate-x-1/2 bg-forest transition-transform duration-200 group-open:scale-y-0 motion-reduce:transition-none" />
+            <span
+              aria-hidden="true"
+              className="relative grid h-10 w-10 shrink-0 place-items-center rounded-full ring-1 ring-line transition-[background-color,box-shadow] duration-300 group-open:bg-accent group-open:ring-accent"
+            >
+              <span className="absolute h-[1.5px] w-3.5 bg-current group-open:bg-surface" />
+              <span className="absolute h-3.5 w-[1.5px] bg-current transition-transform duration-500 group-open:scale-y-0 group-open:bg-surface motion-reduce:transition-none" />
             </span>
           </summary>
-          <div className="max-w-[40rem] pb-6 pr-8">
+          <div className="max-w-[42rem] pb-7 pr-14">
             <p>{f.a}</p>
             {f.link && (
-              <p className="mt-3">
+              <p className="mt-4">
                 <Link href={f.link.href} className="link">
                   {f.link.label}
                 </Link>

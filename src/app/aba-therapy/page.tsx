@@ -65,7 +65,7 @@ export default function AbaTherapyPage() {
             <div className="arch-portrait aspect-[0.8]">
               <Photo image="toddler" priority sizes="(min-width: 48rem) 24rem, 90vw" />
             </div>
-            <FieldNote className="absolute -bottom-9 left-2 rotate-[-5deg] text-forest md:-left-16">time to play</FieldNote>
+            <FieldNote className="absolute -bottom-9 left-2 rotate-[-5deg] text-ink md:-left-16">time to play</FieldNote>
           </figure>
         }
       />
@@ -92,8 +92,8 @@ export default function AbaTherapyPage() {
               .
             </p>
           </div>
-          <aside aria-labelledby="who-title" className="self-start bg-sand-soft p-7 md:col-span-5 md:p-9 lg:col-span-4 lg:col-start-9">
-            <h2 id="who-title" className="display display-m text-forest">
+          <aside aria-labelledby="who-title" className="self-start tone-paper rounded-[1.5rem] p-7 md:col-span-5 md:p-9 lg:col-span-4 lg:col-start-9">
+            <h2 id="who-title" className="display display-m text-ink">
               Who we work with
             </h2>
             <p className="mt-4">
@@ -111,14 +111,14 @@ export default function AbaTherapyPage() {
         </div>
       </section>
 
-      <section aria-labelledby="focus-title" className="on-dark relative overflow-hidden bg-forest py-20 text-beige md:py-28">
-        <LogRules className="absolute inset-0 h-full w-full text-beige/[0.05]" />
+      <section aria-labelledby="focus-title" className="tone-cafe relative overflow-hidden py-24 md:py-32">
+        <LogRules className="absolute inset-0 h-full w-full text-ink/[0.05]" />
         <div className="wrap relative">
           <div className="max-w-[40rem]">
-            <SectionHeading id="focus-title" subtitle="goals that fit your family" tone="dark">
+            <SectionHeading id="focus-title" subtitle="goals that fit your family">
               What therapy can focus on
             </SectionHeading>
-            <p className="lede mt-6 text-beige/90">
+            <p className="lede mt-6 text-body">
               Goals come from your child&apos;s assessment, so not every child works on every area.
             </p>
           </div>
@@ -126,7 +126,7 @@ export default function AbaTherapyPage() {
             {areas.map((a) => (
               <li key={a.title} className="grid items-center gap-5 border-b border-beige/20 py-7 md:grid-cols-12 md:gap-x-8">
                 <h3 className="display display-m md:col-span-4">{a.title}</h3>
-                <p className="text-beige/90 md:col-span-5">{a.body}</p>
+                <p className="text-body md:col-span-5">{a.body}</p>
                 <div className="hidden aspect-[1.5] overflow-hidden md:col-span-3 md:block">
                   <Photo image={a.image} sizes="(min-width: 80rem) 18rem, 22vw" />
                 </div>
@@ -152,7 +152,7 @@ export default function AbaTherapyPage() {
                   <div className={`${p.aspect} overflow-hidden`}>
                     <Photo image={p.image} sizes="(min-width: 64rem) 30vw, (min-width: 40rem) 50vw, 100vw" />
                   </div>
-                  <figcaption className="mt-3 text-[0.9375rem] text-cafe-soft">{p.caption}</figcaption>
+                  <figcaption className="mt-3 text-[0.9375rem] text-muted">{p.caption}</figcaption>
                 </figure>
               </li>
             ))}
@@ -160,10 +160,10 @@ export default function AbaTherapyPage() {
         </div>
       </section>
 
-      <section aria-label="Working together" className="bg-beige-deep py-20 md:py-28">
+      <section aria-label="Working together" className="tone-forest py-24 md:py-32">
         <div className="wrap grid gap-12 md:grid-cols-2 md:gap-x-12 lg:gap-x-20">
           <div>
-            <h2 className="display display-l text-forest">You&apos;re part of the plan</h2>
+            <h2 className="display display-l text-ink">You&apos;re part of the plan</h2>
             <p className="mt-5">
               You know your child better than anyone, so your priorities shape the goals. We&apos;ll talk with you about
               what your child is working on and how it&apos;s going, and you can always ask why we&apos;re doing
@@ -171,7 +171,7 @@ export default function AbaTherapyPage() {
             </p>
           </div>
           <div>
-            <h2 className="display display-l text-forest">A plan that grows with your child</h2>
+            <h2 className="display display-l text-ink">A plan that grows with your child</h2>
             <p className="mt-5">
               Progress is reviewed regularly, and the plan is updated when goals are met or when something isn&apos;t
               working. Insurance reassessments, usually every six months with BCBS of Mississippi, are a natural time to

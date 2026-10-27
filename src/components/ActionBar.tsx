@@ -14,7 +14,6 @@ export function ActionBar() {
   const pathname = usePathname();
 
   useEffect(() => {
-    // Both branches report the current state right away, so a new page starts correct.
     // Only the home page has hero buttons. Other visited pages may still be in the DOM, hidden.
     const target = pathname === "/" ? document.getElementById("hero-actions") : null;
     if (target) {
@@ -35,20 +34,16 @@ export function ActionBar() {
   }, [pathname]);
 
   return (
-    <div
-      className="action-bar fixed inset-x-0 bottom-0 z-40 border-t border-forest-deep bg-forest md:hidden"
-      data-visible={visible}
-      inert={!visible}
-    >
-      <div className="grid grid-cols-2 gap-px bg-forest-deep">
-        <a href={site.phone.href} data-track="call" className="flex min-h-14 items-center justify-center bg-forest font-semibold text-beige">
+    <div className="action-bar fixed inset-x-0 bottom-0 z-40 md:hidden" data-visible={visible} inert={!visible}>
+      <div className="m-3 grid grid-cols-2 gap-2 rounded-full bg-forest-night/95 p-1.5 shadow-[0_18px_40px_-12px_rgb(0_0_0/0.6)]">
+        <a href={site.phone.href} data-track="call" className="flex min-h-12 items-center justify-center rounded-full font-semibold text-beige">
           Call us
         </a>
         <button
           type="button"
           aria-haspopup="dialog"
           onClick={() => openScreener()}
-          className="flex min-h-14 items-center justify-center bg-beige font-semibold text-forest"
+          className="flex min-h-12 items-center justify-center rounded-full bg-sand font-semibold text-forest-deep"
         >
           Get started
         </button>

@@ -9,6 +9,8 @@ import { Visit } from "@/components/sections/Visit";
 import { Guides } from "@/components/sections/Guides";
 import { Faq } from "@/components/sections/Faq";
 import { FinalCta } from "@/components/sections/FinalCta";
+import { Marquee } from "@/components/Marquee";
+import { site } from "@/config/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -19,9 +21,13 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <Marquee
+        className="tone-sand"
+        items={["Room to grow", "Same time every week", "New Albany, Mississippi", site.insurance.primaryShort, "A free first conversation"]}
+      />
       <Approach />
-      <GettingStarted />
       <Rhythm />
+      <GettingStarted />
       <Insurance />
       <People />
       <Visit />

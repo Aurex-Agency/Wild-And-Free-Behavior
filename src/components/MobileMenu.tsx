@@ -18,15 +18,11 @@ export function MobileMenu() {
         buttonRef.current?.focus();
       }
     }
-    function onClick(e: MouseEvent) {
-      const t = e.target as Node;
-      if (!panelRef.current?.contains(t) && !buttonRef.current?.contains(t)) setOpen(false);
-    }
     document.addEventListener("keydown", onKey);
-    document.addEventListener("click", onClick);
+    document.documentElement.style.overflow = "hidden";
     return () => {
       document.removeEventListener("keydown", onKey);
-      document.removeEventListener("click", onClick);
+      document.documentElement.style.overflow = "";
     };
   }, [open]);
 
@@ -38,7 +34,7 @@ export function MobileMenu() {
         aria-expanded={open}
         aria-controls="mobile-menu"
         onClick={() => setOpen((o) => !o)}
-        className="btn min-h-11 px-3 text-forest"
+        className="btn btn-ghost min-h-11 px-5"
       >
         {open ? "Close" : "Menu"}
       </button>
@@ -46,11 +42,12 @@ export function MobileMenu() {
         id="mobile-menu"
         ref={panelRef}
         hidden={!open}
-        className="absolute inset-x-0 top-full z-40 border-y border-cafe/15 bg-beige shadow-[0_24px_40px_-24px_rgb(6_43_43/0.35)]"
+        data-lenis-prevent
+        className="tone-deep fixed inset-x-0 bottom-0 top-[4.75rem] z-40 overflow-y-auto"
       >
-        <nav aria-label="Main" className="wrap py-3">
+        <nav aria-label="Main" className="wrap flex min-h-full flex-col pb-10 pt-4">
           <NavLinks variant="mobile" onNavigate={() => setOpen(false)} />
-          <div className="grid gap-2 pb-3 pt-4 xs:grid-cols-2">
+          <div className="mt-auto grid gap-3 pt-10">
             <button
               type="button"
               className="btn btn-primary"
@@ -61,9 +58,12 @@ export function MobileMenu() {
             >
               Get started
             </button>
-            <a href={site.phone.href} className="btn btn-outline nums" data-track="call">
+            <a href={site.phone.href} className="btn btn-ghost nums" data-track="call">
               Call {site.phone.display}
             </a>
+            <p className="nums mt-4 text-[0.9375rem] text-muted">
+              {site.address.street}, {site.address.city}, {site.address.region}
+            </p>
           </div>
         </nav>
       </div>

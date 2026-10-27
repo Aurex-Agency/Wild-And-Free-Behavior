@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { site } from "@/config/site";
 import { InsuranceQuestion } from "@/components/InsuranceQuestion";
+import { Reveal } from "@/components/motion/Reveal";
+import { Words } from "@/components/motion/Words";
 
 const paths = [
   {
@@ -19,33 +21,35 @@ const paths = [
 
 export function Insurance() {
   return (
-    <section id="insurance" aria-labelledby="insurance-title" className="py-20 md:py-28">
-      <div className="wrap grid gap-14 lg:grid-cols-12 lg:gap-x-12">
+    <section id="insurance" aria-labelledby="insurance-title" className="tone-cafe relative py-24 md:py-36">
+      <div className="wrap grid gap-16 lg:grid-cols-12 lg:gap-x-12">
         <div className="lg:col-span-6">
-          <p className="subtitle text-forest">costs and coverage</p>
-          <h2 id="insurance-title" className="display display-l mt-4 text-forest">
-            Paying for therapy
-          </h2>
-          <p className="lede mt-6 max-w-[34rem]">
-            We work with {site.insurance.primary}. Every plan is different, so our team checks your child&apos;s
-            specific benefits before services begin.
-          </p>
-          <dl className="mt-10 border-t border-cafe/20">
-            {paths.map((p) => (
-              <div key={p.title} className="grid gap-2 border-b border-cafe/20 py-6 md:grid-cols-[14rem_1fr] md:gap-8">
-                <dt className="font-bold text-forest">{p.title}</dt>
+          <Reveal variant="fade">
+            <p className="subtitle">costs and coverage</p>
+          </Reveal>
+          <Words id="insurance-title" text="Paying for therapy" className="display display-xl mt-3" />
+          <Reveal delay={0.1}>
+            <p className="lede mt-7 max-w-[34rem]">
+              We work with {site.insurance.primary}. Every plan is different, so our team checks your child&apos;s
+              specific benefits before services begin.
+            </p>
+          </Reveal>
+          <dl className="mt-12 border-t border-line">
+            {paths.map((p, i) => (
+              <Reveal key={p.title} delay={0.08 * i} className="grid gap-2 border-b border-line py-7 md:grid-cols-[15rem_1fr] md:gap-8">
+                <dt className="font-bold text-ink">{p.title}</dt>
                 <dd>{p.body}</dd>
-              </div>
+              </Reveal>
             ))}
           </dl>
-          <Link href="/insurance" className="link mt-7 inline-block">
+          <Link href="/insurance" className="link mt-8 inline-block">
             More about insurance and private pay
           </Link>
         </div>
 
-        <div className="lg:col-span-5 lg:col-start-8">
+        <Reveal delay={0.1} className="lg:col-span-5 lg:col-start-8 lg:self-center">
           <InsuranceQuestion />
-        </div>
+        </Reveal>
       </div>
     </section>
   );
