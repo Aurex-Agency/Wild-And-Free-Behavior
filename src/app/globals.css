@@ -1,0 +1,566 @@
+@import "tailwindcss";
+
+/* Brand hex values from the client's brand sheet. The sheet's RGB/CMYK values
+   disagree with these in places; the hex values are the source of truth. */
+@theme {
+  --color-forest: #0a4040;
+  --color-forest-deep: #062b2b;
+  --color-cafe: #322d2a;
+  --color-cafe-soft: #5b534e;
+  --color-sand: #dbb199;
+  --color-sand-soft: #efe2d8;
+  --color-beige: #f9f8f4;
+  --color-beige-deep: #f1ece3;
+
+  --breakpoint-xs: 26rem;
+}
+
+@theme inline {
+  /* Rovey draws every letter; Gilda Display fills the numerals and punctuation the
+     available Rovey file lacks. */
+  --font-display: var(--font-rovey), var(--font-rovey-companion), "Times New Roman", serif;
+  --font-sans: var(--font-raleway), ui-sans-serif, system-ui, sans-serif;
+  --font-note: var(--font-angelica), cursive;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 1.5rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  html:has(dialog[open]) {
+    overflow: hidden;
+  }
+
+  body {
+    background: var(--color-beige);
+    color: var(--color-cafe);
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  @media (min-width: 64rem) {
+    body {
+      font-size: 1.125rem;
+    }
+  }
+
+  ::selection {
+    background: var(--color-sand);
+    color: var(--color-cafe);
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-forest);
+    outline-offset: 3px;
+  }
+
+  .on-dark :focus-visible {
+    outline-color: var(--color-sand);
+  }
+
+  img {
+    max-width: 100%;
+  }
+}
+
+@layer components {
+  .wrap {
+    width: 100%;
+    max-width: 82rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+
+  @media (min-width: 48rem) {
+    .wrap {
+      padding-inline: 2rem;
+    }
+  }
+
+  @media (min-width: 80rem) {
+    .wrap {
+      padding-inline: 3rem;
+    }
+  }
+
+  /* Rovey's lowercase is drawn as small caps, so mixed case reads as titling. */
+  .display {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    line-height: 0.92;
+    text-wrap: balance;
+  }
+
+  .display-xl {
+    font-size: clamp(2.9rem, 1.4rem + 7.4vw, 7.6rem);
+  }
+
+  .display-l {
+    font-size: clamp(2.5rem, 1.6rem + 3.2vw, 4.6rem);
+  }
+
+  .display-m {
+    font-size: clamp(1.65rem, 1.35rem + 1vw, 2.2rem);
+    line-height: 1;
+  }
+
+  /* Brand sheet "Subtitle" role: White Angelica, written like a handwritten lead-in. */
+  .subtitle {
+    font-family: var(--font-note);
+    font-weight: 400;
+    font-size: clamp(2rem, 1.55rem + 1.3vw, 2.85rem);
+    line-height: 1;
+    letter-spacing: 0;
+  }
+
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-weight: 650;
+    font-size: 0.8125rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    line-height: 1.3;
+  }
+
+  .lede {
+    font-size: 1.1875rem;
+    line-height: 1.6;
+  }
+
+  @media (min-width: 64rem) {
+    .lede {
+      font-size: 1.3125rem;
+    }
+  }
+
+  .note {
+    font-family: var(--font-note);
+    font-size: clamp(1.9rem, 1.5rem + 1vw, 2.5rem);
+    line-height: 1;
+    font-weight: 400;
+  }
+
+  .display-hero {
+    font-size: clamp(2.6rem, 1.6rem + 4.4vw, 5.4rem);
+  }
+
+  .nums {
+    font-variant-numeric: lining-nums tabular-nums;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    min-height: 3.25rem;
+    padding: 0.85rem 1.6rem;
+    font-weight: 650;
+    font-size: 1rem;
+    line-height: 1.2;
+    border-radius: 2px;
+    text-decoration: none;
+    transition:
+      background-color 160ms ease,
+      color 160ms ease,
+      box-shadow 160ms ease;
+    cursor: pointer;
+  }
+
+  .btn-primary {
+    background: var(--color-forest);
+    color: var(--color-beige);
+    box-shadow: inset 0 -3px 0 var(--color-forest-deep);
+  }
+
+  .btn-primary:hover {
+    background: var(--color-forest-deep);
+  }
+
+  .btn-light {
+    background: var(--color-beige);
+    color: var(--color-forest);
+    box-shadow: inset 0 -3px 0 var(--color-sand);
+  }
+
+  .btn-light:hover {
+    background: #fff;
+  }
+
+  .btn-outline {
+    color: var(--color-forest);
+    box-shadow: inset 0 0 0 1.5px var(--color-forest);
+  }
+
+  .btn-outline:hover {
+    background: var(--color-forest);
+    color: var(--color-beige);
+  }
+
+  .link {
+    color: var(--color-forest);
+    font-weight: 650;
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 0.3em;
+    text-decoration-color: color-mix(in srgb, var(--color-forest) 45%, transparent);
+    transition: text-decoration-color 160ms ease;
+  }
+
+  .link:hover {
+    text-decoration-color: currentColor;
+  }
+
+  .on-dark .link {
+    color: var(--color-beige);
+    text-decoration-color: var(--color-sand);
+  }
+}
+
+/* Arch frame: the clip path lives in an inline SVG (ArchClipPaths) so the curve
+   keeps the logo's proportions at every aspect ratio. */
+.arch-frame {
+  clip-path: url(#arch-desktop);
+}
+
+.arch-portrait {
+  clip-path: url(#arch-portrait);
+}
+
+@media (max-width: 47.99rem) {
+  .arch-frame[data-mobile-clip] {
+    clip-path: url(#arch-mobile);
+  }
+}
+
+/* Sun rays draw outward once on load. Static for reduced motion. */
+.ray-draw path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: ray-draw 900ms cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+  animation-delay: calc(var(--i, 0) * 45ms + 250ms);
+}
+
+@keyframes ray-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.arch-reveal {
+  animation: arch-reveal 900ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+
+/* Transform only: the hero photo stays visible from the first paint so it can count as LCP. */
+@keyframes arch-reveal {
+  from {
+    transform: translateY(14px);
+  }
+}
+
+.rhythm-block {
+  transform-origin: left center;
+}
+
+.rhythm-in .rhythm-block {
+  animation: rhythm-in 600ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  animation-delay: calc(var(--i, 0) * 90ms);
+}
+
+@keyframes rhythm-in {
+  from {
+    opacity: 0;
+    transform: scaleX(0.6);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ray-draw path {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+
+  .arch-reveal,
+  .rhythm-in .rhythm-block {
+    animation: none;
+  }
+}
+
+/* Screener meter: each step lights its own group of rays. */
+.ray-meter path {
+  stroke: color-mix(in srgb, var(--color-forest) 22%, transparent);
+  transition: stroke 400ms ease;
+}
+
+.ray-meter[data-step="1"] [data-group="0"],
+.ray-meter[data-step="2"] [data-group="0"],
+.ray-meter[data-step="2"] [data-group="1"],
+.ray-meter[data-step="3"] path {
+  stroke: var(--color-forest);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ray-meter path {
+    transition: none;
+  }
+}
+
+/* Screener dialog */
+.screener {
+  margin: auto;
+  width: min(40rem, calc(100% - 2rem));
+  max-height: min(52rem, calc(100dvh - 2rem));
+  padding: 0;
+  border: 0;
+  border-radius: 3px;
+  background: var(--color-beige);
+  color: var(--color-cafe);
+  box-shadow: 0 30px 80px -20px rgb(6 43 43 / 0.45);
+  overflow: hidden;
+}
+
+.screener::backdrop {
+  background: rgb(6 43 43 / 0.62);
+}
+
+@media (max-width: 47.99rem) {
+  .screener {
+    width: 100%;
+    max-width: 100%;
+    height: 100dvh;
+    max-height: 100dvh;
+    border-radius: 0;
+  }
+}
+
+.screener[open] {
+  display: flex;
+  flex-direction: column;
+}
+
+.option {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  min-height: 3.25rem;
+  padding: 0.85rem 1rem;
+  background: #fff;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-cafe) 18%, transparent);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: box-shadow 140ms ease;
+}
+
+.option:hover {
+  box-shadow: inset 0 0 0 1.5px var(--color-forest);
+}
+
+.option:has(input:checked) {
+  box-shadow: inset 0 0 0 2px var(--color-forest);
+  background: color-mix(in srgb, var(--color-sand) 16%, #fff);
+}
+
+.option:has(input:focus-visible) {
+  outline: 3px solid var(--color-forest);
+  outline-offset: 2px;
+}
+
+.option input {
+  appearance: none;
+  flex: none;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-top: 0.15rem;
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1.5px var(--color-cafe-soft);
+  background: #fff;
+}
+
+.option input:checked {
+  box-shadow:
+    inset 0 0 0 1.5px var(--color-forest),
+    inset 0 0 0 5px #fff;
+  background: var(--color-forest);
+}
+
+.option input:focus-visible {
+  outline: none;
+}
+
+.field {
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.7rem 0.85rem;
+  font: inherit;
+  font-size: 1rem;
+  color: var(--color-cafe);
+  background: #fff;
+  border: 0;
+  border-radius: 2px;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-cafe) 28%, transparent);
+}
+
+.field:focus-visible {
+  outline: 3px solid var(--color-forest);
+  outline-offset: 2px;
+}
+
+/* Mobile action bar */
+.action-bar {
+  padding-bottom: env(safe-area-inset-bottom);
+  transform: translateY(110%);
+  transition: transform 260ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.action-bar[data-visible="true"] {
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .action-bar {
+    transition: none;
+  }
+}
+
+/* Long-form copy: articles, policies, page bodies */
+.prose {
+  max-width: 40rem;
+}
+
+.prose > * + * {
+  margin-top: 1.15em;
+}
+
+.prose h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(1.75rem, 1.4rem + 1.2vw, 2.4rem);
+  line-height: 1.02;
+  letter-spacing: 0.01em;
+  color: var(--color-forest);
+  margin-top: 2.2em;
+  text-wrap: balance;
+}
+
+.prose h3 {
+  font-weight: 700;
+  font-size: 1.1875rem;
+  line-height: 1.35;
+  color: var(--color-cafe);
+  margin-top: 1.8em;
+}
+
+.prose h2 + *,
+.prose h3 + * {
+  margin-top: 0.6em;
+}
+
+.prose ul,
+.prose ol {
+  padding-left: 1.25em;
+}
+
+.prose ul {
+  list-style: none;
+}
+
+.prose ul > li {
+  position: relative;
+}
+
+.prose ul > li::before {
+  content: "";
+  position: absolute;
+  left: -1.1em;
+  top: 0.78em;
+  width: 0.55em;
+  height: 1.5px;
+  background: var(--color-sand);
+}
+
+.prose ol {
+  list-style: decimal;
+}
+
+.prose ol > li::marker {
+  font-weight: 700;
+  color: var(--color-forest);
+  font-variant-numeric: lining-nums;
+}
+
+.prose li + li {
+  margin-top: 0.5em;
+}
+
+.prose a:not(.btn) {
+  color: var(--color-forest);
+  font-weight: 650;
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.25em;
+  text-decoration-color: color-mix(in srgb, var(--color-forest) 45%, transparent);
+}
+
+.prose a:not(.btn):hover {
+  text-decoration-color: currentColor;
+}
+
+.prose strong {
+  font-weight: 700;
+  color: var(--color-cafe);
+}
+
+.prose blockquote,
+.prose .callout {
+  border-left: 2px solid var(--color-sand);
+  padding-left: 1.1rem;
+}
+
+@media print {
+  @page {
+    margin: 14mm;
+  }
+
+  body {
+    background: #fff;
+    font-size: 12pt;
+  }
+
+  .no-print,
+  header,
+  footer,
+  .action-bar,
+  dialog {
+    display: none !important;
+  }
+
+  .print-story {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10mm;
+  }
+
+  .print-story li {
+    break-inside: avoid;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+}
