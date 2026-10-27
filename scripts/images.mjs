@@ -50,6 +50,7 @@ const specs = [
     file: "IMG_9472.JPG",
     alt: "The stone sign out front reads Wild & Free Behavior, 403 Doctors Drive",
     variants: {
+      desktop: { crop: [0.08, 0.06, 0.84, 0.88], widths: [600, 900, 1200, 1500], focus: "50% 50%" },
       mobile: { crop: [0.12, 0.08, 0.76, 0.86], widths: [400, 520, 680, 820], focus: "50% 50%" },
     },
   },
@@ -112,6 +113,30 @@ const specs = [
     file: "IMG_9460.JPG",
     alt: "A team member in a bright floral shirt seated on the cabin porch",
     variants: { desktop: { crop: [0, 0.03, 1, 0.833], widths: [360, 480, 620, 760, 960], focus: "50% 30%" } },
+  },
+  {
+    key: "toddler",
+    file: "IMG_9519.JPG",
+    alt: "A toddler in a white dress sits on a floor cushion in a pine-walled room",
+    variants: { desktop: { crop: [0, 0.06, 1, 0.833], widths: [400, 560, 720, 960], focus: "50% 35%" } },
+  },
+  {
+    key: "windowRoom",
+    file: "IMG_9510.JPG",
+    alt: "A child sits at a table by a window inside the cabin, with tomatoes on the sill",
+    variants: { desktop: { crop: [0.08, 0, 0.84, 1], widths: [600, 900, 1200, 1500], focus: "55% 50%" } },
+  },
+  {
+    key: "cabinPortrait",
+    file: "IMG_9475.JPG",
+    alt: "The log cabin and the stone sign for Wild & Free Behavior on Doctors Drive",
+    variants: { desktop: { crop: [0, 0, 1, 1], widths: [500, 700, 900, 1200], focus: "50% 50%" } },
+  },
+  {
+    key: "porchFamily",
+    file: "IMG_9467.JPG",
+    alt: "A family with two young children smiling together on the cabin porch",
+    variants: { desktop: { crop: [0, 0.06, 1, 0.833], widths: [500, 700, 900, 1200], focus: "50% 45%" } },
   },
   {
     key: "wallScript",

@@ -161,6 +161,38 @@
     "alt": "The stone sign out front reads Wild & Free Behavior, 403 Doctors Drive",
     "source": "IMG_9472.JPG",
     "variants": {
+      "desktop": {
+        "width": 5040,
+        "height": 3520,
+        "aspect": 1.4318,
+        "focus": "50% 50%",
+        "files": [
+          {
+            "w": 600,
+            "h": 419,
+            "avif": "/images/sign-desktop-600.avif",
+            "webp": "/images/sign-desktop-600.webp"
+          },
+          {
+            "w": 900,
+            "h": 629,
+            "avif": "/images/sign-desktop-900.avif",
+            "webp": "/images/sign-desktop-900.webp"
+          },
+          {
+            "w": 1200,
+            "h": 838,
+            "avif": "/images/sign-desktop-1200.avif",
+            "webp": "/images/sign-desktop-1200.webp"
+          },
+          {
+            "w": 1500,
+            "h": 1048,
+            "avif": "/images/sign-desktop-1500.avif",
+            "webp": "/images/sign-desktop-1500.webp"
+          }
+        ]
+      },
       "mobile": {
         "width": 4560,
         "height": 3440,
@@ -658,6 +690,158 @@
             "h": 392,
             "avif": "/images/wallScript-mobile-820.avif",
             "webp": "/images/wallScript-mobile-820.webp"
+          }
+        ]
+      }
+    }
+  },
+  "toddler": {
+    "alt": "A toddler in a white dress sits on a floor cushion in a pine-walled room",
+    "source": "IMG_9519.JPG",
+    "variants": {
+      "desktop": {
+        "width": 4000,
+        "height": 4998,
+        "aspect": 0.8003,
+        "focus": "50% 35%",
+        "files": [
+          {
+            "w": 400,
+            "h": 500,
+            "avif": "/images/toddler-desktop-400.avif",
+            "webp": "/images/toddler-desktop-400.webp"
+          },
+          {
+            "w": 560,
+            "h": 700,
+            "avif": "/images/toddler-desktop-560.avif",
+            "webp": "/images/toddler-desktop-560.webp"
+          },
+          {
+            "w": 720,
+            "h": 900,
+            "avif": "/images/toddler-desktop-720.avif",
+            "webp": "/images/toddler-desktop-720.webp"
+          },
+          {
+            "w": 960,
+            "h": 1200,
+            "avif": "/images/toddler-desktop-960.avif",
+            "webp": "/images/toddler-desktop-960.webp"
+          }
+        ]
+      }
+    }
+  },
+  "windowRoom": {
+    "alt": "A child sits at a table by a window inside the cabin, with tomatoes on the sill",
+    "source": "IMG_9510.JPG",
+    "variants": {
+      "desktop": {
+        "width": 4986,
+        "height": 3957,
+        "aspect": 1.26,
+        "focus": "55% 50%",
+        "files": [
+          {
+            "w": 600,
+            "h": 476,
+            "avif": "/images/windowRoom-desktop-600.avif",
+            "webp": "/images/windowRoom-desktop-600.webp"
+          },
+          {
+            "w": 900,
+            "h": 714,
+            "avif": "/images/windowRoom-desktop-900.avif",
+            "webp": "/images/windowRoom-desktop-900.webp"
+          },
+          {
+            "w": 1200,
+            "h": 952,
+            "avif": "/images/windowRoom-desktop-1200.avif",
+            "webp": "/images/windowRoom-desktop-1200.webp"
+          },
+          {
+            "w": 1500,
+            "h": 1190,
+            "avif": "/images/windowRoom-desktop-1500.avif",
+            "webp": "/images/windowRoom-desktop-1500.webp"
+          }
+        ]
+      }
+    }
+  },
+  "cabinPortrait": {
+    "alt": "The log cabin and the stone sign for Wild & Free Behavior on Doctors Drive",
+    "source": "IMG_9475.JPG",
+    "variants": {
+      "desktop": {
+        "width": 3835,
+        "height": 5753,
+        "aspect": 0.6666,
+        "focus": "50% 50%",
+        "files": [
+          {
+            "w": 500,
+            "h": 750,
+            "avif": "/images/cabinPortrait-desktop-500.avif",
+            "webp": "/images/cabinPortrait-desktop-500.webp"
+          },
+          {
+            "w": 700,
+            "h": 1050,
+            "avif": "/images/cabinPortrait-desktop-700.avif",
+            "webp": "/images/cabinPortrait-desktop-700.webp"
+          },
+          {
+            "w": 900,
+            "h": 1350,
+            "avif": "/images/cabinPortrait-desktop-900.avif",
+            "webp": "/images/cabinPortrait-desktop-900.webp"
+          },
+          {
+            "w": 1200,
+            "h": 1800,
+            "avif": "/images/cabinPortrait-desktop-1200.avif",
+            "webp": "/images/cabinPortrait-desktop-1200.webp"
+          }
+        ]
+      }
+    }
+  },
+  "porchFamily": {
+    "alt": "A family with two young children smiling together on the cabin porch",
+    "source": "IMG_9467.JPG",
+    "variants": {
+      "desktop": {
+        "width": 3956,
+        "height": 4943,
+        "aspect": 0.8003,
+        "focus": "50% 45%",
+        "files": [
+          {
+            "w": 500,
+            "h": 625,
+            "avif": "/images/porchFamily-desktop-500.avif",
+            "webp": "/images/porchFamily-desktop-500.webp"
+          },
+          {
+            "w": 700,
+            "h": 875,
+            "avif": "/images/porchFamily-desktop-700.avif",
+            "webp": "/images/porchFamily-desktop-700.webp"
+          },
+          {
+            "w": 900,
+            "h": 1125,
+            "avif": "/images/porchFamily-desktop-900.avif",
+            "webp": "/images/porchFamily-desktop-900.webp"
+          },
+          {
+            "w": 1200,
+            "h": 1499,
+            "avif": "/images/porchFamily-desktop-1200.avif",
+            "webp": "/images/porchFamily-desktop-1200.webp"
           }
         ]
       }
