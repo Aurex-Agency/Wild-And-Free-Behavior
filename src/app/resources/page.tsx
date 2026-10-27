@@ -51,7 +51,7 @@ export default function ResourcesPage() {
         </div>
       </section>
 
-      <section aria-labelledby="statewide-title" className="bg-beige-deep py-20 md:py-28">
+      <section aria-labelledby="statewide-title" className="tone-forest py-24 md:py-32">
         <div className="wrap grid gap-10 md:grid-cols-12 md:gap-x-8 lg:gap-x-12">
           <div className="md:col-span-4">
             <SectionHeading id="statewide-title" subtitle="across the state">
@@ -59,14 +59,14 @@ export default function ResourcesPage() {
             </SectionHeading>
             <p className="mt-5">Free public resources. We aren&apos;t affiliated with these agencies.</p>
           </div>
-          <ul className="border-t border-cafe/20 md:col-span-8">
+          <ul className="border-t border-line md:col-span-8">
             {statewide.map((s) => (
-              <li key={s.href} className="border-b border-cafe/20 py-5">
+              <li key={s.href} className="border-b border-line py-5">
                 <a href={s.href} target="_blank" rel="noopener noreferrer" className="link text-[1.0625rem]">
                   {s.name}
                   <span className="sr-only"> (opens in a new tab)</span>
                 </a>
-                <p className="nums mt-1.5 text-cafe-soft">{s.detail}</p>
+                <p className="nums mt-1.5 text-muted">{s.detail}</p>
               </li>
             ))}
           </ul>

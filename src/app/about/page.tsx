@@ -59,17 +59,17 @@ export default function AboutPage() {
                 <Photo image="portraitC" sizes="(min-width: 48rem) 24vw, 50vw" />
               </div>
             </div>
-            <figcaption className="mt-4 text-[0.9375rem] text-cafe-soft">On the porch at Wild &amp; Free Behavior.</figcaption>
-            <FieldNote className="absolute -top-12 right-2 hidden rotate-[-4deg] text-forest md:block">say hello</FieldNote>
+            <figcaption className="mt-4 text-[0.9375rem] text-muted">On the porch at Wild &amp; Free Behavior.</figcaption>
+            <FieldNote className="absolute -top-12 right-2 hidden rotate-[-4deg] text-ink md:block">say hello</FieldNote>
           </figure>
         </div>
       </section>
 
-      <section id="anna-claire-waldrop" aria-labelledby="owner-title" className="bg-beige-deep py-20 md:py-28">
+      <section id="anna-claire-waldrop" aria-labelledby="owner-title" className="tone-forest py-24 md:py-32">
         <div className="wrap grid gap-12 md:grid-cols-12 md:gap-x-8 lg:gap-x-12">
           <div className="md:col-span-7">
             <SectionHeading id="owner-title" subtitle="owner and BCBA">
-              {site.owner.name}, {site.owner.credentials}
+              {`${site.owner.name}, ${site.owner.credentials}`}
             </SectionHeading>
             <div className="prose mt-6">
               <p>
@@ -87,8 +87,8 @@ export default function AboutPage() {
               </p>
             </div>
           </div>
-          <aside aria-labelledby="verify-title" className="self-start bg-beige p-7 md:col-span-5 md:p-9 lg:col-span-4 lg:col-start-9">
-            <h3 id="verify-title" className="display display-m text-forest">
+          <aside aria-labelledby="verify-title" className="self-start tone-paper rounded-[1.5rem] p-7 md:col-span-5 md:p-9 lg:col-span-4 lg:col-start-9">
+            <h3 id="verify-title" className="display display-m text-ink">
               Check any provider&apos;s credentials
             </h3>
             <p className="mt-4">
@@ -134,7 +134,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section aria-labelledby="expect-title" className="relative overflow-hidden bg-beige-deep py-20 md:py-28">
+      <section aria-labelledby="expect-title" className="relative overflow-hidden tone-forest py-20 md:py-28">
         <div className="wrap relative grid gap-10 md:grid-cols-12 md:gap-x-8 lg:gap-x-12">
           <div className="md:col-span-5">
             <SectionHeading id="expect-title" subtitle="working with us">
@@ -144,10 +144,10 @@ export default function AboutPage() {
               <ScreenerTrigger>Find your next step</ScreenerTrigger>
             </div>
           </div>
-          <dl className="border-t border-cafe/20 md:col-span-7">
+          <dl className="border-t border-line md:col-span-7">
             {expect.map((e) => (
-              <div key={e.title} className="grid gap-1 border-b border-cafe/20 py-5 sm:grid-cols-[16rem_1fr] sm:gap-6">
-                <dt className="font-bold text-forest">{e.title}</dt>
+              <div key={e.title} className="grid gap-1 border-b border-line py-5 sm:grid-cols-[16rem_1fr] sm:gap-6">
+                <dt className="font-bold text-ink">{e.title}</dt>
                 <dd>{e.body}</dd>
               </div>
             ))}

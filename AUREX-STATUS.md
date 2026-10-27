@@ -4,16 +4,16 @@
 
 **Project:** Wild & Free Behavior (ABA therapy, New Albany, MS)
 **Operating mode:** DEEP (new website)
-**Branch:** `proof/homepage`
-**PR/deployment:** PR #1 against `main`; not deployed
-**Stage:** Full build complete, awaiting human visual approval, BCBA/legal review, and launch prerequisites
+**Branch:** `redesign/motion-and-depth`
+**PR/deployment:** Redesign PR against `main` (PR #1, the full build, is merged; Kalob added the site to Vercel); not deployed by Aurex
+**Stage:** Visual redesign complete, awaiting human visual approval; BCBA/legal review and launch prerequisites unchanged
 **Last updated:** 2026-10-27
 
 ## Approved decisions
 
 - verified strategy and conversion: `docs/WEBSITE-BUILD-PLAN.md`
 - site architecture: 14 pages built per plan section 5 (see REVIEW-NOTES.md)
-- creative direction: "A cabin, a garden, and a plan" (awaiting Kalob's visual approval)
+- creative direction: "Golden hour at the cabin" (dark forest grounds, sand light, arch and sun motifs, scroll-led motion). Replaces "A cabin, a garden, and a plan", which Kalob rejected on 2026-10-27 as boring and generic (cream background, no motion). Awaiting Kalob's visual approval.
 - client confirmations (2026-10-27, via Kalob): phone 662-539-7129 is current; no Horn Lake location; photo waivers signed; use the brand fonts fully
 - engineering approach: Next.js 16 App Router, TypeScript, Tailwind 4, all routes static; intake demo by default, HighLevel webhook behind env switch
 
@@ -26,9 +26,15 @@
 
 ## Most recent work
 
-**Task:** Complete the build after client answers
-**Result:** All pages, guides, SEO plumbing, live-intake path, and tests done; see REVIEW-NOTES.md
-**Files/areas changed:** `src/app/*` (new routes), `src/components/*`, `src/content/*`, `src/lib/intake.ts`, `src/lib/track.ts`, `src/lib/schema.ts`, `next.config.ts`, `scripts/images.mjs`, `review/`
+**Task:** Redesign the look and add smooth, clean motion
+**Result:**
+- New tone system and type scale.
+- Homepage sections rebuilt around the arch and sun.
+- Motion system built with CSS scroll-driven animations, IntersectionObserver reveals, view transitions, and Lenis on desktop.
+- Interior pages carried through.
+- All checks re-run. See "Redesign" in REVIEW-NOTES.md.
+
+**Files/areas changed:** `src/app/globals.css`, `src/components/motion/*` (new), `src/components/sections/*`, `src/components/PageParts.tsx`, `ArticleLayout.tsx`, header, footer, menu, action bar, screener styling, interior pages, `review/`
 
 ## Independent verdicts
 
@@ -54,6 +60,8 @@
 
 ## Known issues
 
+- The repo sits in an iCloud-synced folder that creates `* 2` conflict copies; move it out of iCloud
+
 ### Blockers (launch only)
 
 - HighLevel HIPAA add-on, BAA, inbound webhook, CORS check
@@ -71,9 +79,9 @@
 
 ## Current human decision
 
-**Decision needed:** Approve the visual direction across the full site.
-**Recommendation:** Approve; then send the BCBA review packet and the open-questions list to the client.
-**Evidence to review:** `review/` or `npm run dev`
+**Decision needed:** Approve the redesigned visual direction and motion.
+**Recommendation:** Review the Vercel preview of the redesign PR on a phone and a laptop (the motion only shows live), then approve or mark what to change.
+**Evidence to review:** the redesign PR's Vercel preview, `review/`, or `npm run dev`
 
 ## Next action
 

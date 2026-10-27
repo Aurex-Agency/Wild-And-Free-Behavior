@@ -44,7 +44,7 @@ export default function VisitPage() {
           <figure className="relative mx-auto w-full max-w-[22rem] md:ml-auto md:mr-6">
             <div style={{ paddingTop: `${raysHeadroom(REACH) * 100}%` }} />
             <div className="relative">
-              <ArchRays reach={REACH} animate weight={2} className="text-forest" />
+              <ArchRays reach={REACH} animate weight={2} className="text-ink" />
               <div className="arch-portrait aspect-[0.8]">
                 <Photo image="cabinPortrait" priority sizes="(min-width: 48rem) 22rem, 90vw" />
               </div>
@@ -55,12 +55,12 @@ export default function VisitPage() {
 
       <section aria-labelledby="address-title" className="pb-20 pt-6 md:pb-28">
         <div className="wrap grid gap-12 md:grid-cols-12 md:gap-x-8 lg:gap-x-12">
-          <div className="bg-sand-soft p-7 md:col-span-5 md:p-10">
-            <h2 id="address-title" className="display display-m text-forest">
+          <div className="tone-paper self-start rounded-[1.5rem] p-7 md:sticky md:top-28 md:col-span-5 md:p-10">
+            <h2 id="address-title" className="display display-m text-ink">
               Address
             </h2>
             <address className="nums mt-5 text-[1.125rem] not-italic leading-relaxed">
-              <span className="block font-bold text-cafe">{site.name}</span>
+              <span className="block font-bold text-body">{site.name}</span>
               <span className="block">{site.address.street}</span>
               <span className="block">
                 {site.address.city}, {site.address.region} {site.address.postalCode}
@@ -72,7 +72,7 @@ export default function VisitPage() {
             {site.hours && (
               <dl className="nums mt-6 text-[0.9375rem]">
                 {site.hours.map((h) => (
-                  <div key={h.days} className="flex justify-between gap-4 border-b border-cafe/15 py-2">
+                  <div key={h.days} className="flex justify-between gap-4 border-b border-line py-2">
                     <dt>{h.days}</dt>
                     <dd>{h.time}</dd>
                   </div>
@@ -102,14 +102,14 @@ export default function VisitPage() {
               New Albany sits where I-22 meets Highways 15 and 30, so families from around North Mississippi can get here
               without much trouble. Approximate road distances:
             </p>
-            <dl className="nums mt-8 border-t border-cafe/20">
+            <dl className="nums mt-8 border-t border-line">
               {distances.map((d) => (
-                <div key={d.town} className="grid grid-cols-[1fr_auto] items-baseline gap-4 border-b border-cafe/20 py-4">
+                <div key={d.town} className="grid grid-cols-[1fr_auto] items-baseline gap-4 border-b border-line py-4">
                   <dt>
-                    <span className="font-bold text-cafe">{d.town}</span>
-                    {d.route && <span className="text-cafe-soft">, {d.route}</span>}
+                    <span className="font-bold text-body">{d.town}</span>
+                    {d.route && <span className="text-muted">, {d.route}</span>}
                   </dt>
-                  <dd className="font-semibold text-forest">about {d.miles} miles</dd>
+                  <dd className="font-semibold text-ink">about {d.miles} miles</dd>
                 </div>
               ))}
             </dl>
@@ -117,7 +117,7 @@ export default function VisitPage() {
         </div>
       </section>
 
-      <section aria-labelledby="first-visit-title" className="relative bg-beige-deep">
+      <section aria-labelledby="first-visit-title" className="tone-forest relative">
         <div className="wrap grid items-center gap-10 py-20 md:grid-cols-12 md:gap-x-8 md:py-28 lg:gap-x-12">
           <div className="md:col-span-5">
             <SectionHeading id="first-visit-title" subtitle="for your child">
@@ -127,7 +127,7 @@ export default function VisitPage() {
               New places can be hard. We made a printable picture story of the sign, the cabin, and the rooms, so your child
               can see where they&apos;re going before you come.
             </p>
-            <Link href="/resources/your-first-visit" className="btn btn-outline mt-7">
+            <Link href="/resources/your-first-visit" className="btn btn-ghost mt-7">
               See the picture story
             </Link>
           </div>

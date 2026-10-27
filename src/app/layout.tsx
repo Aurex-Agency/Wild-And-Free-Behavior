@@ -8,6 +8,7 @@ import { ActionBar } from "@/components/ActionBar";
 import { ScreenerDialog } from "@/components/screener/ScreenerDialog";
 import { TrackClicks } from "@/components/TrackClicks";
 import { JsonLd } from "@/components/JsonLd";
+import { SmoothScroll } from "@/components/motion/SmoothScroll";
 import { clinicNode, graph, websiteNode } from "@/lib/schema";
 import "./globals.css";
 
@@ -32,7 +33,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#f9f8f4",
+  themeColor: "#062b2b",
+  colorScheme: "dark",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -42,6 +44,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${rovey.variable} ${roveyCompanion.variable} ${angelica.variable} ${raleway.variable}`}
     >
       <body className="min-h-dvh">
+        <noscript>
+          {/* Scroll reveals start hidden; without JavaScript, show everything. */}
+          <style>{`[data-reveal]{opacity:1!important;transform:none!important;clip-path:none!important}[data-sun] path{stroke-dashoffset:0!important;opacity:1!important}`}</style>
+        </noscript>
         <a
           href="#main"
           className="sr-only z-50 bg-forest px-4 py-3 font-semibold text-beige focus:not-sr-only focus:fixed focus:left-4 focus:top-4"
@@ -54,6 +60,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <SiteFooter />
         <ActionBar />
         <ScreenerDialog />
+        <SmoothScroll />
         <TrackClicks />
         <JsonLd data={graph(clinicNode(), websiteNode())} />
       </body>

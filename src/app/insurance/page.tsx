@@ -89,30 +89,30 @@ export default function InsurancePage() {
               .
             </p>
           </div>
-          <aside aria-labelledby="private-title" className="self-start border-t-2 border-forest pt-7 md:col-span-5 lg:col-span-4 lg:col-start-9">
-            <h2 id="private-title" className="display display-m text-forest">
+          <aside aria-labelledby="private-title" className="self-start border-t-2 border-accent pt-7 md:col-span-5 lg:col-span-4 lg:col-start-9">
+            <h2 id="private-title" className="display display-m text-ink">
               Private pay
             </h2>
             <p className="mt-4">
               If insurance isn&apos;t an option, or you&apos;d rather not use it, private pay is available. We&apos;re
               happy to talk through what that looks like on a call, with no commitment.
             </p>
-            <a href={site.phone.href} data-track="call" className="btn btn-outline nums mt-6">
+            <a href={site.phone.href} data-track="call" className="btn btn-ghost nums mt-6">
               Call {site.phone.display}
             </a>
           </aside>
         </div>
       </section>
 
-      <section aria-labelledby="other-title" className="bg-beige-deep py-20 md:py-28">
+      <section aria-labelledby="other-title" className="tone-forest py-24 md:py-32">
         <div className="wrap">
           <SectionHeading id="other-title" subtitle="other coverage">
             Other plans
           </SectionHeading>
-          <dl className="mt-10 border-t border-cafe/20">
+          <dl className="mt-10 border-t border-line">
             {otherPlans.map((p) => (
-              <div key={p.title} className="grid gap-2 border-b border-cafe/20 py-7 md:grid-cols-12 md:gap-x-8">
-                <dt className="display display-m text-forest md:col-span-5">{p.title}</dt>
+              <div key={p.title} className="grid gap-2 border-b border-line py-7 md:grid-cols-12 md:gap-x-8">
+                <dt className="display display-m text-ink md:col-span-5">{p.title}</dt>
                 <dd className="md:col-span-7 lg:col-span-6">{p.body}</dd>
               </div>
             ))}
@@ -120,21 +120,21 @@ export default function InsurancePage() {
         </div>
       </section>
 
-      <section aria-labelledby="ask-title" className="on-dark relative overflow-hidden bg-forest py-20 text-beige md:py-28">
-        <LogRules className="absolute inset-0 h-full w-full text-beige/[0.05]" />
+      <section aria-labelledby="ask-title" className="tone-cafe relative overflow-hidden py-24 md:py-32">
+        <LogRules className="absolute inset-0 h-full w-full text-ink/[0.05]" />
         <div className="wrap relative grid gap-10 md:grid-cols-12 md:gap-x-8 lg:gap-x-12">
           <div className="md:col-span-5">
-            <SectionHeading id="ask-title" subtitle="before you call" tone="dark">
+            <SectionHeading id="ask-title" subtitle="before you call">
               Questions to ask your insurance company
             </SectionHeading>
-            <p className="mt-6 text-beige/90">
+            <p className="mt-6 text-body">
               The member services number is usually on the back of your card. Write down who you spoke with and the date.
             </p>
           </div>
           <ol className="md:col-span-7">
             {askInsurer.map((q, i) => (
               <li key={q} className="grid grid-cols-[2.5rem_1fr] items-baseline gap-4 border-b border-beige/20 py-4 text-[1.0625rem]">
-                <span aria-hidden="true" className="display text-[1.6rem] leading-none text-sand">
+                <span aria-hidden="true" className="display text-[1.6rem] leading-none text-accent">
                   {i + 1}
                 </span>
                 <span>{q}</span>

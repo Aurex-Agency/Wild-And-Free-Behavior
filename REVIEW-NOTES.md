@@ -4,6 +4,32 @@ The complete Wild & Free Behavior website: 14 pages, the insurance and fit scree
 
 Strategy and the original brief are in `docs/`. Screenshots are in `review/`.
 
+## Redesign: golden hour at the cabin
+
+The first build read as generic: cream on cream, timid type, and almost no motion. The redesign keeps every page, fact, and flow, and changes the look and feel.
+
+- **Color:** deep forest green grounds, with the logo's sand and terracotta as light. Warm cafe brown marks the insurance and focus sections and the footer. Long reading (the guides) stays on a paper column for comfort. Interior pages close on a sand band, so every page ends on a warm note.
+- **Type:** Rovey set large (the hero "Grow" runs up to 13.5rem), White Angelica script above every heading, and Raleway for reading.
+- **Brand shapes:** the logo's arch frames photos, its sun rays draw behind the hero, and a large sun draws itself above each closing call to action.
+- **Signature moment:** on the homepage the tomato photo starts inside the arch and opens to full-bleed as you scroll. The caption "Steady weeks grow good days" then settles in.
+- **Motion:**
+  - Headlines rise in word by word.
+  - Photos drift slightly against the scroll.
+  - The getting-started path draws itself as you read.
+  - The focus list swaps its photo as you move down it.
+  - A marquee runs under the hero.
+  - Pages crossfade on navigation.
+  - Desktop gets smooth wheel scrolling.
+- **How the motion is built:**
+  - There is no animation library.
+  - Reveals use one small IntersectionObserver hook and CSS transitions.
+  - Scroll-linked effects (parallax, the arch, the steps line) are CSS scroll-driven animations. They run off the main thread and need no JavaScript.
+  - Smooth scrolling (Lenis) loads on demand, only for desktop mouse and trackpad users, so phones never download it.
+  - Browsers without scroll timelines (Firefox today) and reduced-motion visitors get still photos and a full-bleed arch photo. Everything stays readable without JavaScript.
+- **Why no Motion library:** an earlier pass used Motion (framer-motion). It added about 55 KB of JavaScript and pulled mobile Performance below 90. Moving the effects to CSS brought the JavaScript back to about 156 KB, close to the first build's 146 KB.
+
+**Working-copy warning:** this project lives in an iCloud-synced Desktop folder. iCloud creates conflict copies named `* 2`, `* 3` (including inside `.next`), which break typechecking and once got committed. Three such screenshots were merged into `main` with PR #1, and this branch removes them. Move the repo out of iCloud, for example to `~/Code`, or exclude it from sync.
+
 ## Run it
 
 ```
@@ -129,18 +155,29 @@ With Cache Components on (the create-next-app default, and slated to become stan
 - Soft-navigation audit: no duplicate ids, and every label resolves to visible text across five routes.
 - Routes: all 14 pages return 200, unknown paths 404, legacy URLs 301. Security headers present.
 - Structured data parses on every page tested.
-- Full-page screenshots at 1440 and 390 for every page: no horizontal overflow, no console errors.
-- Lighthouse mobile, production build:
+- Full-page screenshots at 1440 and 390 for every page: no horizontal overflow, no console errors. The `review/` full pages are captured with reduced motion so the pinned arch section reads as a still photo. `desktop-home-arch-sequence.jpg` shows the arch opening.
+- Lighthouse mobile, production build, after the redesign (homepage run three times):
 
 | Page | Performance | Accessibility | Best Practices |
 |---|---|---|---|
-| Home | 90 | 100 | 100 |
+| Home | 89, 91, 91 | 100 | 100 |
 | ABA Therapy | 93 | 100 | 100 |
-| Insurance | 95 | 100 | 100 |
-| BCBS guide | 94 | 100 | 100 |
+| Getting Started | 94 | 100 | 100 |
+| Insurance | 94 | 100 | 100 |
+| About | 90 | 100 | 100 |
 | Visit | 92 | 100 | 100 |
+| FAQ | 94 | 100 | 100 |
+| BCBS guide | 93 | 100 | 100 |
 
-  SEO scores 69 in preview because of the intentional noindex, and 100 with `SITE_INDEXABLE=true`.
+  - Desktop scores 100 for Performance, Accessibility, and Best Practices.
+  - Observed LCP on the homepage is under 0.9s. The mobile figure is Lighthouse's simulated slow-4G estimate.
+  - SEO scores 69 in preview because of the intentional noindex, and 100 with `SITE_INDEXABLE=true` (home, ABA Therapy, Visit, and the BCBS guide checked).
+- Motion checks:
+  - No scroll-container ancestors under any scroll-driven element.
+  - Parallax, arch, and steps progress match scroll position at 1440 and 390.
+  - Every reveal fires.
+  - With reduced motion, the arch section is a still full-bleed photo, nothing translates, and Lenis is off.
+  - In-page anchors land just below the header, at 96px.
 
 **Verdicts**
 
