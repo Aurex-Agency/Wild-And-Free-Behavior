@@ -503,6 +503,55 @@
   opacity: 1;
 }
 
+/* The hero arch shows a day at the cabin: garden, pine room, check-in board, then back.
+   Each photo holds about six seconds. Opacity only, so it stays on the compositor. */
+.hero-cycle > * {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-cycle > * {
+    animation: 21s ease-in-out 4s infinite both;
+  }
+
+  .hero-cycle > :nth-child(1) {
+    animation-name: hero-cycle-a;
+  }
+
+  .hero-cycle > :nth-child(2) {
+    animation-name: hero-cycle-b;
+  }
+}
+
+@keyframes hero-cycle-a {
+  0%,
+  30% {
+    opacity: 0;
+  }
+  36%,
+  63% {
+    opacity: 1;
+  }
+  69%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes hero-cycle-b {
+  0%,
+  63% {
+    opacity: 0;
+  }
+  69%,
+  94% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 /* Photos drift against the scroll inside their frames. */
 .parallax {
   scale: calc(1 + var(--range) / 100);

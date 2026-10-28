@@ -13,7 +13,7 @@ import { clinicNode, graph, websiteNode } from "@/lib/schema";
 import "./globals.css";
 
 const description =
-  "ABA therapy for young children in a log cabin on Doctors Drive in New Albany, Mississippi. Start with a free conversation, and we'll help you check your insurance or private-pay options.";
+  "ABA therapy for young children with autism in New Albany, Mississippi, led by a BCBA in a log cabin on Doctors Drive. Your first conversation is free.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),

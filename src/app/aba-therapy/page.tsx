@@ -10,7 +10,7 @@ import { pickFaqs } from "@/content/faqs";
 export const metadata: Metadata = {
   title: "ABA Therapy for Young Children in New Albany, MS",
   description:
-    "What ABA therapy looks like at Wild & Free Behavior in New Albany, Mississippi: an assessment, a plan written by a BCBA, practical goals, and family priorities.",
+    "ABA therapy for young children with autism in New Albany, MS. What sessions work on, how our BCBA builds each plan, and what the cabin is like inside.",
   alternates: { canonical: "/aba-therapy" },
   openGraph: { url: "/aba-therapy" },
 };
@@ -20,12 +20,12 @@ export const metadata: Metadata = {
 const areas: { title: string; body: string; image: ImageKey }[] = [
   {
     title: "Communication",
-    body: "Finding ways for your child to ask for what they need and share what they want, whether that's words, signs, pictures, or a device.",
+    body: "Helping your child ask for what they need and tell you what they want, with words, signs, pictures, or a device.",
     image: "communication",
   },
   {
     title: "Everyday routines",
-    body: "Practicing the parts of the day that tend to be hard: mealtimes, washing hands, getting dressed, waiting, and moving from one activity to the next.",
+    body: "Practice with the parts of the day that tend to be hard: mealtimes, washing hands, getting dressed, waiting, and moving from one thing to the next.",
     image: "routines",
   },
   {
@@ -55,9 +55,9 @@ export default function AbaTherapyPage() {
         title="ABA therapy for young children in New Albany"
         intro={
           <p>
-            Applied behavior analysis, or ABA, teaches everyday skills in small, practical steps, building on what works
-            for your child. At Wild &amp; Free Behavior, every plan is designed by a Board Certified Behavior Analyst, and
-            our home base is a log cabin on Doctors Drive.
+            Applied behavior analysis, or ABA, teaches everyday skills one small step at a time, building on what
+            already works for your child. At Wild &amp; Free Behavior in New Albany, every plan is written by a Board
+            Certified Behavior Analyst, and we work out of a log cabin on Doctors Drive.
           </p>
         }
         aside={
@@ -75,21 +75,12 @@ export default function AbaTherapyPage() {
           <div className="prose md:col-span-7">
             <h2 id="looks-like">What ABA looks like here</h2>
             <p>
-              It starts with getting to know your child. During the assessment, we spend time with your child and talk
-              with you to learn what they&apos;re already good at, what&apos;s hard right now, and what would make the
-              biggest difference at home.
+              First, we get to know your child. During the assessment we spend time with them and talk with you, so we
+              can see what they&apos;re already good at, what&apos;s hard right now, and what would help most at home.
             </p>
             <p>
-              From there, our BCBA writes a plan with specific goals. Sessions work toward those goals a little at a time,
-              with plenty of practice and encouragement, and the plan changes as your child learns.
-            </p>
-            <p>
-              Insurance plans that cover ABA review the plan on a regular schedule. With Blue Cross &amp; Blue Shield of
-              Mississippi, approvals typically last six months, followed by a reassessment and an updated plan.{" "}
-              <Link href="/resources/does-bcbs-of-mississippi-cover-aba-therapy">
-                How BCBS of Mississippi handles ABA
-              </Link>
-              .
+              Then our BCBA writes a plan with specific goals. Each session chips away at those goals with lots of
+              practice and encouragement, and the plan changes as your child learns.
             </p>
           </div>
           <aside aria-labelledby="who-title" className="self-start tone-paper rounded-[1.5rem] p-7 md:col-span-5 md:p-9 lg:col-span-4 lg:col-start-9">
@@ -102,7 +93,7 @@ export default function AbaTherapyPage() {
             </p>
             <p className="mt-4">
               If your child is older or younger than the children we usually see, or you&apos;re still waiting on an
-              evaluation, reach out anyway. A person on our team will talk it through with you.
+              evaluation, reach out anyway. We&apos;ll talk it through with you.
             </p>
             <div className="mt-6">
               <ScreenerTrigger>Find your next step</ScreenerTrigger>
@@ -119,7 +110,7 @@ export default function AbaTherapyPage() {
               What therapy can focus on
             </SectionHeading>
             <p className="lede mt-6 text-body">
-              Goals come from your child&apos;s assessment, so not every child works on every area.
+              Goals come from your child&apos;s assessment, so most children work on some of these, not all of them.
             </p>
           </div>
           <ul className="mt-12 border-t border-beige/20">
@@ -142,8 +133,8 @@ export default function AbaTherapyPage() {
             Inside the cabin
           </SectionHeading>
           <p className="mt-5 max-w-[36rem]">
-            Pine-paneled rooms, soft floor seating, low tables for work time, and a check-in board on the wall. Outside
-            there&apos;s a porch and a garden.
+            The rooms are pine-paneled, with cushions on the floor, low tables for work time, and a check-in board on the
+            wall. Outside, there&apos;s the big front porch and a garden.
           </p>
           <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-[1.1fr_0.9fr_1fr] lg:items-end">
             {inside.map((p, i) => (
@@ -173,9 +164,13 @@ export default function AbaTherapyPage() {
           <div>
             <h2 className="display display-l text-ink">A plan that grows with your child</h2>
             <p className="mt-5">
-              Progress is reviewed regularly, and the plan is updated when goals are met or when something isn&apos;t
-              working. Insurance reassessments, usually every six months with BCBS of Mississippi, are a natural time to
-              step back and look at the bigger picture.
+              We look at progress often and update the plan when your child meets a goal or when something isn&apos;t
+              working. If insurance covers your child&apos;s therapy, there&apos;s also a reassessment along the way
+              (about every six months with BCBS of Mississippi), and that&apos;s a good time to step back and look at the
+              bigger picture.{" "}
+              <Link href="/resources/does-bcbs-of-mississippi-cover-aba-therapy" className="link">
+                How BCBS of Mississippi handles ABA
+              </Link>
             </p>
           </div>
         </div>

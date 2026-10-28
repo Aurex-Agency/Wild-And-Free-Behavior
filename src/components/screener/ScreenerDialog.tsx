@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState, type ReactNode, type SubmitEvent } from "react";
 import {
   canContinue,
+  FIRST_STEP,
   getResult,
   nextStep,
   prevStep,
@@ -40,7 +41,7 @@ const sampleContact: Contact = {
 };
 
 const stepTitles: Record<Exclude<StepId, "result">, string> = {
-  payment: "How will you pay for services?",
+  payment: "How are you planning to pay?",
   "other-insurance": "What would help most right now?",
   child: "A little about your child",
   contact: "How should we reach you?",
@@ -101,7 +102,7 @@ export function ScreenerDialog() {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const returnFocusRef = useRef<HTMLElement | null>(null);
-  const [step, setStep] = useState<StepId>("payment");
+  const [step, setStep] = useState<StepId>(FIRST_STEP);
   const [answers, setAnswers] = useState<Answers>({});
   const [contact, setContact] = useState<Contact>(emptyContact);
   const [contactErrors, setContactErrors] = useState<ContactErrors>({});
@@ -127,7 +128,7 @@ export function ScreenerDialog() {
   const restart = useCallback(() => {
     reset();
     moved.current = true;
-    setStep("payment");
+    setStep(FIRST_STEP);
   }, [reset]);
 
   useEffect(() => {
@@ -138,9 +139,9 @@ export function ScreenerDialog() {
       if (step === "done") reset();
       if (detail.payment) {
         setAnswers((a) => ({ ...(step === "done" ? {} : a), payment: detail.payment }));
-        setStep("payment");
+        setStep(FIRST_STEP);
       } else if (step === "done") {
-        setStep("payment");
+        setStep(FIRST_STEP);
       }
       const dialog = dialogRef.current;
       if (dialog && !dialog.open) dialog.showModal();

@@ -8,7 +8,7 @@ import { Photo } from "@/components/Photo";
 import { pickFaqs } from "@/content/faqs";
 
 export const metadata: Metadata = {
-  title: "Visit Us: 403 Doctors Drive, New Albany, MS",
+  title: "Visit the Cabin: 403 Doctors Drive, New Albany, MS",
   description:
     "Find Wild & Free Behavior at 403 Doctors Drive in New Albany, Mississippi: a log cabin with a stone sign out front. Directions and distances from nearby towns.",
   alternates: { canonical: "/visit" },
@@ -33,7 +33,7 @@ export default function VisitPage() {
       <PageHeader
         trail={[{ name: "Visit", path: "/visit" }]}
         subtitle="come on in"
-        title="Visit the cabin"
+        title="Visit the cabin in New Albany"
         intro={
           <p>
             We&apos;re at {site.address.street} in New Albany, in a log cabin with a big front porch. Look for the stone

@@ -10,7 +10,7 @@ import { pickFaqs } from "@/content/faqs";
 export const metadata: Metadata = {
   title: "How to Start ABA Therapy in New Albany, MS",
   description:
-    "Every step from your first message to a steady weekly schedule at Wild & Free Behavior: a quick review, a free conversation, the assessment, and your plan.",
+    "How ABA therapy begins at our cabin in New Albany, MS: a short form or a call, a free conversation, an assessment, and a weekly schedule that stays the same.",
   alternates: { canonical: "/getting-started" },
   openGraph: { url: "/getting-started" },
 };
@@ -18,21 +18,21 @@ export const metadata: Metadata = {
 const steps: { title: string; body: string; helps?: string }[] = [
   {
     title: "Reach out",
-    body: `Use the short form on this site or call ${site.phone.display}. We'll ask a few questions about your child, your insurance, and what's going on. Nothing is booked at this step.`,
-    helps: "Your child's age, whether they have an autism diagnosis, and the name of your insurance plan.",
+    body: `Fill out the short form on this site or call ${site.phone.display}. We'll ask about your child first, then how you plan to pay.`,
+    helps: "Your child's age, whether they have an autism diagnosis, and your insurance plan if you have one.",
   },
   {
     title: "A quick review",
-    body: "Our team looks over what you shared and checks the basics, like insurance. If anything needs a closer look, a person will call you to talk it through.",
+    body: "We read what you sent and check the basics. If something needs a closer look, someone from our team will call you.",
   },
   {
     title: "A free conversation",
-    body: "You'll talk with Anna Claire and Jimbo about your child, ask your questions, and decide together whether we're the right fit. There's no cost for this conversation.",
+    body: "You'll meet Anna Claire and Jimbo, tell them about your child, and ask anything you want. Then we decide together whether we're the right fit. This conversation is free.",
     helps: "Your questions, and anything you've learned from your child's evaluation.",
   },
   {
     title: "Assessment",
-    body: "We spend time with your child to understand their strengths and needs. Most insurance plans, including BCBS of Mississippi, need to approve the assessment first, and our team helps with that request.",
+    body: "We spend time with your child to learn what they're good at and what's hard right now. Most insurance plans need to approve the assessment first, and we help with that request.",
     helps:
       "Your child's diagnosis report and your insurance card. Some plans also ask for a referral or order for ABA from your child's doctor or psychologist.",
   },
@@ -42,13 +42,13 @@ const steps: { title: string; body: string; helps?: string }[] = [
   },
   {
     title: "Ongoing care",
-    body: "Your child's plan is reviewed and updated as they grow, and we keep talking with you about what's working.",
+    body: "We keep updating your child's plan as they grow, and we keep you in the loop on what's working.",
   },
 ];
 
 const ready = [
   "Your child's autism diagnosis report, if you have one",
-  "Your insurance card, front and back",
+  "Your insurance card, if you're using insurance",
   "A few notes about your child's typical day",
   "Your questions. All of them.",
 ];
@@ -62,8 +62,8 @@ export default function GettingStartedPage() {
         title="Getting started with ABA therapy"
         intro={
           <p>
-            Starting therapy can feel like a lot. Here is exactly what happens, from your first message to a weekly
-            schedule that stays the same.
+            Starting therapy can feel like a lot, so we&apos;ve laid out all six steps below. Nothing gets booked until
+            you&apos;ve met us and you&apos;re ready.
           </p>
         }
         aside={

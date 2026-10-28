@@ -71,15 +71,15 @@ export const site = {
 
 export const nav = [
   { label: "ABA Therapy", href: "/aba-therapy" },
-  { label: "Getting Started", href: "/getting-started" },
-  { label: "Insurance", href: "/insurance" },
   { label: "About", href: "/about" },
+  { label: "Getting Started", href: "/getting-started" },
   { label: "Visit", href: "/visit" },
+  { label: "Questions", href: "/faq" },
 ] as const;
 
 export const footerNav = [
   ...nav,
-  { label: "Questions", href: "/faq" },
+  { label: "Insurance and cost", href: "/insurance" },
   { label: "Resources", href: "/resources" },
 ] as const;
 

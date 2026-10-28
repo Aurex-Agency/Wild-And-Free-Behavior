@@ -6,7 +6,7 @@ import { GuidesList } from "@/components/GuidesList";
 export const metadata: Metadata = {
   title: "Autism and ABA Resources for North Mississippi Families",
   description:
-    "Plain-language guides for families in North Mississippi: after an autism diagnosis, finding an evaluation, BCBS of Mississippi and ABA, and preparing for a first visit.",
+    "Guides for North Mississippi families from our team in New Albany: what to do after an autism diagnosis, finding an evaluation, ABA and BCBS, and a first visit.",
   alternates: { canonical: "/resources" },
   openGraph: { url: "/resources" },
 };
@@ -35,12 +35,12 @@ export default function ResourcesPage() {
       <PageHeader
         trail={[{ name: "Resources", path: "/resources" }]}
         subtitle="a place to start"
-        title="Resources for families"
+        title="Autism resources for North Mississippi families"
         layout="stacked"
         intro={
           <p>
-            Plain-language guides for families in North Mississippi, written by our team. Start wherever you are: a new
-            diagnosis, a question about insurance, or a first visit coming up.
+            Guides for North Mississippi families, written by our team in New Albany. Pick the one that matches where
+            you are right now.
           </p>
         }
       />

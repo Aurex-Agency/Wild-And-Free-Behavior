@@ -9,15 +9,15 @@ import { ScreenerTrigger } from "@/components/screener/ScreenerTrigger";
 const steps = [
   {
     title: "Reach out",
-    body: "Tell us a little about your child. It takes a couple of minutes, and it doesn't book anything.",
+    body: "Answer a few questions about your child here, or just call us. It takes a couple of minutes and doesn't book anything.",
   },
   {
     title: "A free conversation",
-    body: "Sit down with Anna Claire and Jimbo to talk about your child, your questions, and whether we're the right fit.",
+    body: "Sit down with Anna Claire and Jimbo. Bring your questions, and we'll talk honestly about whether we're the right fit.",
   },
   {
     title: "Assessment",
-    body: "We spend time with your child to understand their strengths and needs. Your insurance may need to approve this step first.",
+    body: "We spend time with your child to see what they're good at and what's hard right now. Some plans need to approve this step first.",
   },
   {
     title: "Your weekly rhythm",
@@ -25,7 +25,7 @@ const steps = [
   },
   {
     title: "Ongoing care",
-    body: "Your child's plan is reviewed and updated as they grow.",
+    body: "We keep checking your child's plan and change it as they grow.",
   },
 ];
 
@@ -41,8 +41,8 @@ export function GettingStarted() {
             <Words id="start-title" text="How it begins" className="display display-xl mt-3" />
             <Reveal delay={0.1}>
               <p className="lede mt-7 max-w-[30rem]">
-                From the first message to a steady weekly schedule, here is what to expect. Nothing is booked until you
-                and our team agree on a plan.
+                Five steps, and nothing gets booked until you&apos;ve met us and we&apos;ve agreed on a plan
+                together.
               </p>
             </Reveal>
             <Reveal variant="clip" delay={0.15} className="mt-10 hidden md:block">

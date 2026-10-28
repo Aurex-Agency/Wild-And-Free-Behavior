@@ -4,7 +4,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { Words } from "@/components/motion/Words";
 import { pickFaqs } from "@/content/faqs";
 
-const homeFaqs = pickFaqs(["get-started", "insurance", "private-pay", "no-diagnosis", "fit", "schedule"]);
+const homeFaqs = pickFaqs(["get-started", "no-diagnosis", "who", "schedule", "first-visit", "insurance"]);
 
 export function Faq() {
   return (

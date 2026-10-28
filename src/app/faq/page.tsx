@@ -6,9 +6,9 @@ import { allFaqs, faqGroups } from "@/content/faqs";
 import { graph } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: "ABA Therapy Questions: Insurance, Scheduling, and Getting Started",
+  title: "Common Questions About ABA Therapy in New Albany, MS",
   description:
-    "Answers for families considering ABA therapy at Wild & Free Behavior in New Albany, Mississippi: getting started, insurance and cost, therapy, and visiting.",
+    "Answers for parents in New Albany and Union County about ABA therapy at Wild & Free Behavior: first steps, what therapy looks like, visiting the cabin, and cost.",
   alternates: { canonical: "/faq" },
   openGraph: { url: "/faq" },
 };
@@ -21,9 +21,9 @@ export default function FaqPage() {
       <PageHeader
         trail={[{ name: "Questions", path: "/faq" }]}
         subtitle="questions"
-        title="What families ask"
+        title="What families ask about ABA therapy"
         layout="stacked"
-        intro={<p>Straight answers about getting started, insurance, therapy, and visiting. If yours isn&apos;t here, call us.</p>}
+        intro={<p>The questions parents ask us most, answered as plainly as we can. If yours isn&apos;t here, give us a call.</p>}
       />
 
       <div className="wrap grid gap-12 pb-20 md:grid-cols-12 md:gap-x-8 md:pb-28 lg:gap-x-12">

@@ -40,8 +40,8 @@ export default function Page() {
     <ArticleLayout slug={slug}>
       <p>
         If you&apos;re wondering whether your child has autism, or a doctor or teacher has raised the question, the next
-        step is a developmental evaluation. Here&apos;s how evaluations work in Mississippi and where families in North
-        Mississippi can look.
+        step is a developmental evaluation. This guide covers how evaluations work in Mississippi and where families in
+        North Mississippi can look.
       </p>
 
       <h2>Who can diagnose autism</h2>

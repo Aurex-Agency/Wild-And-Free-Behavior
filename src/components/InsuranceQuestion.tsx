@@ -10,7 +10,7 @@ export function InsuranceQuestion({ headingLevel = "h3" }: { headingLevel?: "h2"
     <div className="tone-paper relative rounded-[1.75rem] px-6 pb-8 pt-12 shadow-[0_40px_90px_-40px_rgb(0_0_0/0.7)] md:px-10 md:pb-10 md:pt-14">
       <SunMark className="absolute -top-6 left-7 h-12 w-20 text-sand md:left-10" />
       <p className="note text-[1.6rem] leading-[1.2] sm:text-[1.9rem] md:text-[2.1rem]">check your options</p>
-      <Heading className="mt-4 text-[1.5rem] font-bold leading-tight text-ink">How will you pay for services?</Heading>
+      <Heading className="mt-4 text-[1.5rem] font-bold leading-tight text-ink">How are you planning to pay?</Heading>
       <p className="mt-2 text-[0.9375rem] text-muted">
         Three short questions. Nothing is booked{intakeMode === "demo" ? ", and this preview doesn't send anything" : ""}.
       </p>

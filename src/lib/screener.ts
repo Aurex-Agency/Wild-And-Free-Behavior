@@ -1,6 +1,7 @@
-// Routing for the insurance and fit screener. Pure functions, no UI and no I/O,
+// Routing for the "find your next step" screener. Pure functions, no UI and no I/O,
 // so every branch is unit tested and the production intake can reuse it unchanged.
-// Nothing here ever rejects a family: uncertain cases route to staff review.
+// It asks about the child first and payment second. Nothing here ever rejects a
+// family: uncertain cases route to staff review.
 
 export type Payment =
   | "bcbs-ms"
@@ -46,15 +47,12 @@ export type Note =
 export type Result = { type: ResultType; notes: Note[] };
 
 export const TOTAL_STEPS = 3;
+export const FIRST_STEP: StepId = "child";
 
 export function stepNumber(step: StepId): 1 | 2 | 3 {
-  if (step === "payment" || step === "other-insurance") return 1;
-  if (step === "child") return 2;
+  if (step === "child") return 1;
+  if (step === "payment" || step === "other-insurance") return 2;
   return 3;
-}
-
-function skipsChildStep(a: Answers): boolean {
-  return a.payment === "other-insurance" && a.otherInsurance === "resources";
 }
 
 export function canContinue(step: StepId, a: Answers): boolean {
@@ -72,11 +70,11 @@ export function canContinue(step: StepId, a: Answers): boolean {
 
 export function nextStep(step: StepId, a: Answers): StepId {
   switch (step) {
-    case "payment":
-      return a.payment === "other-insurance" ? "other-insurance" : "child";
-    case "other-insurance":
-      return skipsChildStep(a) ? "result" : "child";
     case "child":
+      return "payment";
+    case "payment":
+      return a.payment === "other-insurance" ? "other-insurance" : "result";
+    case "other-insurance":
       return "result";
     case "result":
       return "contact";
@@ -88,15 +86,14 @@ export function nextStep(step: StepId, a: Answers): StepId {
 
 export function prevStep(step: StepId, a: Answers): StepId | null {
   switch (step) {
-    case "payment":
+    case "child":
       return null;
+    case "payment":
+      return "child";
     case "other-insurance":
       return "payment";
-    case "child":
-      return a.payment === "other-insurance" ? "other-insurance" : "payment";
     case "result":
-      if (skipsChildStep(a)) return "other-insurance";
-      return "child";
+      return a.payment === "other-insurance" ? "other-insurance" : "payment";
     case "contact":
       return "result";
     case "done":
