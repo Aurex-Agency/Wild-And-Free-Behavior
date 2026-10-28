@@ -12,8 +12,8 @@ const facts = ["Led by a BCBA", "Free first conversation", "403 Doctors Drive"];
 
 /**
  * Golden hour at the cabin. The logo's arch is a window onto a day at the practice: the
- * garden, then the pine-walled room, then the morning check-in board, crossfading slowly
- * (desktop only, see .hero-cycle). The cabin itself sits in front of the arch. The headline
+ * garden, then Anna Claire on the porch, then the play room, crossfading slowly (desktop
+ * only, see .hero-cycle). The cabin itself sits in front of the arch. The headline
  * is set like the logo (script over spaced capitals). The entrance runs in CSS so it starts
  * before hydration and never delays the content.
  */
@@ -41,8 +41,8 @@ export function Hero() {
                     imgClassName="settle"
                   />
                   <div aria-hidden="true" className="hero-cycle hidden md:block">
-                    <Photo image="toddler" alt="" sizes="(min-width: 96rem) 32rem, 28rem" className="absolute inset-0" />
-                    <Photo image="routines" alt="" sizes="(min-width: 96rem) 32rem, 28rem" className="absolute inset-0" />
+                    <Photo image="heroPorch" alt="" sizes="(min-width: 96rem) 32rem, 28rem" className="absolute inset-0" />
+                    <Photo image="playroom" alt="" sizes="(min-width: 96rem) 32rem, 28rem" className="absolute inset-0" />
                   </div>
                 </Parallax>
               </div>
@@ -79,15 +79,15 @@ export function Hero() {
             </span>
           </h1>
           <p className="fade-in mt-3 max-w-[34rem] text-[1rem] text-body md:mt-5 md:text-[1.125rem]" style={d(800)}>
-            We&apos;re a small practice in a log cabin on Doctors Drive, run by Board Certified Behavior Analyst Anna
-            Claire Waldrop.
+            Anna Claire and Jimbo Waldrop run a small practice out of a log cabin on Doctors Drive, in the town where
+            they grew up.
             {/* Phones keep the button in the first screen; the facts row repeats this below it. */}
-            <span className="hidden sm:inline"> Your first conversation with Anna Claire and Jimbo is free.</span>
+            <span className="hidden sm:inline"> Anna Claire is a Board Certified Behavior Analyst. Your first conversation with them is free.</span>
           </p>
           <div id="hero-actions" className="fade-in mt-5 flex flex-wrap items-center gap-3 md:mt-8" style={d(950)}>
             <ScreenerTrigger className="btn btn-primary">Find your next step</ScreenerTrigger>
-            <Link href="/about" className="btn btn-ghost">
-              Meet the team
+            <Link href="/about#our-story" className="btn btn-ghost">
+              Our story
             </Link>
           </div>
           <ul className="fade-in mt-7 flex flex-wrap gap-x-6 gap-y-2.5 text-[0.95rem] font-semibold text-ink/85 md:mt-9" style={d(1100)}>

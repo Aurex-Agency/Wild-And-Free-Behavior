@@ -10,7 +10,7 @@ import { pickFaqs } from "@/content/faqs";
 export const metadata: Metadata = {
   title: "ABA Therapy for Young Children in New Albany, MS",
   description:
-    "ABA therapy for young children with autism in New Albany, MS. What sessions work on, how our BCBA builds each plan, and what the cabin is like inside.",
+    "ABA therapy for young children with autism in New Albany, MS. Anna Claire, our BCBA, writes each child's plan, and sessions happen in a log cabin on Doctors Drive.",
   alternates: { canonical: "/aba-therapy" },
   openGraph: { url: "/aba-therapy" },
 };
@@ -42,8 +42,8 @@ const areas: { title: string; body: string; image: ImageKey }[] = [
 
 const inside: { image: ImageKey; caption: string; aspect: string }[] = [
   { image: "windowRoom", caption: "A table by the window", aspect: "aspect-[1.3]" },
-  { image: "tableWork", caption: "Work time at a small table", aspect: "aspect-[1.3]" },
-  { image: "wallScript", caption: "Our name on the pine wall", aspect: "aspect-[1.3]" },
+  { image: "circleTime", caption: "Circle time with Anna Claire", aspect: "aspect-[1.3]" },
+  { image: "playroomWide", caption: "The play room", aspect: "aspect-[1.3]" },
 ];
 
 export default function AbaTherapyPage() {
@@ -57,7 +57,7 @@ export default function AbaTherapyPage() {
           <p>
             Applied behavior analysis, or ABA, teaches everyday skills one small step at a time, building on what
             already works for your child. At Wild &amp; Free Behavior in New Albany, every plan is written by a Board
-            Certified Behavior Analyst, and we work out of a log cabin on Doctors Drive.
+            Certified Behavior Analyst. We work out of a log cabin on Doctors Drive.
           </p>
         }
         aside={
@@ -133,8 +133,8 @@ export default function AbaTherapyPage() {
             Inside the cabin
           </SectionHeading>
           <p className="mt-5 max-w-[36rem]">
-            The rooms are pine-paneled, with cushions on the floor, low tables for work time, and a check-in board on the
-            wall. Outside, there&apos;s the big front porch and a garden.
+            The rooms are paneled in pine, with cushions on the floor, low tables for work time, a circle time board, and
+            a play room with a little teepee. Outside, there&apos;s the big front porch and a garden.
           </p>
           <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-[1.1fr_0.9fr_1fr] lg:items-end">
             {inside.map((p, i) => (
@@ -166,8 +166,8 @@ export default function AbaTherapyPage() {
             <p className="mt-5">
               We look at progress often and update the plan when your child meets a goal or when something isn&apos;t
               working. If insurance covers your child&apos;s therapy, there&apos;s also a reassessment along the way
-              (about every six months with BCBS of Mississippi), and that&apos;s a good time to step back and look at the
-              bigger picture.{" "}
+              (about every six months with BCBS of Mississippi), and that&apos;s a good time to talk about how things
+              are going overall.{" "}
               <Link href="/resources/does-bcbs-of-mississippi-cover-aba-therapy" className="link">
                 How BCBS of Mississippi handles ABA
               </Link>

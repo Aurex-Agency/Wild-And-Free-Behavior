@@ -77,7 +77,7 @@ export const faqGroups: FaqGroup[] = [
       {
         id: "first-visit",
         q: "How can we help our child get ready for the first visit?",
-        a: "Some children do better when they've seen a place before they go. We made a printable picture story of the cabin you can look at together.",
+        a: "Some kids do better when they've seen a place before they go. We took pictures of the cabin and the rooms inside for you to look at together, and you can print them.",
         link: { href: "/resources/your-first-visit", label: "Your first visit to the cabin" },
       },
     ],

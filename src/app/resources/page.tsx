@@ -6,7 +6,7 @@ import { GuidesList } from "@/components/GuidesList";
 export const metadata: Metadata = {
   title: "Autism and ABA Resources for North Mississippi Families",
   description:
-    "Guides for North Mississippi families from our team in New Albany: what to do after an autism diagnosis, finding an evaluation, ABA and BCBS, and a first visit.",
+    "Guides for North Mississippi families, written by our team in New Albany, on what to do after an autism diagnosis, finding an evaluation, ABA and BCBS, and the first visit.",
   alternates: { canonical: "/resources" },
   openGraph: { url: "/resources" },
 };

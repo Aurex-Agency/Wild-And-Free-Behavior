@@ -6,6 +6,7 @@ import { site } from "@/config/site";
 export const ids = {
   clinic: `${site.url}/#clinic`,
   owner: `${site.url}/about#anna-claire-waldrop`,
+  partner: `${site.url}/about#jimbo-waldrop`,
   website: `${site.url}/#website`,
 };
 
@@ -45,10 +46,24 @@ export function ownerNode() {
     name: site.owner.name,
     jobTitle: site.owner.role,
     worksFor: { "@id": ids.clinic },
+    image: `${site.url}/images/portraitAnnaClaire-desktop-620.webp`,
+    spouse: { "@id": ids.partner },
     hasCredential: [
       { "@type": "EducationalOccupationalCredential", name: "Board Certified Behavior Analyst (BCBA)" },
       { "@type": "EducationalOccupationalCredential", name: "Mississippi Licensed Behavior Analyst (LBA)" },
     ],
+  };
+}
+
+export function partnerNode() {
+  return {
+    "@type": "Person",
+    "@id": ids.partner,
+    name: site.partner.name,
+    worksFor: { "@id": ids.clinic },
+    image: `${site.url}/images/portraitJimbo-desktop-620.webp`,
+    spouse: { "@id": ids.owner },
+    alumniOf: { "@type": "CollegeOrUniversity", name: "Delta State University" },
   };
 }
 

@@ -58,6 +58,21 @@ Kalob's feedback on the redesign, and what changed:
 
 **Working-copy warning:** this project lives in an iCloud-synced Desktop folder. iCloud creates conflict copies named `* 2`, `* 3` (including inside `.next`), which break typechecking and once got committed. Three such screenshots were merged into `main` with PR #1, and this branch removes them. Move the repo out of iCloud, for example to `~/Code`, or exclude it from sync.
 
+## Round 3 (2026-10-28): people, their story, photos
+
+Kalob's feedback after merging round 2, and what changed:
+
+- **People on the site.** Only Anna Claire and Jimbo appear, by name. Kalob confirmed Jimbo is the man in the floral shirt.
+  - Two former staff members (the redhead in the blue outfit and the blonde with glasses) are never to appear. They were on the porch and in the doorway of both cabin photos, and both photos were replaced with fall shots from the January 2025 shoot.
+  - The two other current team members (the brunette and the blond man in the black polo) also stay off the site, at Kalob's request. Their portraits and the brunette's two garden photos were removed, including the hero's lead image.
+  - Anna Claire and Jimbo's daughters appear in several photos but are never mentioned or named.
+  - Photos where a child's name can be read (cubby hooks, a basket) are never used.
+- **Their story.** About has a new "Our story" section built from 2017 coverage (TODAY, Shepherd Center, United Spinal) and the practice's earlier website. The accident gets one careful sentence, with no injury details, as Kalob asked. Both bios now name Jimbo, with his degrees and teaching years. Merging the PR means Anna Claire and Jimbo approved it.
+- **Homepage.** The team section is now "Anna Claire and Jimbo", with their portraits, their names, and a short version of the story. The hero's second button is "Our story". The arch now fades from the garden to Anna Claire on the porch to the play room.
+- **New photos** from both Drive folders: Anna Claire's portrait, Anna Claire on the porch with a child, the two of them inside the cabin, circle time, Jimbo with picture cards, the play room, the book ledge, instruments at circle time, and the cabin in the fall. Originals were downloaded at full size into `../homepage-mockup/assets` and run through `npm run images`.
+- **"Your first visit" rewrite.** It used to be written in the child's voice ("I will look for a big stone sign"). It now opens with a short note from Anna Claire and Jimbo. The captions are written for a parent to read aloud, and each one describes only what its photo shows. It has a new subtitle and description and is still printable.
+- **Structured data.** Jimbo is a Person node with a link to Anna Claire as his spouse.
+
 ## Run it
 
 ```
@@ -141,7 +156,7 @@ With Cache Components on (the create-next-app default, and slated to become stan
 - `/getting-started` step text, especially the approval wording and "What helps".
 - `/insurance` BCBS steps ("We check your benefits", the approval sequence).
 - `/about`: "oversees each child's assessment and treatment plan", the credential dates (December 2020 and March 2021, from the earlier website), and "What you can count on".
-- All four guides. The picture story is written for children, so check the wording.
+- All four guides. "Your first visit" is written for parents to read aloud, so check the wording.
 - FAQ answers and screener copy (`src/components/screener/copy.ts`).
 
 **Legal review:** `/privacy` (written to match how the site behaves, including the HighLevel BAA requirement) and `/accessibility`.
@@ -153,8 +168,8 @@ With Cache Components on (the create-next-app default, and slated to become stan
 | Item | Status |
 |---|---|
 | Ages served and the "but..." exception | Copy says "young children". Screener routes under 2 and 7+ to staff. |
-| Jimbo's full name, role, credentials | First name only, everywhere |
-| Who is in each portrait | Captions are group-level only |
+| Jimbo's job title | None given. He is named as Jimbo Waldrop with his degrees and teaching years. |
+| Who is in each portrait | Resolved: Anna Claire and Jimbo are named. Other staff are not on the site. |
 | Medicaid / CHIP acceptance | Routes to staff review |
 | Hours | Hidden until `site.hours` is set |
 | Garden used in sessions | Described as "a garden" outside, nothing more |
@@ -176,6 +191,7 @@ With Cache Components on (the create-next-app default, and slated to become stan
 
 ## Verification (evidence)
 
+- Round 3 re-run: unit tests 26 of 26, screener 38 of 38, navigation 12 of 12, soft-navigation audit 13 of 13, header 2 state changes per downward read, every reveal fires (the one unshown element at 390 is a desktop-only block), and no overflow or console errors on Home, About, and "Your first visit" at 1440 and 390. `review/` was recaptured so it no longer shows anyone who must stay off the site.
 - Unit tests: 26 of 26 pass. Typecheck and ESLint are clean. Production build: 21 static routes.
 - Screener, demo build: 38 of 38 checks (child step first, payment second; the Insurance page's inline question opens on the child step with payment kept). Every branch, keyboard, Escape and focus return, back, restart, inline preselect, no requests, no storage, no errors. The 390×844 first screen shows the CTA (bottom at 799px).
 - Live intake build: 17 of 17. Validation and `aria-invalid`, nothing sent while invalid, 500 shows a recoverable error that keeps answers, retry succeeds, payload shape, no CSP violations, events carry no personal or health details.
@@ -184,15 +200,17 @@ With Cache Components on (the create-next-app default, and slated to become stan
 - Routes: all 14 pages return 200, unknown paths 404, legacy URLs 301. Security headers present.
 - Structured data parses on every page tested.
 - Full-page screenshots at 1440 and 390 for every page: no horizontal overflow, no console errors. The `review/` full pages are captured with reduced motion so the pinned arch section reads as a still photo. `desktop-home-arch-sequence.jpg` shows the arch opening.
-- Lighthouse mobile, production build, after round 2 (homepage run three times):
+- Lighthouse mobile, production build, after round 3:
 
 | Page | Performance | Accessibility | Best Practices |
 |---|---|---|---|
-| Home | 91, 89, 90 | 100 | 100 |
+| Home | 91 | 100 | 100 |
 | ABA Therapy | 93 | 100 | 100 |
-| Getting Started | 94 | 100 | 100 |
 | About | 92 | 100 | 100 |
-| Visit | 92 | 100 | 100 |
+| Your first visit | 92 | 100 | 100 |
+| Visit | 91 | 100 | 100 |
+
+  - Round 2 for comparison: Home 91, 89, 90; ABA Therapy 93; Getting Started 94; About 92; Visit 92.
 
   - Desktop scores 100 for Performance, Accessibility, and Best Practices.
   - Observed LCP on the homepage is under 0.9s. The mobile figure is Lighthouse's simulated slow-4G estimate.

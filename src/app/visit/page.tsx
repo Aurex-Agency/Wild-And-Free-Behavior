@@ -124,16 +124,16 @@ export default function VisitPage() {
               Before the first visit
             </SectionHeading>
             <p className="mt-6">
-              New places can be hard. We made a printable picture story of the sign, the cabin, and the rooms, so your child
-              can see where they&apos;re going before you come.
+              New places can be hard. We took pictures of the sign, the cabin, and the rooms inside, so your child can see
+              where they&apos;re going before you come. Look at them together, or print them out.
             </p>
             <Link href="/resources/your-first-visit" className="btn btn-ghost mt-7">
-              See the picture story
+              See the pictures
             </Link>
           </div>
           <div className="md:col-span-7">
             <div className="aspect-[1.5] overflow-hidden">
-              <Photo image="sign" sizes="(min-width: 48rem) 55vw, 100vw" />
+              <Photo image="playroomWide" sizes="(min-width: 48rem) 55vw, 100vw" />
             </div>
           </div>
         </div>

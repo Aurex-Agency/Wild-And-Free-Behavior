@@ -1,13 +1,13 @@
 {
   "heroGarden": {
-    "alt": "A woman shows two young children the tall corn growing in raised garden bags",
-    "source": "IMG_9484.JPG",
+    "alt": "Three young children walk between the garden beds on a summer day",
+    "source": "IMG_9476.JPG",
     "variants": {
       "desktop": {
-        "width": 3901,
-        "height": 4875,
-        "aspect": 0.8002,
-        "focus": "40% 30%",
+        "width": 4000,
+        "height": 4998,
+        "aspect": 0.8003,
+        "focus": "50% 60%",
         "files": [
           {
             "w": 560,
@@ -23,15 +23,91 @@
           },
           {
             "w": 1100,
-            "h": 1375,
+            "h": 1374,
             "avif": "/images/heroGarden-desktop-1100.avif",
             "webp": "/images/heroGarden-desktop-1100.webp"
           },
           {
             "w": 1400,
-            "h": 1750,
+            "h": 1749,
             "avif": "/images/heroGarden-desktop-1400.avif",
             "webp": "/images/heroGarden-desktop-1400.webp"
+          }
+        ]
+      }
+    }
+  },
+  "heroPorch": {
+    "alt": "Anna Claire smiles at a little girl in a white dress on the cabin porch",
+    "source": "IMG_9498.JPG",
+    "variants": {
+      "desktop": {
+        "width": 3513,
+        "height": 4389,
+        "aspect": 0.8004,
+        "focus": "55% 55%",
+        "files": [
+          {
+            "w": 560,
+            "h": 700,
+            "avif": "/images/heroPorch-desktop-560.avif",
+            "webp": "/images/heroPorch-desktop-560.webp"
+          },
+          {
+            "w": 800,
+            "h": 999,
+            "avif": "/images/heroPorch-desktop-800.avif",
+            "webp": "/images/heroPorch-desktop-800.webp"
+          },
+          {
+            "w": 1100,
+            "h": 1374,
+            "avif": "/images/heroPorch-desktop-1100.avif",
+            "webp": "/images/heroPorch-desktop-1100.webp"
+          },
+          {
+            "w": 1400,
+            "h": 1749,
+            "avif": "/images/heroPorch-desktop-1400.avif",
+            "webp": "/images/heroPorch-desktop-1400.webp"
+          }
+        ]
+      }
+    }
+  },
+  "playroom": {
+    "alt": "A play room with a white teepee, a forest mural, and toys spread across the rug",
+    "source": "DSC04231.jpg",
+    "variants": {
+      "desktop": {
+        "width": 2481,
+        "height": 3095,
+        "aspect": 0.8016,
+        "focus": "50% 50%",
+        "files": [
+          {
+            "w": 560,
+            "h": 699,
+            "avif": "/images/playroom-desktop-560.avif",
+            "webp": "/images/playroom-desktop-560.webp"
+          },
+          {
+            "w": 800,
+            "h": 998,
+            "avif": "/images/playroom-desktop-800.avif",
+            "webp": "/images/playroom-desktop-800.webp"
+          },
+          {
+            "w": 1100,
+            "h": 1372,
+            "avif": "/images/playroom-desktop-1100.avif",
+            "webp": "/images/playroom-desktop-1100.webp"
+          },
+          {
+            "w": 1400,
+            "h": 1746,
+            "avif": "/images/playroom-desktop-1400.avif",
+            "webp": "/images/playroom-desktop-1400.webp"
           }
         ]
       }
@@ -82,13 +158,13 @@
     }
   },
   "cabin": {
-    "alt": "The Wild & Free Behavior log cabin on Doctors Drive, with its porch, arched window, and stone sign",
-    "source": "IMG_9473.JPG",
+    "alt": "The Wild & Free Behavior log cabin and stone sign on Doctors Drive in the fall",
+    "source": "DSC04175.jpg",
     "variants": {
       "desktop": {
-        "width": 4000,
-        "height": 2430,
-        "aspect": 1.6461,
+        "width": 4046,
+        "height": 2459,
+        "aspect": 1.6454,
         "focus": "50% 60%",
         "files": [
           {
@@ -111,45 +187,45 @@
           },
           {
             "w": 2000,
-            "h": 1215,
+            "h": 1216,
             "avif": "/images/cabin-desktop-2000.avif",
             "webp": "/images/cabin-desktop-2000.webp"
           }
         ]
       },
       "mobile": {
-        "width": 4000,
-        "height": 3600,
-        "aspect": 1.1111,
-        "focus": "50% 50%",
+        "width": 2994,
+        "height": 2702,
+        "aspect": 1.1081,
+        "focus": "50% 55%",
         "files": [
           {
             "w": 400,
-            "h": 360,
+            "h": 361,
             "avif": "/images/cabin-mobile-400.avif",
             "webp": "/images/cabin-mobile-400.webp"
           },
           {
             "w": 520,
-            "h": 468,
+            "h": 469,
             "avif": "/images/cabin-mobile-520.avif",
             "webp": "/images/cabin-mobile-520.webp"
           },
           {
             "w": 680,
-            "h": 612,
+            "h": 614,
             "avif": "/images/cabin-mobile-680.avif",
             "webp": "/images/cabin-mobile-680.webp"
           },
           {
             "w": 820,
-            "h": 738,
+            "h": 740,
             "avif": "/images/cabin-mobile-820.avif",
             "webp": "/images/cabin-mobile-820.webp"
           },
           {
             "w": 1000,
-            "h": 900,
+            "h": 902,
             "avif": "/images/cabin-mobile-1000.avif",
             "webp": "/images/cabin-mobile-1000.webp"
           }
@@ -304,7 +380,7 @@
     }
   },
   "routines": {
-    "alt": "Three children sit on floor cushions in front of a morning check-in board on the pine wall",
+    "alt": "Three children sit on floor cushions under an \"I'm here today\" song and a weather chart",
     "source": "IMG_9513.JPG",
     "variants": {
       "desktop": {
@@ -380,18 +456,18 @@
     }
   },
   "learning": {
-    "alt": "A woman points out a seedling to a boy in the garden",
-    "source": "IMG_9485.JPG",
+    "alt": "Jimbo sorts picture cards at a table with three young children",
+    "source": "DSC04212.jpg",
     "variants": {
       "desktop": {
-        "width": 5881,
-        "height": 3294,
-        "aspect": 1.7854,
+        "width": 4240,
+        "height": 2379,
+        "aspect": 1.7823,
         "focus": "55% 45%",
         "files": [
           {
             "w": 600,
-            "h": 336,
+            "h": 337,
             "avif": "/images/learning-desktop-600.avif",
             "webp": "/images/learning-desktop-600.webp"
           },
@@ -403,19 +479,19 @@
           },
           {
             "w": 960,
-            "h": 538,
+            "h": 539,
             "avif": "/images/learning-desktop-960.avif",
             "webp": "/images/learning-desktop-960.webp"
           },
           {
             "w": 1300,
-            "h": 728,
+            "h": 729,
             "avif": "/images/learning-desktop-1300.avif",
             "webp": "/images/learning-desktop-1300.webp"
           },
           {
             "w": 1700,
-            "h": 952,
+            "h": 954,
             "avif": "/images/learning-desktop-1700.avif",
             "webp": "/images/learning-desktop-1700.webp"
           }
@@ -424,7 +500,7 @@
     }
   },
   "tableWork": {
-    "alt": "A man sits at a small table with two children working on worksheets",
+    "alt": "Jimbo sits at a small table with two children working on worksheets",
     "source": "IMG_9541.JPG",
     "variants": {
       "desktop": {
@@ -493,96 +569,52 @@
       }
     }
   },
-  "portraitA": {
-    "alt": "A smiling team member seated in a rocking chair on the cabin porch",
-    "source": "IMG_9454.JPG",
+  "portraitAnnaClaire": {
+    "alt": "Anna Claire Waldrop on the cabin porch",
+    "source": "IMG_9458.JPG",
     "variants": {
       "desktop": {
-        "width": 3393,
-        "height": 4239,
-        "aspect": 0.8004,
-        "focus": "50% 30%",
-        "files": [
-          {
-            "w": 360,
-            "h": 450,
-            "avif": "/images/portraitA-desktop-360.avif",
-            "webp": "/images/portraitA-desktop-360.webp"
-          },
-          {
-            "w": 480,
-            "h": 600,
-            "avif": "/images/portraitA-desktop-480.avif",
-            "webp": "/images/portraitA-desktop-480.webp"
-          },
-          {
-            "w": 620,
-            "h": 775,
-            "avif": "/images/portraitA-desktop-620.avif",
-            "webp": "/images/portraitA-desktop-620.webp"
-          },
-          {
-            "w": 760,
-            "h": 949,
-            "avif": "/images/portraitA-desktop-760.avif",
-            "webp": "/images/portraitA-desktop-760.webp"
-          },
-          {
-            "w": 960,
-            "h": 1199,
-            "avif": "/images/portraitA-desktop-960.avif",
-            "webp": "/images/portraitA-desktop-960.webp"
-          }
-        ]
-      }
-    }
-  },
-  "portraitB": {
-    "alt": "A team member in a black shirt seated on the cabin porch",
-    "source": "IMG_9457.JPG",
-    "variants": {
-      "desktop": {
-        "width": 4000,
-        "height": 4998,
+        "width": 3623,
+        "height": 4527,
         "aspect": 0.8003,
         "focus": "50% 30%",
         "files": [
           {
             "w": 360,
             "h": 450,
-            "avif": "/images/portraitB-desktop-360.avif",
-            "webp": "/images/portraitB-desktop-360.webp"
+            "avif": "/images/portraitAnnaClaire-desktop-360.avif",
+            "webp": "/images/portraitAnnaClaire-desktop-360.webp"
           },
           {
             "w": 480,
             "h": 600,
-            "avif": "/images/portraitB-desktop-480.avif",
-            "webp": "/images/portraitB-desktop-480.webp"
+            "avif": "/images/portraitAnnaClaire-desktop-480.avif",
+            "webp": "/images/portraitAnnaClaire-desktop-480.webp"
           },
           {
             "w": 620,
             "h": 775,
-            "avif": "/images/portraitB-desktop-620.avif",
-            "webp": "/images/portraitB-desktop-620.webp"
+            "avif": "/images/portraitAnnaClaire-desktop-620.avif",
+            "webp": "/images/portraitAnnaClaire-desktop-620.webp"
           },
           {
             "w": 760,
             "h": 950,
-            "avif": "/images/portraitB-desktop-760.avif",
-            "webp": "/images/portraitB-desktop-760.webp"
+            "avif": "/images/portraitAnnaClaire-desktop-760.avif",
+            "webp": "/images/portraitAnnaClaire-desktop-760.webp"
           },
           {
             "w": 960,
             "h": 1200,
-            "avif": "/images/portraitB-desktop-960.avif",
-            "webp": "/images/portraitB-desktop-960.webp"
+            "avif": "/images/portraitAnnaClaire-desktop-960.avif",
+            "webp": "/images/portraitAnnaClaire-desktop-960.webp"
           }
         ]
       }
     }
   },
-  "portraitC": {
-    "alt": "A team member in a bright floral shirt seated on the cabin porch",
+  "portraitJimbo": {
+    "alt": "Jimbo Waldrop on the cabin porch",
     "source": "IMG_9460.JPG",
     "variants": {
       "desktop": {
@@ -594,102 +626,32 @@
           {
             "w": 360,
             "h": 450,
-            "avif": "/images/portraitC-desktop-360.avif",
-            "webp": "/images/portraitC-desktop-360.webp"
+            "avif": "/images/portraitJimbo-desktop-360.avif",
+            "webp": "/images/portraitJimbo-desktop-360.webp"
           },
           {
             "w": 480,
             "h": 600,
-            "avif": "/images/portraitC-desktop-480.avif",
-            "webp": "/images/portraitC-desktop-480.webp"
+            "avif": "/images/portraitJimbo-desktop-480.avif",
+            "webp": "/images/portraitJimbo-desktop-480.webp"
           },
           {
             "w": 620,
             "h": 775,
-            "avif": "/images/portraitC-desktop-620.avif",
-            "webp": "/images/portraitC-desktop-620.webp"
+            "avif": "/images/portraitJimbo-desktop-620.avif",
+            "webp": "/images/portraitJimbo-desktop-620.webp"
           },
           {
             "w": 760,
             "h": 950,
-            "avif": "/images/portraitC-desktop-760.avif",
-            "webp": "/images/portraitC-desktop-760.webp"
+            "avif": "/images/portraitJimbo-desktop-760.avif",
+            "webp": "/images/portraitJimbo-desktop-760.webp"
           },
           {
             "w": 960,
             "h": 1200,
-            "avif": "/images/portraitC-desktop-960.avif",
-            "webp": "/images/portraitC-desktop-960.webp"
-          }
-        ]
-      }
-    }
-  },
-  "wallScript": {
-    "alt": "Wild & Free Behavior lettering on a pine wall inside the cabin",
-    "source": "IMG_9554.JPG",
-    "variants": {
-      "desktop": {
-        "width": 5852,
-        "height": 1951,
-        "aspect": 2.9995,
-        "focus": "50% 50%",
-        "files": [
-          {
-            "w": 800,
-            "h": 267,
-            "avif": "/images/wallScript-desktop-800.avif",
-            "webp": "/images/wallScript-desktop-800.webp"
-          },
-          {
-            "w": 1200,
-            "h": 400,
-            "avif": "/images/wallScript-desktop-1200.avif",
-            "webp": "/images/wallScript-desktop-1200.webp"
-          },
-          {
-            "w": 1600,
-            "h": 533,
-            "avif": "/images/wallScript-desktop-1600.avif",
-            "webp": "/images/wallScript-desktop-1600.webp"
-          },
-          {
-            "w": 2000,
-            "h": 667,
-            "avif": "/images/wallScript-desktop-2000.avif",
-            "webp": "/images/wallScript-desktop-2000.webp"
-          }
-        ]
-      },
-      "mobile": {
-        "width": 5384,
-        "height": 2575,
-        "aspect": 2.0909,
-        "focus": "50% 50%",
-        "files": [
-          {
-            "w": 400,
-            "h": 191,
-            "avif": "/images/wallScript-mobile-400.avif",
-            "webp": "/images/wallScript-mobile-400.webp"
-          },
-          {
-            "w": 520,
-            "h": 249,
-            "avif": "/images/wallScript-mobile-520.avif",
-            "webp": "/images/wallScript-mobile-520.webp"
-          },
-          {
-            "w": 680,
-            "h": 325,
-            "avif": "/images/wallScript-mobile-680.avif",
-            "webp": "/images/wallScript-mobile-680.webp"
-          },
-          {
-            "w": 820,
-            "h": 392,
-            "avif": "/images/wallScript-mobile-820.avif",
-            "webp": "/images/wallScript-mobile-820.webp"
+            "avif": "/images/portraitJimbo-desktop-960.avif",
+            "webp": "/images/portraitJimbo-desktop-960.webp"
           }
         ]
       }
@@ -772,13 +734,13 @@
     }
   },
   "cabinPortrait": {
-    "alt": "The log cabin and the stone sign for Wild & Free Behavior on Doctors Drive",
-    "source": "IMG_9475.JPG",
+    "alt": "The log cabin and stone sign at 403 Doctors Drive, with fall leaves behind it",
+    "source": "DSC04164.jpg",
     "variants": {
       "desktop": {
-        "width": 3835,
-        "height": 5753,
-        "aspect": 0.6666,
+        "width": 2639,
+        "height": 3958,
+        "aspect": 0.6668,
         "focus": "50% 50%",
         "files": [
           {
@@ -810,7 +772,7 @@
     }
   },
   "porchFamily": {
-    "alt": "A family with two young children smiling together on the cabin porch",
+    "alt": "Anna Claire and Jimbo on the cabin porch with two little girls",
     "source": "IMG_9467.JPG",
     "variants": {
       "desktop": {
@@ -842,6 +804,310 @@
             "h": 1499,
             "avif": "/images/porchFamily-desktop-1200.avif",
             "webp": "/images/porchFamily-desktop-1200.webp"
+          }
+        ]
+      }
+    }
+  },
+  "porchChild": {
+    "alt": "A little girl reaches up to show Anna Claire something on the porch",
+    "source": "IMG_9499.JPG",
+    "variants": {
+      "desktop": {
+        "width": 3151,
+        "height": 3937,
+        "aspect": 0.8004,
+        "focus": "45% 50%",
+        "files": [
+          {
+            "w": 360,
+            "h": 450,
+            "avif": "/images/porchChild-desktop-360.avif",
+            "webp": "/images/porchChild-desktop-360.webp"
+          },
+          {
+            "w": 480,
+            "h": 600,
+            "avif": "/images/porchChild-desktop-480.avif",
+            "webp": "/images/porchChild-desktop-480.webp"
+          },
+          {
+            "w": 620,
+            "h": 775,
+            "avif": "/images/porchChild-desktop-620.avif",
+            "webp": "/images/porchChild-desktop-620.webp"
+          },
+          {
+            "w": 760,
+            "h": 950,
+            "avif": "/images/porchChild-desktop-760.avif",
+            "webp": "/images/porchChild-desktop-760.webp"
+          },
+          {
+            "w": 960,
+            "h": 1199,
+            "avif": "/images/porchChild-desktop-960.avif",
+            "webp": "/images/porchChild-desktop-960.webp"
+          }
+        ]
+      }
+    }
+  },
+  "office": {
+    "alt": "Jimbo talks with Anna Claire at her desk inside the cabin",
+    "source": "IMG_9521.JPG",
+    "variants": {
+      "desktop": {
+        "width": 5871,
+        "height": 3914,
+        "aspect": 1.5,
+        "focus": "45% 50%",
+        "files": [
+          {
+            "w": 600,
+            "h": 400,
+            "avif": "/images/office-desktop-600.avif",
+            "webp": "/images/office-desktop-600.webp"
+          },
+          {
+            "w": 900,
+            "h": 600,
+            "avif": "/images/office-desktop-900.avif",
+            "webp": "/images/office-desktop-900.webp"
+          },
+          {
+            "w": 1200,
+            "h": 800,
+            "avif": "/images/office-desktop-1200.avif",
+            "webp": "/images/office-desktop-1200.webp"
+          },
+          {
+            "w": 1500,
+            "h": 1000,
+            "avif": "/images/office-desktop-1500.avif",
+            "webp": "/images/office-desktop-1500.webp"
+          }
+        ]
+      }
+    }
+  },
+  "circleTime": {
+    "alt": "Anna Claire leads circle time while a boy reaches up to the calendar board",
+    "source": "DSC04410.jpg",
+    "variants": {
+      "desktop": {
+        "width": 3643,
+        "height": 2433,
+        "aspect": 1.4973,
+        "focus": "50% 50%",
+        "files": [
+          {
+            "w": 600,
+            "h": 401,
+            "avif": "/images/circleTime-desktop-600.avif",
+            "webp": "/images/circleTime-desktop-600.webp"
+          },
+          {
+            "w": 760,
+            "h": 508,
+            "avif": "/images/circleTime-desktop-760.avif",
+            "webp": "/images/circleTime-desktop-760.webp"
+          },
+          {
+            "w": 960,
+            "h": 641,
+            "avif": "/images/circleTime-desktop-960.avif",
+            "webp": "/images/circleTime-desktop-960.webp"
+          },
+          {
+            "w": 1300,
+            "h": 868,
+            "avif": "/images/circleTime-desktop-1300.avif",
+            "webp": "/images/circleTime-desktop-1300.webp"
+          }
+        ]
+      }
+    }
+  },
+  "instruments": {
+    "alt": "Young children with a toy drum and a harmonica at circle time",
+    "source": "DSC04273.jpg",
+    "variants": {
+      "desktop": {
+        "width": 4240,
+        "height": 2832,
+        "aspect": 1.4972,
+        "focus": "50% 50%",
+        "files": [
+          {
+            "w": 600,
+            "h": 401,
+            "avif": "/images/instruments-desktop-600.avif",
+            "webp": "/images/instruments-desktop-600.webp"
+          },
+          {
+            "w": 760,
+            "h": 508,
+            "avif": "/images/instruments-desktop-760.avif",
+            "webp": "/images/instruments-desktop-760.webp"
+          },
+          {
+            "w": 960,
+            "h": 641,
+            "avif": "/images/instruments-desktop-960.avif",
+            "webp": "/images/instruments-desktop-960.webp"
+          },
+          {
+            "w": 1300,
+            "h": 868,
+            "avif": "/images/instruments-desktop-1300.avif",
+            "webp": "/images/instruments-desktop-1300.webp"
+          }
+        ]
+      }
+    }
+  },
+  "books": {
+    "alt": "Picture books lined up on a wooden ledge along the pine wall",
+    "source": "DSC04177.jpg",
+    "variants": {
+      "desktop": {
+        "width": 2832,
+        "height": 3532,
+        "aspect": 0.8018,
+        "focus": "50% 50%",
+        "files": [
+          {
+            "w": 500,
+            "h": 624,
+            "avif": "/images/books-desktop-500.avif",
+            "webp": "/images/books-desktop-500.webp"
+          },
+          {
+            "w": 700,
+            "h": 873,
+            "avif": "/images/books-desktop-700.avif",
+            "webp": "/images/books-desktop-700.webp"
+          },
+          {
+            "w": 900,
+            "h": 1122,
+            "avif": "/images/books-desktop-900.avif",
+            "webp": "/images/books-desktop-900.webp"
+          },
+          {
+            "w": 1200,
+            "h": 1497,
+            "avif": "/images/books-desktop-1200.avif",
+            "webp": "/images/books-desktop-1200.webp"
+          }
+        ]
+      }
+    }
+  },
+  "wallScript": {
+    "alt": "Wild & Free Behavior lettering on a pine wall inside the cabin",
+    "source": "IMG_9554.JPG",
+    "variants": {
+      "desktop": {
+        "width": 5852,
+        "height": 1951,
+        "aspect": 2.9995,
+        "focus": "50% 50%",
+        "files": [
+          {
+            "w": 800,
+            "h": 267,
+            "avif": "/images/wallScript-desktop-800.avif",
+            "webp": "/images/wallScript-desktop-800.webp"
+          },
+          {
+            "w": 1200,
+            "h": 400,
+            "avif": "/images/wallScript-desktop-1200.avif",
+            "webp": "/images/wallScript-desktop-1200.webp"
+          },
+          {
+            "w": 1600,
+            "h": 533,
+            "avif": "/images/wallScript-desktop-1600.avif",
+            "webp": "/images/wallScript-desktop-1600.webp"
+          },
+          {
+            "w": 2000,
+            "h": 667,
+            "avif": "/images/wallScript-desktop-2000.avif",
+            "webp": "/images/wallScript-desktop-2000.webp"
+          }
+        ]
+      },
+      "mobile": {
+        "width": 5384,
+        "height": 2575,
+        "aspect": 2.0909,
+        "focus": "50% 50%",
+        "files": [
+          {
+            "w": 400,
+            "h": 191,
+            "avif": "/images/wallScript-mobile-400.avif",
+            "webp": "/images/wallScript-mobile-400.webp"
+          },
+          {
+            "w": 520,
+            "h": 249,
+            "avif": "/images/wallScript-mobile-520.avif",
+            "webp": "/images/wallScript-mobile-520.webp"
+          },
+          {
+            "w": 680,
+            "h": 325,
+            "avif": "/images/wallScript-mobile-680.avif",
+            "webp": "/images/wallScript-mobile-680.webp"
+          },
+          {
+            "w": 820,
+            "h": 392,
+            "avif": "/images/wallScript-mobile-820.avif",
+            "webp": "/images/wallScript-mobile-820.webp"
+          }
+        ]
+      }
+    }
+  },
+  "playroomWide": {
+    "alt": "A play room with a white teepee, a forest mural, and toys spread across the rug",
+    "source": "DSC04231.jpg",
+    "variants": {
+      "desktop": {
+        "width": 2481,
+        "height": 1653,
+        "aspect": 1.5009,
+        "focus": "50% 50%",
+        "files": [
+          {
+            "w": 600,
+            "h": 400,
+            "avif": "/images/playroomWide-desktop-600.avif",
+            "webp": "/images/playroomWide-desktop-600.webp"
+          },
+          {
+            "w": 900,
+            "h": 600,
+            "avif": "/images/playroomWide-desktop-900.avif",
+            "webp": "/images/playroomWide-desktop-900.webp"
+          },
+          {
+            "w": 1200,
+            "h": 800,
+            "avif": "/images/playroomWide-desktop-1200.avif",
+            "webp": "/images/playroomWide-desktop-1200.webp"
+          },
+          {
+            "w": 1500,
+            "h": 999,
+            "avif": "/images/playroomWide-desktop-1500.avif",
+            "webp": "/images/playroomWide-desktop-1500.webp"
           }
         ]
       }

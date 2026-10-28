@@ -21,8 +21,7 @@ export function Rhythm() {
           <p className="subtitle">week by week</p>
           <p className="display display-xl mt-2 max-w-[14ch] text-beige">Steady weeks grow good days</p>
           <p className="lede mt-5 max-w-[34rem] text-beige/90">
-            The same days and times each week give your child something steady to build on, the way a garden does best
-            with regular care.
+            The same days and times each week give your child something steady to build on.
           </p>
         </div>
       </ArchExpand>
