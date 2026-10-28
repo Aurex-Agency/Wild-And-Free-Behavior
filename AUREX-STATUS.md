@@ -4,10 +4,10 @@
 
 **Project:** Wild & Free Behavior (ABA therapy, New Albany, MS)
 **Operating mode:** DEEP (new website)
-**Branch:** `refine/hero-copy-header`
-**PR/deployment:** Round 2 PR against `main` (PR #1 full build and PR #2 redesign are merged; Vercel builds previews); not deployed by Aurex
-**Stage:** Visual redesign complete, awaiting human visual approval; BCBA/legal review and launch prerequisites unchanged
-**Last updated:** 2026-10-27
+**Branch:** `story/people-and-photos`
+**PR/deployment:** Round 3 PR against `main` (PRs #1 to #3 are merged; Vercel builds previews); not deployed by Aurex
+**Stage:** Round 3 (people, story, photos) awaiting Kalob's review; BCBA/legal review and launch prerequisites unchanged
+**Last updated:** 2026-10-28
 
 ## Approved decisions
 
@@ -19,14 +19,17 @@
 
 ## Asset truth
 
-- authentic evidence approved for publication: all 18 client photos (waivers signed)
+- authentic evidence approved for publication: client photos from both Drive folders (waivers signed), except two former staff members, the two other current team members, and any photo where a child's name can be read. See "Round 3" in REVIEW-NOTES.md.
 - interface assets: traced wordmark, rebuilt logo SVGs, measured sun geometry, log-course rules, arch clip paths
 - fonts: Rovey (free release, letters only) + Gilda Display companion for numerals and punctuation; White Angelica; Raleway
-- unresolved identity questions: who is in each portrait; Jimbo's full name and role
+- identity: Anna Claire and Jimbo Waldrop are named on the site; Jimbo has no job title
 
 ## Most recent work
 
-**Task:** Round 2: header glitch, less insurance, tighter hero, human and SEO copy
+**Task:** Round 3: Anna Claire and Jimbo's story, people and photo cleanup, "Your first visit" rewrite, copy pass
+**Result (round 3):** only Anna Claire and Jimbo appear, by name; their story is on About; five photos showing people who must stay off the site were replaced; new photos from the January 2025 shoot; the first visit guide is rewritten for parents to read aloud. See "Round 3" in REVIEW-NOTES.md.
+
+**Round 2:** header glitch, less insurance, tighter hero, human and SEO copy
 **Result (round 2):** header no longer flickers while scrolling; insurance pulled out of the homepage, main nav, hero, and the screener's first step; hero rebuilt with a crossfading arch and the cabin; site copy rewritten. See "Round 2" in REVIEW-NOTES.md.
 
 **Previous round, result:**
@@ -68,7 +71,7 @@
 
 - HighLevel HIPAA add-on, BAA, inbound webhook, CORS check
 - BCBA review of clinical copy; legal review of privacy page
-- Ages, Jimbo's role, Medicaid/CHIP, hours
+- Ages, Medicaid/CHIP, hours
 
 ### Important
 
@@ -81,9 +84,9 @@
 
 ## Current human decision
 
-**Decision needed:** Approve the redesigned visual direction and motion.
-**Recommendation:** Review the Vercel preview of the redesign PR on a phone and a laptop (the motion only shows live), then approve or mark what to change.
-**Evidence to review:** the redesign PR's Vercel preview, `review/`, or `npm run dev`
+**Decision needed:** Review round 3 (people, story, photos) and merge when Anna Claire and Jimbo approve.
+**Recommendation:** Look over the round 3 PR's Vercel preview on a phone and a laptop, especially the homepage team section, About, and "Your first visit".
+**Evidence to review:** the round 3 PR's Vercel preview, `review/`, or `npm run dev`
 
 ## Next action
 

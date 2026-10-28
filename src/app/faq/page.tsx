@@ -8,7 +8,7 @@ import { graph } from "@/lib/schema";
 export const metadata: Metadata = {
   title: "Common Questions About ABA Therapy in New Albany, MS",
   description:
-    "Answers for parents in New Albany and Union County about ABA therapy at Wild & Free Behavior: first steps, what therapy looks like, visiting the cabin, and cost.",
+    "Straightforward answers for parents in New Albany and Union County about starting ABA therapy, what sessions look like, visiting the cabin, and what it costs.",
   alternates: { canonical: "/faq" },
   openGraph: { url: "/faq" },
 };

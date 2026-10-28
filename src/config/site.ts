@@ -51,8 +51,8 @@ export const site = {
     verified: false,
   },
 
-  // Named in the meeting notes. Last name, role, and credentials are not confirmed.
-  partner: { name: "Jimbo", role: null as string | null },
+  // Anna Claire's husband. He sits in on every first conversation; no job title has been given.
+  partner: { name: "Jimbo Waldrop", firstName: "Jimbo" },
 
   insurance: {
     primary: "Blue Cross & Blue Shield of Mississippi",

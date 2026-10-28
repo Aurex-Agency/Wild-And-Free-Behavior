@@ -44,7 +44,7 @@ export function Approach() {
           <Reveal className="md:col-span-5 md:self-end" delay={0.15}>
             <p className="lede">
               Before anything else, we assess your child and listen to you about what&apos;s hard at home right now.
-              The goals that come out of that often land in a few of these areas.
+              The goals we set together usually fall into a few of these areas.
             </p>
             <Link href="/aba-therapy" className="link mt-6 inline-block">
               How ABA therapy works at the cabin

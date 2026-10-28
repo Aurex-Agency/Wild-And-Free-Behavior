@@ -21,10 +21,34 @@ const manifestPath = path.join(root, "src/content/images.json");
 const specs = [
   {
     key: "heroGarden",
-    file: "IMG_9484.JPG",
-    alt: "A woman shows two young children the tall corn growing in raised garden bags",
+    file: "IMG_9476.JPG",
+    alt: "Three young children walk between the garden beds on a summer day",
     variants: {
-      desktop: { crop: [0, 0.07, 1, 0.833], widths: [560, 800, 1100, 1400], focus: "40% 30%" },
+      desktop: { crop: [0, 0.12, 1, 0.833], widths: [560, 800, 1100, 1400], focus: "50% 60%" },
+    },
+  },
+  {
+    key: "heroPorch",
+    file: "IMG_9498.JPG",
+    alt: "Anna Claire smiles at a little girl in a white dress on the cabin porch",
+    variants: {
+      desktop: { crop: [0, 0.12, 1, 0.833], widths: [560, 800, 1100, 1400], focus: "55% 55%" },
+    },
+  },
+  {
+    key: "playroom",
+    file: "DSC04231.jpg",
+    alt: "A play room with a white teepee, a forest mural, and toys spread across the rug",
+    variants: {
+      desktop: { crop: [0, 0.1, 1, 0.833], widths: [560, 800, 1100, 1400], focus: "50% 50%" },
+    },
+  },
+  {
+    key: "playroomWide",
+    file: "DSC04231.jpg",
+    alt: "A play room with a white teepee, a forest mural, and toys spread across the rug",
+    variants: {
+      desktop: { crop: [0, 0.22, 1, 0.445], widths: [600, 900, 1200, 1500], focus: "50% 50%" },
     },
   },
   {
@@ -37,12 +61,11 @@ const specs = [
   },
   {
     key: "cabin",
-    file: "IMG_9473.JPG",
-    alt: "The Wild & Free Behavior log cabin on Doctors Drive, with its porch, arched window, and stone sign",
+    file: "DSC04175.jpg",
+    alt: "The Wild & Free Behavior log cabin and stone sign on Doctors Drive in the fall",
     variants: {
-      // Arched window, porch, and stone sign. The roof peak is left out on wide screens.
-      desktop: { crop: [0, 0.305, 1, 0.405], widths: [800, 1200, 1600, 2000], focus: "50% 60%" },
-      mobile: { crop: [0, 0.17, 1, 0.6], widths: [400, 520, 680, 820, 1000], focus: "50% 50%" },
+      desktop: { crop: [0, 0.04, 1, 0.91], widths: [800, 1200, 1600, 2000], focus: "50% 60%" },
+      mobile: { crop: [0.14, 0, 0.74, 1], widths: [400, 520, 680, 820, 1000], focus: "50% 55%" },
     },
   },
   {
@@ -66,7 +89,7 @@ const specs = [
   {
     key: "routines",
     file: "IMG_9513.JPG",
-    alt: "Three children sit on floor cushions in front of a morning check-in board on the pine wall",
+    alt: "Three children sit on floor cushions under an \"I'm here today\" song and a weather chart",
     variants: {
       desktop: { crop: [0, 0.04, 1, 0.9], widths: [500, 680, 860, 1100], focus: "50% 60%" },
     },
@@ -81,8 +104,8 @@ const specs = [
   },
   {
     key: "learning",
-    file: "IMG_9485.JPG",
-    alt: "A woman points out a seedling to a boy in the garden",
+    file: "DSC04212.jpg",
+    alt: "Jimbo sorts picture cards at a table with three young children",
     variants: {
       desktop: { crop: [0, 0.08, 1, 0.84], widths: [600, 760, 960, 1300, 1700], focus: "55% 45%" },
     },
@@ -90,28 +113,22 @@ const specs = [
   {
     key: "tableWork",
     file: "IMG_9541.JPG",
-    alt: "A man sits at a small table with two children working on worksheets",
+    alt: "Jimbo sits at a small table with two children working on worksheets",
     variants: {
       desktop: { crop: [0, 0, 1, 1], widths: [600, 760, 960, 1300], focus: "55% 45%" },
       mobile: { crop: [0.12, 0, 0.82, 1], widths: [400, 520, 680, 820], focus: "50% 45%" },
     },
   },
   {
-    key: "portraitA",
-    file: "IMG_9454.JPG",
-    alt: "A smiling team member seated in a rocking chair on the cabin porch",
+    key: "portraitAnnaClaire",
+    file: "IMG_9458.JPG",
+    alt: "Anna Claire Waldrop on the cabin porch",
     variants: { desktop: { crop: [0, 0.03, 1, 0.833], widths: [360, 480, 620, 760, 960], focus: "50% 30%" } },
   },
   {
-    key: "portraitB",
-    file: "IMG_9457.JPG",
-    alt: "A team member in a black shirt seated on the cabin porch",
-    variants: { desktop: { crop: [0, 0.04, 1, 0.833], widths: [360, 480, 620, 760, 960], focus: "50% 30%" } },
-  },
-  {
-    key: "portraitC",
+    key: "portraitJimbo",
     file: "IMG_9460.JPG",
-    alt: "A team member in a bright floral shirt seated on the cabin porch",
+    alt: "Jimbo Waldrop on the cabin porch",
     variants: { desktop: { crop: [0, 0.03, 1, 0.833], widths: [360, 480, 620, 760, 960], focus: "50% 30%" } },
   },
   {
@@ -128,15 +145,45 @@ const specs = [
   },
   {
     key: "cabinPortrait",
-    file: "IMG_9475.JPG",
-    alt: "The log cabin and the stone sign for Wild & Free Behavior on Doctors Drive",
+    file: "DSC04164.jpg",
+    alt: "The log cabin and stone sign at 403 Doctors Drive, with fall leaves behind it",
     variants: { desktop: { crop: [0, 0, 1, 1], widths: [500, 700, 900, 1200], focus: "50% 50%" } },
   },
   {
     key: "porchFamily",
     file: "IMG_9467.JPG",
-    alt: "A family with two young children smiling together on the cabin porch",
+    alt: "Anna Claire and Jimbo on the cabin porch with two little girls",
     variants: { desktop: { crop: [0, 0.06, 1, 0.833], widths: [500, 700, 900, 1200], focus: "50% 45%" } },
+  },
+  {
+    key: "porchChild",
+    file: "IMG_9499.JPG",
+    alt: "A little girl reaches up to show Anna Claire something on the porch",
+    variants: { desktop: { crop: [0, 0.1, 1, 0.833], widths: [360, 480, 620, 760, 960], focus: "45% 50%" } },
+  },
+  {
+    key: "office",
+    file: "IMG_9521.JPG",
+    alt: "Jimbo talks with Anna Claire at her desk inside the cabin",
+    variants: { desktop: { crop: [0, 0, 1, 1], widths: [600, 900, 1200, 1500], focus: "45% 50%" } },
+  },
+  {
+    key: "circleTime",
+    file: "DSC04410.jpg",
+    alt: "Anna Claire leads circle time while a boy reaches up to the calendar board",
+    variants: { desktop: { crop: [0, 0, 1, 1], widths: [600, 760, 960, 1300], focus: "50% 50%" } },
+  },
+  {
+    key: "instruments",
+    file: "DSC04273.jpg",
+    alt: "Young children with a toy drum and a harmonica at circle time",
+    variants: { desktop: { crop: [0, 0, 1, 1], widths: [600, 760, 960, 1300], focus: "50% 50%" } },
+  },
+  {
+    key: "books",
+    file: "DSC04177.jpg",
+    alt: "Picture books lined up on a wooden ledge along the pine wall",
+    variants: { desktop: { crop: [0, 0.08, 1, 0.833], widths: [500, 700, 900, 1200], focus: "50% 50%" } },
   },
   {
     key: "wallScript",

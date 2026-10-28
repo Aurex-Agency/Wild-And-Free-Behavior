@@ -41,7 +41,7 @@ export const articles: ArticleMeta[] = [
     short: "After an autism diagnosis",
     subtitle: "a place to start",
     description:
-      "Next steps for North Mississippi families after an autism diagnosis: the paperwork to keep, early intervention, school services, insurance, and where ABA fits.",
+      "A plain-language guide for North Mississippi families on what to do after an autism diagnosis, covering paperwork, early intervention, school evaluations, and insurance.",
     image: "learning",
     published: "2026-10-27",
     updated: "2026-10-27",
@@ -54,7 +54,7 @@ export const articles: ArticleMeta[] = [
     short: "Autism evaluations",
     subtitle: "finding answers",
     description:
-      "Who can diagnose autism, how early intervention and school evaluations differ, and evaluators in North Mississippi listed in the state's 2026 Autism Resource Guide.",
+      "How autism is diagnosed in Mississippi, and how early intervention differs from a school evaluation. Includes evaluators in North Mississippi from the state's 2026 Autism Resource Guide.",
     image: "communication",
     published: "2026-10-27",
     updated: "2026-10-27",
@@ -67,7 +67,7 @@ export const articles: ArticleMeta[] = [
     short: "BCBS of Mississippi and ABA",
     subtitle: "insurance, plainly",
     description:
-      "How Mississippi's autism insurance law works, which plans it covers, what BCBS of Mississippi requires before ABA starts, and the questions to ask about your plan.",
+      "How Mississippi's autism insurance law works and which plans it covers. What BCBS of Mississippi requires before ABA starts, and the questions worth asking about your plan.",
     image: "tableWork",
     published: "2026-10-27",
     updated: "2026-10-27",
@@ -78,12 +78,12 @@ export const articles: ArticleMeta[] = [
     slug: "your-first-visit",
     title: "Your first visit to the cabin",
     short: "Your first visit",
-    subtitle: "a picture story",
+    subtitle: "look before you come",
     description:
-      "A printable picture story of Wild & Free Behavior in New Albany, so your child can see the sign, the cabin, and the rooms before the first visit.",
+      "Photos of our sign, the cabin, and the rooms inside, to look at with your child before your first visit to Wild & Free Behavior in New Albany. Print it if that helps.",
     image: "sign",
     published: "2026-10-27",
-    updated: "2026-10-27",
+    updated: "2026-10-28",
     reviewedBy: null,
     sources: [],
   },

@@ -17,7 +17,7 @@ const steps = [
   },
   {
     title: "Assessment",
-    body: "We spend time with your child to see what they're good at and what's hard right now. Some plans need to approve this step first.",
+    body: "We spend time with your child to see what they're good at and what's hard right now. If you're using insurance, your plan may need to approve this step first.",
   },
   {
     title: "Your weekly rhythm",
