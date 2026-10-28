@@ -47,7 +47,8 @@ export function Hero() {
                 </Parallax>
               </div>
 
-              <figure className="fade-in absolute -left-[36%] bottom-[7%] hidden w-[56%] lg:block" style={d(1000)}>
+              {/* Only where the gap beside the text column is wide enough for it to overlap nothing. */}
+              <figure className="fade-in absolute -left-[36%] bottom-[7%] hidden w-[56%] min-[85rem]:block" style={d(1000)}>
                 <div className="aspect-[1.55] overflow-clip rounded-[1.1rem] shadow-[0_30px_60px_-30px_rgb(0_0_0/0.8)] ring-[6px] ring-forest-deep">
                   <Photo image="cabin" sizes="16rem" />
                 </div>
