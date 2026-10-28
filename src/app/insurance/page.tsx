@@ -8,9 +8,9 @@ import { InsuranceQuestion } from "@/components/InsuranceQuestion";
 import { pickFaqs } from "@/content/faqs";
 
 export const metadata: Metadata = {
-  title: "ABA Therapy Insurance & BCBS of Mississippi",
+  title: "Paying for ABA Therapy: Insurance and Private Pay",
   description:
-    "Wild & Free Behavior works with Blue Cross & Blue Shield of Mississippi and offers private pay. How benefits checks and approvals work, and what to ask your insurer.",
+    "How families pay for ABA therapy at Wild & Free Behavior in New Albany, MS. We work with Blue Cross & Blue Shield of Mississippi, and private pay is an option.",
   alternates: { canonical: "/insurance" },
   openGraph: { url: "/insurance" },
 };
@@ -26,7 +26,7 @@ const otherPlans = [
   },
   {
     title: "Another insurance company",
-    body: "Tell us the name on your card. A person on our team will look into it, and if it isn't a fit, we'll talk through private pay or point you to other options.",
+    body: "Tell us the name on your card and we'll look into it. If it isn't a fit, we can talk through private pay or point you somewhere else.",
   },
 ];
 
@@ -44,12 +44,12 @@ export default function InsurancePage() {
     <>
       <PageHeader
         trail={[{ name: "Insurance", path: "/insurance" }]}
-        subtitle="paying for therapy"
-        title="Insurance and private pay"
+        subtitle="costs and coverage"
+        title="Paying for ABA therapy"
         intro={
           <p>
-            We work with {site.insurance.primary}, and private pay is always an option to talk about. Every plan is
-            different, so a person on our team checks your child&apos;s specific benefits before services begin.
+            We work with {site.insurance.primary}, and private pay is always an option. Plans differ a lot, so we check
+            your child&apos;s actual benefits and go over them with you before anything starts.
           </p>
         }
         aside={<InsuranceQuestion headingLevel="h2" />}
@@ -60,8 +60,8 @@ export default function InsurancePage() {
           <div className="prose md:col-span-7">
             <h2 id="bcbs-title">Blue Cross &amp; Blue Shield of Mississippi</h2>
             <p>
-              Many BCBS of Mississippi plans cover ABA therapy for autism, but coverage depends on your specific plan. Here
-              is how it usually works with us.
+              Many BCBS of Mississippi plans cover ABA therapy for autism, but coverage depends on your specific plan. This
+              is how it usually goes with us.
             </p>
             <ol>
               <li>

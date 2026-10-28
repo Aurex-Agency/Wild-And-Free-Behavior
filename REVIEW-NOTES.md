@@ -28,6 +28,34 @@ The first build read as generic: cream on cream, timid type, and almost no motio
   - Browsers without scroll timelines (Firefox today) and reduced-motion visitors get still photos and a full-bleed arch photo. Everything stays readable without JavaScript.
 - **Why no Motion library:** an earlier pass used Motion (framer-motion). It added about 55 KB of JavaScript and pulled mobile Performance below 90. Moving the effects to CSS brought the JavaScript back to about 156 KB, close to the first build's 146 KB.
 
+## Round 2 (2026-10-28): header, hero, insurance, copy
+
+Kalob's feedback on the redesign, and what changed:
+
+- **Header glitch while scrolling:** the header decided direction frame by frame. When a smooth or momentum scroll slowed down, the small frames read as "not scrolling down" and the header flashed back in, about 13 times per downward read on desktop. It now judges direction by distance: it hides after 48px down and returns after 64px up. Measured: 2 state changes on a full downward read (it turns solid, then hides once).
+- **Too much insurance:**
+  - The homepage insurance section is gone.
+  - "Insurance" is out of the main nav. The nav is now ABA Therapy, About, Getting Started, Visit, Questions, and "Insurance and cost" lives in the footer.
+  - The hero facts and the marquee no longer name the insurer.
+  - The homepage FAQ keeps one insurance question, listed last.
+  - The FAQ page lists its insurance group last.
+  - About's "what you can count on" list swaps "Benefits checked first" for "A plan written by a BCBA".
+  - The screener asks about the child first and payment second. Every "Find your next step" button used to open on "How will you pay for services?"
+  - The Insurance page stays, for families searching for it, retitled "Paying for ABA therapy".
+- **Hero, too much open space:**
+  - It no longer forces full-screen height.
+  - The text sits beside a larger arch.
+  - The arch slowly crossfades through the garden, the pine-walled room, and the check-in board (desktop only, still for reduced motion).
+  - A photo of the cabin overlaps the arch with a handwritten "our cabin".
+  - A facts row sits under the buttons.
+  - Phones keep one photo and a shorter paragraph, so the button stays in the first screen (777px at 390×844).
+- **Copy, for search and to sound human:**
+  - Rewrote the homepage sections, ABA Therapy, Getting Started, About, Visit, FAQ and Resources intros, the Insurance intro, the screener wording, and the default and per-page titles and descriptions.
+  - Removed the patterns that read as machine-written ("Here is exactly what happens", "It starts with", "From there", "from X to Y" spans, "A person on our team will...", repeated reassurances).
+  - Search phrases are worked in where they read naturally: "ABA therapy" with New Albany, MS, autism, Union County, North Mississippi, and real distances to Ripley, Pontotoc, and Tupelo from the Visit page.
+  - The diagnosis guide's title is now "What to do after an autism diagnosis in North Mississippi" (it was an 89-character "Here's what to do next" line).
+  - No new facts were added.
+
 **Working-copy warning:** this project lives in an iCloud-synced Desktop folder. iCloud creates conflict copies named `* 2`, `* 3` (including inside `.next`), which break typechecking and once got committed. Three such screenshots were merged into `main` with PR #1, and this branch removes them. Move the repo out of iCloud, for example to `~/Code`, or exclude it from sync.
 
 ## Run it
@@ -149,25 +177,22 @@ With Cache Components on (the create-next-app default, and slated to become stan
 ## Verification (evidence)
 
 - Unit tests: 26 of 26 pass. Typecheck and ESLint are clean. Production build: 21 static routes.
-- Screener, demo build: 35 of 35 checks. Every branch, keyboard, Escape and focus return, back, restart, inline preselect, no requests, no storage, no errors. The 390×844 first screen shows the CTA (bottom at 799px).
+- Screener, demo build: 38 of 38 checks (child step first, payment second; the Insurance page's inline question opens on the child step with payment kept). Every branch, keyboard, Escape and focus return, back, restart, inline preselect, no requests, no storage, no errors. The 390×844 first screen shows the CTA (bottom at 799px).
 - Live intake build: 17 of 17. Validation and `aria-invalid`, nothing sent while invalid, 500 shows a recoverable error that keeps answers, retry succeeds, payload shape, no CSP violations, events carry no personal or health details.
 - Navigation: 12 of 12. Current page marked, soft navigation, breadcrumbs, 15 FAQ items, 404 status, sticky bar on interior pages, mobile menu, print view.
 - Soft-navigation audit: no duplicate ids, and every label resolves to visible text across five routes.
 - Routes: all 14 pages return 200, unknown paths 404, legacy URLs 301. Security headers present.
 - Structured data parses on every page tested.
 - Full-page screenshots at 1440 and 390 for every page: no horizontal overflow, no console errors. The `review/` full pages are captured with reduced motion so the pinned arch section reads as a still photo. `desktop-home-arch-sequence.jpg` shows the arch opening.
-- Lighthouse mobile, production build, after the redesign (homepage run three times):
+- Lighthouse mobile, production build, after round 2 (homepage run three times):
 
 | Page | Performance | Accessibility | Best Practices |
 |---|---|---|---|
-| Home | 89, 91, 91 | 100 | 100 |
+| Home | 91, 89, 90 | 100 | 100 |
 | ABA Therapy | 93 | 100 | 100 |
 | Getting Started | 94 | 100 | 100 |
-| Insurance | 94 | 100 | 100 |
-| About | 90 | 100 | 100 |
+| About | 92 | 100 | 100 |
 | Visit | 92 | 100 | 100 |
-| FAQ | 94 | 100 | 100 |
-| BCBS guide | 93 | 100 | 100 |
 
   - Desktop scores 100 for Performance, Accessibility, and Best Practices.
   - Observed LCP on the homepage is under 0.9s. The mobile figure is Lighthouse's simulated slow-4G estimate.

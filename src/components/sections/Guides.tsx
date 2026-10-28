@@ -14,7 +14,7 @@ export function Guides() {
           <Words id="guides-title" text="Guides for the road ahead" className="display display-l mt-3" />
           <Reveal delay={0.1}>
             <p className="mt-6 max-w-[24rem]">
-              Plain answers for North Mississippi families, from a new diagnosis to insurance to a first visit.
+              Short guides for North Mississippi parents, written by our team. Start with whichever one fits where you are.
             </p>
             <Link href="/resources" className="link mt-6 inline-block">
               All resources

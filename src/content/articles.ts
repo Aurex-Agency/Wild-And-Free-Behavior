@@ -37,11 +37,11 @@ const bcbsResponse: Source = {
 export const articles: ArticleMeta[] = [
   {
     slug: "after-an-autism-diagnosis",
-    title: "Your child was just diagnosed with autism. Here's what to do next in North Mississippi.",
+    title: "What to do after an autism diagnosis in North Mississippi",
     short: "After an autism diagnosis",
     subtitle: "a place to start",
     description:
-      "A practical order of steps for North Mississippi families after an autism diagnosis: paperwork, early intervention, school services, insurance, and where ABA fits.",
+      "Next steps for North Mississippi families after an autism diagnosis: the paperwork to keep, early intervention, school services, insurance, and where ABA fits.",
     image: "learning",
     published: "2026-10-27",
     updated: "2026-10-27",

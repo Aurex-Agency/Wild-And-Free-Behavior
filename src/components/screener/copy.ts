@@ -13,7 +13,7 @@ export const paymentOptions: { value: Payment; label: string; hint?: string; fee
     value: "other-blue",
     label: "Another Blue Cross plan",
     hint: "From another state, or through an employer",
-    feedback: "A person on our team will review your plan. This isn't a yes or a no yet.",
+    feedback: "We'll look at your plan ourselves. It isn't a yes or a no yet.",
   },
   {
     value: "medicaid-chip",
@@ -79,7 +79,7 @@ export const results: Record<ResultType, { title: string; body: string }> = {
   },
   "staff-guidance": {
     title: "Next, a conversation with our team",
-    body: "Some situations need a person, not a form. Someone from our team will reach out to talk through where your child is right now.",
+    body: "This one is easier to sort out by talking. Someone from our team will reach out to hear more about where your child is right now.",
   },
   resources: {
     title: "A few places to start",

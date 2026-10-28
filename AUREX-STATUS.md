@@ -4,8 +4,8 @@
 
 **Project:** Wild & Free Behavior (ABA therapy, New Albany, MS)
 **Operating mode:** DEEP (new website)
-**Branch:** `redesign/motion-and-depth`
-**PR/deployment:** Redesign PR against `main` (PR #1, the full build, is merged; Kalob added the site to Vercel); not deployed by Aurex
+**Branch:** `refine/hero-copy-header`
+**PR/deployment:** Round 2 PR against `main` (PR #1 full build and PR #2 redesign are merged; Vercel builds previews); not deployed by Aurex
 **Stage:** Visual redesign complete, awaiting human visual approval; BCBA/legal review and launch prerequisites unchanged
 **Last updated:** 2026-10-27
 
@@ -26,8 +26,10 @@
 
 ## Most recent work
 
-**Task:** Redesign the look and add smooth, clean motion
-**Result:**
+**Task:** Round 2: header glitch, less insurance, tighter hero, human and SEO copy
+**Result (round 2):** header no longer flickers while scrolling; insurance pulled out of the homepage, main nav, hero, and the screener's first step; hero rebuilt with a crossfading arch and the cabin; site copy rewritten. See "Round 2" in REVIEW-NOTES.md.
+
+**Previous round, result:**
 - New tone system and type scale.
 - Homepage sections rebuilt around the arch and sun.
 - Motion system built with CSS scroll-driven animations, IntersectionObserver reveals, view transitions, and Lenis on desktop.

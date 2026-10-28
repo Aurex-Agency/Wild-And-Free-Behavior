@@ -2,6 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import {
   canContinue,
+  FIRST_STEP,
   getResult,
   nextStep,
   prevStep,
@@ -13,8 +14,8 @@ import {
 const fit: Answers = { age: "4-6", diagnosis: "diagnosed", priorAba: "no" };
 
 function walk(answers: Answers): StepId[] {
-  const path: StepId[] = ["payment"];
-  let step: StepId = "payment";
+  const path: StepId[] = [FIRST_STEP];
+  let step: StepId = FIRST_STEP;
   while (step !== "done") {
     step = nextStep(step, answers);
     path.push(step);
@@ -24,7 +25,7 @@ function walk(answers: Answers): StepId[] {
 
 test("BCBS of Mississippi with a typical fit goes to benefits verification", () => {
   const a: Answers = { payment: "bcbs-ms", ...fit };
-  assert.deepEqual(walk(a), ["payment", "child", "result", "contact", "done"]);
+  assert.deepEqual(walk(a), ["child", "payment", "result", "contact", "done"]);
   assert.deepEqual(getResult(a), { type: "benefits-verification", notes: [] });
 });
 
@@ -39,9 +40,9 @@ test("Medicaid or CHIP goes to staff review with an unconfirmed note", () => {
   });
 });
 
-test("other insurance asks a follow-up before the child step", () => {
+test("the child comes first, and other insurance asks a follow-up after payment", () => {
   const a: Answers = { payment: "other-insurance", otherInsurance: "talk", ...fit };
-  assert.deepEqual(walk(a), ["payment", "other-insurance", "child", "result", "contact", "done"]);
+  assert.deepEqual(walk(a), ["child", "payment", "other-insurance", "result", "contact", "done"]);
 });
 
 test("other insurance then private pay goes to a private-pay conversation", () => {
@@ -52,9 +53,9 @@ test("other insurance then talk with our team goes to staff guidance", () => {
   assert.equal(getResult({ payment: "other-insurance", otherInsurance: "talk", ...fit }).type, "staff-guidance");
 });
 
-test("other insurance then resources skips the child step and back returns to the follow-up", () => {
-  const a: Answers = { payment: "other-insurance", otherInsurance: "resources" };
-  assert.deepEqual(walk(a), ["payment", "other-insurance", "result", "contact", "done"]);
+test("other insurance then resources goes to resources, and back returns to the follow-up", () => {
+  const a: Answers = { payment: "other-insurance", otherInsurance: "resources", ...fit };
+  assert.deepEqual(walk(a), ["child", "payment", "other-insurance", "result", "contact", "done"]);
   assert.deepEqual(getResult(a), { type: "resources", notes: [] });
   assert.equal(prevStep("result", a), "other-insurance");
 });
@@ -108,18 +109,18 @@ test("several exceptions combine without losing earlier notes", () => {
 
 test("back navigation retraces the path", () => {
   const direct: Answers = { payment: "bcbs-ms", ...fit };
-  assert.equal(prevStep("payment", direct), null);
-  assert.equal(prevStep("child", direct), "payment");
-  assert.equal(prevStep("result", direct), "child");
+  assert.equal(prevStep("child", direct), null);
+  assert.equal(prevStep("payment", direct), "child");
+  assert.equal(prevStep("result", direct), "payment");
   assert.equal(prevStep("contact", direct), "result");
   assert.equal(prevStep("done", direct), null);
-  assert.equal(prevStep("child", { payment: "other-insurance", otherInsurance: "talk" }), "other-insurance");
+  assert.equal(prevStep("result", { payment: "other-insurance", otherInsurance: "talk" }), "other-insurance");
   assert.equal(prevStep("other-insurance", { payment: "other-insurance" }), "payment");
 });
 
 test("changing payment away from other insurance ignores the stale follow-up answer", () => {
   const a: Answers = { payment: "bcbs-ms", otherInsurance: "resources", ...fit };
-  assert.equal(nextStep("payment", a), "child");
+  assert.equal(nextStep("payment", a), "result");
   assert.equal(getResult(a).type, "benefits-verification");
 });
 
@@ -134,7 +135,7 @@ test("each step requires its own answers before continuing", () => {
 
 test("progress maps to three visible steps", () => {
   assert.deepEqual(
-    (["payment", "other-insurance", "child", "result", "contact", "done"] as const).map(stepNumber),
-    [1, 1, 2, 3, 3, 3],
+    (["child", "payment", "other-insurance", "result", "contact", "done"] as const).map(stepNumber),
+    [1, 2, 2, 3, 3, 3],
   );
 });

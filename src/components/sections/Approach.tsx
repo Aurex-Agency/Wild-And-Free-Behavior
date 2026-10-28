@@ -10,17 +10,17 @@ import { Reveal } from "@/components/motion/Reveal";
 const items = [
   {
     title: "Communication",
-    body: "Finding ways for your child to ask for what they need, whether that's words, signs, pictures, or a device.",
+    body: "Helping your child ask for what they need, with words, signs, pictures, or a device.",
     media: <Photo image="communication" sizes="(min-width: 48rem) 36vw, 100vw" />,
   },
   {
     title: "Everyday routines",
-    body: "Practicing the parts of the day that tend to be hard, like mealtimes, washing hands, getting dressed, or switching from one activity to the next.",
+    body: "Practice with the hard parts of the day: mealtimes, washing hands, getting dressed, and moving from one thing to the next.",
     media: <Photo image="routines" sizes="(min-width: 48rem) 36vw, 100vw" />,
   },
   {
     title: "Learning and connection",
-    body: "Short activities, taking turns, and playing near and with other kids, at a pace that fits your child.",
+    body: "Sitting for short activities, taking turns, and learning to play near and with other kids.",
     media: <Photo image="learning" sizes="(min-width: 48rem) 36vw, 100vw" />,
   },
   {
@@ -43,8 +43,8 @@ export function Approach() {
           </div>
           <Reveal className="md:col-span-5 md:self-end" delay={0.15}>
             <p className="lede">
-              ABA therapy here starts with an assessment and with what matters most to your family. From there, your
-              child&apos;s plan might focus on a few of these areas.
+              Before anything else, we assess your child and listen to you about what&apos;s hard at home right now.
+              The goals that come out of that often land in a few of these areas.
             </p>
             <Link href="/aba-therapy" className="link mt-6 inline-block">
               How ABA therapy works at the cabin

@@ -9,9 +9,9 @@ import { ScreenerTrigger } from "@/components/screener/ScreenerTrigger";
 import { graph, ownerNode } from "@/lib/schema";
 
 export const metadata: Metadata = {
-  title: "Anna Claire Waldrop, BCBA, and Our Team",
+  title: "Our Team: Anna Claire Waldrop, BCBA, in New Albany",
   description:
-    "Wild & Free Behavior is a small ABA practice in New Albany, Mississippi, owned and led by Anna Claire Waldrop, M.S., BCBA, LBA. Meet the people and the cabin.",
+    "Wild & Free Behavior is a small ABA practice in New Albany, Mississippi, owned and run by Anna Claire Waldrop, M.S., BCBA, LBA. Meet our team and see the cabin.",
   alternates: { canonical: "/about" },
   openGraph: { url: "/about" },
 };
@@ -20,9 +20,9 @@ export const metadata: Metadata = {
 
 const expect = [
   { title: "A free first conversation", body: "With Anna Claire and Jimbo, before anything is scheduled." },
-  { title: "Benefits checked first", body: "We look at your coverage and go over it with you before services begin." },
-  { title: "The same days and times each week", body: "Set together after the assessment, so your week has a rhythm." },
-  { title: "A Friday reminder", body: "A heads-up each Friday with your child's schedule for the week ahead." },
+  { title: "A plan written by a BCBA", body: "Anna Claire writes and oversees every child's plan." },
+  { title: "The same days and times each week", body: "We set them together after the assessment, and they don't move around." },
+  { title: "A Friday reminder", body: "Every Friday we send your child's schedule for the week ahead." },
 ];
 
 export default function AboutPage() {
@@ -73,17 +73,17 @@ export default function AboutPage() {
             </SectionHeading>
             <div className="prose mt-6">
               <p>
-                {site.owner.firstName} owns Wild &amp; Free Behavior and leads its clinical work. She is a Board Certified
-                Behavior Analyst (BCBA) and a Mississippi Licensed Behavior Analyst (LBA). As the practice&apos;s BCBA, she
-                oversees each child&apos;s assessment and treatment plan.
+                {site.owner.firstName} owns Wild &amp; Free Behavior and runs its clinical work. She&apos;s a Board Certified
+                Behavior Analyst (BCBA) and a Mississippi Licensed Behavior Analyst (LBA), and she oversees every
+                child&apos;s assessment and treatment plan.
               </p>
               <p>
                 She earned her BCBA certification in {site.owner.bcbaSince} and her Mississippi license in{" "}
                 {site.owner.lbaSince}.
               </p>
               <p>
-                When you reach out, your first conversation is with {site.owner.firstName} and {site.partner.name}, so you
-                meet the people behind the practice before anything else happens.
+                When you reach out, you&apos;ll sit down with {site.owner.firstName} and {site.partner.name} before anything
+                gets scheduled, so you know who you&apos;re working with from the start.
               </p>
             </div>
           </div>
@@ -123,9 +123,9 @@ export default function AboutPage() {
               A log cabin on Doctors Drive
             </SectionHeading>
             <p className="mt-6">
-              Our cabin sits on Doctors Drive in New Albany. Inside, the rooms are pine-paneled, with soft floor seating, low
-              tables, and a check-in board on the wall. Outside there&apos;s a porch with rocking chairs and a garden where
-              corn and tomatoes grow in summer.
+              Our cabin sits on Doctors Drive in New Albany, Union County. Inside, the rooms are pine-paneled, with
+              cushions on the floor, low tables, and a check-in board on the wall. Outside there&apos;s a porch with
+              rocking chairs and a garden where corn and tomatoes grow in summer.
             </p>
             <Link href="/visit" className="link mt-6 inline-block">
               Visiting the cabin

@@ -40,33 +40,6 @@ export const faqGroups: FaqGroup[] = [
     ],
   },
   {
-    title: "Insurance and cost",
-    items: [
-      {
-        id: "insurance",
-        q: "What insurance do you work with?",
-        a: `We work with ${site.insurance.primary}. Plans vary, so we verify each child's benefits before services begin. If you have a different plan, tell us what it is and our team will look into it.`,
-        link: { href: "/insurance", label: "Insurance and private pay" },
-      },
-      {
-        id: "private-pay",
-        q: "Can we pay privately?",
-        a: "Yes, private pay is an option. We're happy to talk through what that looks like on a call.",
-      },
-      {
-        id: "medicaid",
-        q: "Do you take Mississippi Medicaid or CHIP?",
-        a: "Tell us if your child has Medicaid or CHIP, and we'll talk with you directly about your options.",
-      },
-      {
-        id: "approval",
-        q: "Does insurance need to approve ABA first?",
-        a: "Usually, yes. Blue Cross & Blue Shield of Mississippi, for example, requires approval before the initial assessment and before ABA therapy begins. Our team helps with those requests.",
-        link: { href: "/resources/does-bcbs-of-mississippi-cover-aba-therapy", label: "Does BCBS of Mississippi cover ABA?" },
-      },
-    ],
-  },
-  {
     title: "Therapy",
     items: [
       {
@@ -106,6 +79,33 @@ export const faqGroups: FaqGroup[] = [
         q: "How can we help our child get ready for the first visit?",
         a: "Some children do better when they've seen a place before they go. We made a printable picture story of the cabin you can look at together.",
         link: { href: "/resources/your-first-visit", label: "Your first visit to the cabin" },
+      },
+    ],
+  },
+  {
+    title: "Insurance and cost",
+    items: [
+      {
+        id: "insurance",
+        q: "What insurance do you work with?",
+        a: `We work with ${site.insurance.primary}. Plans vary, so we verify each child's benefits before services begin. If you have a different plan, tell us what it is and our team will look into it.`,
+        link: { href: "/insurance", label: "Insurance and private pay" },
+      },
+      {
+        id: "private-pay",
+        q: "Can we pay privately?",
+        a: "Yes, private pay is an option. We're happy to talk through what that looks like on a call.",
+      },
+      {
+        id: "medicaid",
+        q: "Do you take Mississippi Medicaid or CHIP?",
+        a: "Tell us if your child has Medicaid or CHIP, and we'll talk with you directly about your options.",
+      },
+      {
+        id: "approval",
+        q: "Does insurance need to approve ABA first?",
+        a: "Usually, yes. Blue Cross & Blue Shield of Mississippi, for example, requires approval before the initial assessment and before ABA therapy begins. Our team helps with those requests.",
+        link: { href: "/resources/does-bcbs-of-mississippi-cover-aba-therapy", label: "Does BCBS of Mississippi cover ABA?" },
       },
     ],
   },

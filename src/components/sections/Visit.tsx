@@ -24,7 +24,7 @@ export function Visit() {
             </h2>
             <p className="mt-6">
               We&apos;re in a log cabin with a big front porch on Doctors Drive in New Albany. Look for the stone sign out
-              front.
+              front. Ripley and Pontotoc are about 20 miles away, and Tupelo is about 28.
             </p>
           </div>
           <div className="md:border-l md:border-line md:pl-10">
