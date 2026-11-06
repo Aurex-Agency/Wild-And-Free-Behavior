@@ -1,6 +1,6 @@
 # Review Notes: Full Site Build
 
-The complete Wild & Free Behavior website: 14 pages, the insurance and fit screener, structured data, and launch switches. It is built and verified but not deployed. Intake runs in demo mode until HighLevel's HIPAA setup exists.
+The complete Wild & Free Behavior website: 14 pages, the insurance and fit screener, structured data, and launch switches. It is deployed at `wildandfreebehaviorllc.com` but kept out of search until launch. Intake runs in demo mode until HighLevel's HIPAA setup exists.
 
 Strategy and the original brief are in `docs/`. Screenshots are in `review/`.
 
@@ -123,7 +123,7 @@ Old URLs from the previous site redirect with 301: `/abouta4ae63fc` and `/about-
 
 ## SEO
 
-- One H1 per page. Unique titles that all say MS or Mississippi. Parent-focused meta descriptions. Self-referencing canonicals on `https://www.wildandfreebehavior.com`.
+- One H1 per page. Unique titles that all say MS or Mississippi. Parent-focused meta descriptions. Self-referencing canonicals on `https://wildandfreebehaviorllc.com`, the live domain (`www` redirects to it). Every page shares the sign photo as its link preview image (`src/lib/share.ts`).
 - `sitemap.xml` (14 URLs) and `robots.txt` follow `SITE_INDEXABLE`. Verified: with the flag on, Lighthouse SEO scores 100.
 - Structured data, only from visible facts:
   - `MedicalClinic` with geo coordinates (OpenStreetMap match for 403 Doctors Drive) and areaServed matching the Visit page
@@ -179,15 +179,15 @@ With Cache Components on (the create-next-app default, and slated to become stan
 | Aurex BAA with the practice, legal review | Recommended |
 | Google Business Profile, DMH guide listing, BCBS directory check | Plan section 6 |
 | Analytics provider | Not chosen |
-| Deployment, DNS, Search Console | Not started. Never touch MX on `wildandfreebehaviorllc.com`. |
+| Deployment, DNS, Search Console | Production is live on `wildandfreebehaviorllc.com` (`www` redirects to the apex; Google MX and SPF intact as of 2026-11-06). Still noindex because `SITE_INDEXABLE` is not set. Search Console not started. Never touch MX on `wildandfreebehaviorllc.com`. |
 
 ## Launch steps
 
 1. HighLevel: enable the HIPAA add-on, sign the BAA, create an inbound-webhook workflow, and confirm it accepts a CORS POST from the domain.
 2. Vercel production env: `SITE_INDEXABLE=true`, `NEXT_PUBLIC_INTAKE_MODE=webhook`, `NEXT_PUBLIC_INTAKE_WEBHOOK_URL=...`. Leave previews unset so they stay noindex and demo.
 3. Deploy, then submit one real test lead end to end.
-4. With approval, point `wildandfreebehavior.com` and `www` at Vercel in GoDaddy DNS.
-5. Verify Search Console and Bing, submit `sitemap.xml`, and update the Google Business Profile website link.
+4. Done: `wildandfreebehaviorllc.com` serves production and `www` redirects to it. With approval, also add `wildandfreebehavior.com` and its `www` in Vercel as redirects to `wildandfreebehaviorllc.com` (GoDaddy DNS), so links to the practice's old site still land. It shows a GoDaddy parking page today.
+5. Verify Search Console (a Domain property for `wildandfreebehaviorllc.com`, by DNS TXT) and Bing, submit `https://wildandfreebehaviorllc.com/sitemap.xml`, and update the Google Business Profile website link.
 
 ## Verification (evidence)
 

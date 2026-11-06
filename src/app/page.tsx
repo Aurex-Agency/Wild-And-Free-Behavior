@@ -9,10 +9,11 @@ import { Guides } from "@/components/sections/Guides";
 import { Faq } from "@/components/sections/Faq";
 import { FinalCta } from "@/components/sections/FinalCta";
 import { Marquee } from "@/components/Marquee";
+import { openGraph } from "@/lib/share";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
-  openGraph: { url: "/" },
+  openGraph: openGraph({ url: "/" }),
 };
 
 export default function Home() {

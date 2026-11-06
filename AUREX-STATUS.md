@@ -5,9 +5,9 @@
 **Project:** Wild & Free Behavior (ABA therapy, New Albany, MS)
 **Operating mode:** DEEP (new website)
 **Branch:** `story/people-and-photos`
-**PR/deployment:** Round 3 PR against `main` (PRs #1 to #3 are merged; Vercel builds previews); not deployed by Aurex
+**PR/deployment:** PRs #1 to #4 are merged. `main` is live on Vercel at `wildandfreebehaviorllc.com` (`www` redirects to it) but still noindex: `SITE_INDEXABLE` is not set
 **Stage:** Round 3 (people, story, photos) awaiting Kalob's review; BCBA/legal review and launch prerequisites unchanged
-**Last updated:** 2026-10-28
+**Last updated:** 2026-11-06
 
 ## Approved decisions
 
@@ -62,6 +62,13 @@
 - [x] keyboard/focus and mobile navigation
 - [x] build/typecheck
 - [x] primary conversion flow (demo and mocked live webhook)
+
+## Indexing readiness (2026-11-06)
+
+- Site URL moved to `https://wildandfreebehaviorllc.com`, the domain Vercel serves. Before this, every canonical, sitemap URL, and structured data URL pointed at `www.wildandfreebehavior.com`, a GoDaddy parking page.
+- Interior pages lost their link preview image because each page's `openGraph` replaced the layout's. Fixed with `src/lib/share.ts`.
+- Verified with `SITE_INDEXABLE=true`: robots.txt allows all and names the sitemap; the sitemap lists 14 URLs, all 200 with matching canonicals and `index, follow`; 404 is noindex; legacy URLs 301.
+- To go live in search: set `SITE_INDEXABLE=true` for Production in Vercel and redeploy, then Search Console. Blockers below still apply: indexing before HighLevel is live sends parents to a screener that says it is a preview.
 
 ## Known issues
 

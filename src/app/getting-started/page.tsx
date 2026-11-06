@@ -6,13 +6,14 @@ import { FaqList } from "@/components/FaqList";
 import { Photo } from "@/components/Photo";
 import { ScreenerTrigger } from "@/components/screener/ScreenerTrigger";
 import { pickFaqs } from "@/content/faqs";
+import { openGraph } from "@/lib/share";
 
 export const metadata: Metadata = {
   title: "How to Start ABA Therapy in New Albany, MS",
   description:
     "How ABA therapy begins at our cabin in New Albany, MS. You reach out, we have a free conversation, Anna Claire assesses your child, and we set a weekly schedule that stays put.",
   alternates: { canonical: "/getting-started" },
-  openGraph: { url: "/getting-started" },
+  openGraph: openGraph({ url: "/getting-started" }),
 };
 
 const steps: { title: string; body: string; helps?: string }[] = [

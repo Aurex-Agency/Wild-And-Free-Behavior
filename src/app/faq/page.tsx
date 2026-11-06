@@ -4,13 +4,14 @@ import { FaqList } from "@/components/FaqList";
 import { JsonLd } from "@/components/JsonLd";
 import { allFaqs, faqGroups } from "@/content/faqs";
 import { graph } from "@/lib/schema";
+import { openGraph } from "@/lib/share";
 
 export const metadata: Metadata = {
   title: "Common Questions About ABA Therapy in New Albany, MS",
   description:
     "Straightforward answers for parents in New Albany and Union County about starting ABA therapy, what sessions look like, visiting the cabin, and what it costs.",
   alternates: { canonical: "/faq" },
-  openGraph: { url: "/faq" },
+  openGraph: openGraph({ url: "/faq" }),
 };
 
 const slugify = (s: string) => `faq-${s.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;

@@ -6,13 +6,14 @@ import { CtaBand, PageHeader, SectionHeading } from "@/components/PageParts";
 import { FaqList } from "@/components/FaqList";
 import { Photo } from "@/components/Photo";
 import { pickFaqs } from "@/content/faqs";
+import { openGraph } from "@/lib/share";
 
 export const metadata: Metadata = {
   title: "Visit the Cabin: 403 Doctors Drive, New Albany, MS",
   description:
     "Find Wild & Free Behavior at 403 Doctors Drive in New Albany, Mississippi: a log cabin with a stone sign out front. Directions and distances from nearby towns.",
   alternates: { canonical: "/visit" },
-  openGraph: { url: "/visit" },
+  openGraph: openGraph({ url: "/visit" }),
 };
 
 // Road distances to 403 Doctors Drive from each town center (OpenStreetMap routing, October 2026).

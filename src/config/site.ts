@@ -8,7 +8,9 @@ const indexable = process.env.SITE_INDEXABLE === "true";
 export const site = {
   name: "Wild & Free Behavior",
   legalName: "Wild & Free Behavior, LLC",
-  url: "https://www.wildandfreebehavior.com",
+  // The live domain. Vercel serves the apex and 308-redirects www to it, so canonicals,
+  // the sitemap, and structured data all use the apex.
+  url: "https://wildandfreebehaviorllc.com",
   indexable,
   // Preview builds say so in the footer.
   preview: !indexable,

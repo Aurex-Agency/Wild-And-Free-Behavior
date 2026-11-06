@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { site } from "@/config/site";
 import { PageHeader } from "@/components/PageParts";
+import { openGraph } from "@/lib/share";
 
 export const metadata: Metadata = {
   title: "Website Privacy Policy",
   description: "How Wild & Free Behavior handles information shared through this website.",
   alternates: { canonical: "/privacy" },
-  openGraph: { url: "/privacy" },
+  openGraph: openGraph({ url: "/privacy" }),
 };
 
 // Draft for legal review before launch (see REVIEW-NOTES.md). Keep it accurate to how the site behaves.

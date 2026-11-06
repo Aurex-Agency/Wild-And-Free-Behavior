@@ -3,6 +3,7 @@ import type { CSSProperties, ReactNode } from "react";
 import { site } from "@/config/site";
 import { articles, getArticle, type ArticleMeta } from "@/content/articles";
 import { graph, ids } from "@/lib/schema";
+import { openGraph } from "@/lib/share";
 import { Breadcrumbs, CtaBand } from "./PageParts";
 import { GuidesList } from "./GuidesList";
 import { JsonLd } from "./JsonLd";
@@ -20,7 +21,7 @@ export function articleMetadata(slug: string): Metadata {
     title: a.title,
     description: a.description,
     alternates: { canonical: `/resources/${a.slug}` },
-    openGraph: { type: "article", url: `/resources/${a.slug}`, title: a.title, description: a.description },
+    openGraph: openGraph({ type: "article", url: `/resources/${a.slug}`, title: a.title, description: a.description }),
   };
 }
 
