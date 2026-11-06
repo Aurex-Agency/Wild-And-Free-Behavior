@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { site } from "@/config/site";
+import { intakeLive } from "@/lib/intake";
 import { PageHeader } from "@/components/PageParts";
 import { openGraph } from "@/lib/share";
 
@@ -22,7 +23,7 @@ export default function PrivacyPage() {
         layout="stacked"
         intro={
           <p className="nums">
-            Last updated <time dateTime="2026-10-27">October 27, 2026</time>.
+            Last updated <time dateTime="2026-11-06">November 6, 2026</time>.
           </p>
         }
       />
@@ -35,16 +36,28 @@ export default function PrivacyPage() {
           </p>
 
           <h2>Information you give us</h2>
-          <p>
-            When you use the &ldquo;Find your next step&rdquo; form, we ask how you plan to pay for services, a few
-            questions about your child (age range, diagnosis status, and whether they&apos;ve had ABA before), an optional
-            town, your name, your phone number or email, how you&apos;d like us to reach you, and an optional note.
-          </p>
-          <p>
-            We use this only to respond to you and help you get started. It goes to the secure client management service
-            our team uses, which has agreed to protect it as HIPAA requires. Please don&apos;t send medical records or
-            insurance numbers through the website.
-          </p>
+          {intakeLive ? (
+            <>
+              <p>
+                When you use the &ldquo;Find your next step&rdquo; form, we ask how you plan to pay for services, a few
+                questions about your child (age range, diagnosis status, and whether they&apos;ve had ABA before), an
+                optional town, your name, your phone number or email, how you&apos;d like us to reach you, and an optional
+                note.
+              </p>
+              <p>
+                We use this only to respond to you and help you get started. It goes to the secure client management
+                service our team uses, which has agreed to protect it as HIPAA requires. Please don&apos;t send medical
+                records or insurance numbers through the website.
+              </p>
+            </>
+          ) : (
+            <p>
+              The &ldquo;Find your next step&rdquo; form asks a few questions about your child (age range, diagnosis
+              status, and whether they&apos;ve had ABA before), how you plan to pay for services, and an optional town. It
+              uses your answers only to show your next step on the screen. They aren&apos;t sent to us or saved. To reach
+              us, call.
+            </p>
+          )}
 
           <h2>Information collected automatically</h2>
           <p>

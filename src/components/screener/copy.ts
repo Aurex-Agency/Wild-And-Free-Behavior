@@ -64,26 +64,34 @@ export const priorAbaOptions: { value: PriorAba; label: string }[] = [
   { value: "discuss", label: "I'd rather talk about it" },
 ];
 
-export const results: Record<ResultType, { title: string; body: string }> = {
+// `body` is shown once the screener sends details to our team. Until then, `callBody` is shown,
+// because the family has to call to start.
+export const results: Record<ResultType, { title: string; body: string; callBody: string }> = {
   "benefits-verification": {
     title: "Next, we verify your benefits",
     body: "Our team will check your child's Blue Cross & Blue Shield of Mississippi plan and benefits, then reach out to set up your free conversation with Anna Claire and Jimbo.",
+    callBody: "Give us a call, and our team will check your child's Blue Cross & Blue Shield of Mississippi plan and benefits, then set up your free conversation with Anna Claire and Jimbo.",
   },
   "plan-review": {
     title: "Next, a person reviews your plan",
     body: "We'll look at your specific Blue Cross plan and let you know what we find. Nothing is decided yet.",
+    callBody: "Give us a call, and we'll look at your specific Blue Cross plan and let you know what we find. Nothing is decided yet.",
   },
   "private-pay": {
     title: "Next, a private-pay conversation",
     body: "We'll set up a call to talk through private pay and answer your questions. There's no commitment.",
+    callBody: "Give us a call to talk through private pay and ask your questions. There's no commitment.",
   },
   "staff-guidance": {
     title: "Next, a conversation with our team",
     body: "This one is easier to sort out by talking. Someone from our team will reach out to hear more about where your child is right now.",
+    callBody: "This one is easier to sort out by talking. Give us a call and tell us where your child is right now.",
   },
   resources: {
     title: "A few places to start",
     body: "Your insurance company's provider directory lists in-network ABA providers. It's usually on the insurer's website, or you can call the member services number on your card.",
+    callBody:
+      "Your insurance company's provider directory lists in-network ABA providers. It's usually on the insurer's website, or you can call the member services number on your card.",
   },
 };
 
@@ -97,3 +105,6 @@ export const notes: Record<Note, string> = {
   "also-plan-review": "We'll also review your Blue Cross plan.",
   "also-private-pay": "We can talk about private pay on the same call.",
 };
+
+/** Shown under the result until the screener can send details. */
+export const callNote = "This tool doesn't send your answers anywhere. When you call, just tell us what you picked.";

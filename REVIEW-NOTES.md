@@ -89,7 +89,7 @@ npm run build && npm start
 | Variable | Default | Set at launch |
 |---|---|---|
 | `SITE_INDEXABLE` | off: every page `noindex`, robots.txt disallows all, footer says "Preview build" | `true` on the production deployment only |
-| `NEXT_PUBLIC_INTAKE_MODE` | `demo`: the screener sends nothing | `webhook`, once HighLevel's HIPAA add-on and BAA are in place |
+| `NEXT_PUBLIC_INTAKE_MODE` | `phone`: the screener sends nothing, shows the family's next step, and ends with a call button | `webhook`, once HighLevel's HIPAA add-on and BAA are in place |
 | `NEXT_PUBLIC_INTAKE_WEBHOOK_URL` | none | The HighLevel inbound webhook URL (`https://` only). Also added to the CSP `connect-src`. |
 
 ## Pages
@@ -138,7 +138,7 @@ Old URLs from the previous site redirect with 301: `/abouta4ae63fc` and `/about-
 
 ## Intake, events, and privacy
 
-- **Demo mode (default):** zero network requests and no browser storage. Verified on every screener branch.
+- **Phone mode (default):** zero network requests and no browser storage. The screener asks its questions, shows the result, and ends with "Call 662-539-7129" plus a note that answers aren't sent. There is no contact step and no preview wording. The site copy that mentions the form (Getting Started steps 1 and 2, the "How do we get started?" FAQ, the after-diagnosis guide, and the privacy page) switches on `intakeLive`, so the original wording returns when the webhook is turned on. Verified on every screener branch.
 - **Live mode:** the browser posts JSON directly to the HighLevel webhook, so intake data never passes through the website host. That avoids needing Vercel's BAA. Payload: source, timestamp, page, contact (name, phone, email, method, note), screener answers, and result.
   - Before launch, check that HighLevel's inbound webhook accepts a cross-origin POST from the site's domain. It was tested here against an intercepted mock endpoint.
   - If HighLevel blocks CORS, switch to a HighLevel form embed for the contact step, or a server route with Vercel's BAA.
@@ -157,9 +157,9 @@ With Cache Components on (the create-next-app default, and slated to become stan
 - `/insurance` BCBS steps ("We check your benefits", the approval sequence).
 - `/about`: "oversees each child's assessment and treatment plan", the credential dates (December 2020 and March 2021, from the earlier website), and "What you can count on".
 - All four guides. "Your first visit" is written for parents to read aloud, so check the wording.
-- FAQ answers and screener copy (`src/components/screener/copy.ts`).
+- FAQ answers and screener copy (`src/components/screener/copy.ts`), including the phone-mode `callBody` lines and `callNote` that show until HighLevel is live.
 
-**Legal review:** `/privacy` (written to match how the site behaves, including the HighLevel BAA requirement) and `/accessibility`.
+**Legal review:** `/privacy` (written to match how the site behaves: in phone mode it says the form's answers aren't sent or saved; with the webhook on it describes the HighLevel BAA) and `/accessibility`.
 
 **Business decision:** the evaluation guide lists four North Mississippi evaluators from the DMH guide. Practices that also provide ABA were left out on purpose; the page notes that more are in the guide.
 
@@ -184,7 +184,7 @@ With Cache Components on (the create-next-app default, and slated to become stan
 ## Launch steps
 
 1. HighLevel: enable the HIPAA add-on, sign the BAA, create an inbound-webhook workflow, and confirm it accepts a CORS POST from the domain.
-2. Vercel production env: `SITE_INDEXABLE=true`, `NEXT_PUBLIC_INTAKE_MODE=webhook`, `NEXT_PUBLIC_INTAKE_WEBHOOK_URL=...`. Leave previews unset so they stay noindex and demo.
+2. Vercel production env: `SITE_INDEXABLE=true`, `NEXT_PUBLIC_INTAKE_MODE=webhook`, `NEXT_PUBLIC_INTAKE_WEBHOOK_URL=...`. Leave previews unset so they stay noindex and in phone mode. Until HighLevel is ready, `SITE_INDEXABLE=true` alone is safe: the screener asks families to call.
 3. Deploy, then submit one real test lead end to end.
 4. Done: `wildandfreebehaviorllc.com` serves production and `www` redirects to it. With approval, also add `wildandfreebehavior.com` and its `www` in Vercel as redirects to `wildandfreebehaviorllc.com` (GoDaddy DNS), so links to the practice's old site still land. It shows a GoDaddy parking page today.
 5. Verify Search Console (a Domain property for `wildandfreebehaviorllc.com`, by DNS TXT) and Bing, submit `https://wildandfreebehaviorllc.com/sitemap.xml`, and update the Google Business Profile website link.
@@ -193,7 +193,8 @@ With Cache Components on (the create-next-app default, and slated to become stan
 
 - Round 3 re-run: unit tests 26 of 26, screener 38 of 38, navigation 12 of 12, soft-navigation audit 13 of 13, header 2 state changes per downward read, every reveal fires (the one unshown element at 390 is a desktop-only block), and no overflow or console errors on Home, About, and "Your first visit" at 1440 and 390. `review/` was recaptured so it no longer shows anyone who must stay off the site.
 - Unit tests: 26 of 26 pass. Typecheck and ESLint are clean. Production build: 21 static routes.
-- Screener, demo build: 38 of 38 checks (child step first, payment second; the Insurance page's inline question opens on the child step with payment kept). Every branch, keyboard, Escape and focus return, back, restart, inline preselect, no requests, no storage, no errors. The 390×844 first screen shows the CTA (bottom at 799px).
+- Phone mode, indexable build (2026-11-06): 112 of 112. All nine result paths show the phone wording, the call note, and one `tel:` call button, with no way to reach a contact step; Back keeps answers; the Insurance inline question keeps its answer; the five copy spots and the FAQ structured data use the phone wording; no page shows "preview"; no POST or off-site requests; no console errors. Live webhook build re-run: 23 of 23 (original wording, validation, 500 then retry, payload shape).
+- Screener, demo build (before phone mode): 38 of 38 checks (child step first, payment second; the Insurance page's inline question opens on the child step with payment kept). Every branch, keyboard, Escape and focus return, back, restart, inline preselect, no requests, no storage, no errors. The 390×844 first screen shows the CTA (bottom at 799px).
 - Live intake build: 17 of 17. Validation and `aria-invalid`, nothing sent while invalid, 500 shows a recoverable error that keeps answers, retry succeeds, payload shape, no CSP violations, events carry no personal or health details.
 - Navigation: 12 of 12. Current page marked, soft navigation, breadcrumbs, 15 FAQ items, 404 status, sticky bar on interior pages, mobile menu, print view.
 - Soft-navigation audit: no duplicate ids, and every label resolves to visible text across five routes.

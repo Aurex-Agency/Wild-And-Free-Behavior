@@ -39,7 +39,7 @@ ONLY=cabin,tomato npm run images            # rebuild selected entries
 | `src/content/faqs.ts`, `src/content/articles.ts` | FAQ answers and guide metadata |
 | `src/app/*` | Pages. Guides live under `src/app/resources/` |
 | `src/lib/screener.ts` | Insurance and fit routing, pure and unit tested |
-| `src/lib/intake.ts` | Demo or HighLevel webhook submission, contact validation |
+| `src/lib/intake.ts` | Phone mode (default) or HighLevel webhook submission, contact validation |
 | `src/lib/track.ts` | Privacy-safe conversion events (no provider installed) |
 | `src/lib/schema.ts` | Structured data builders |
 | `src/components/brand.tsx` | Arch clip paths, sun rays, log-course rules, field notes |

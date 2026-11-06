@@ -5,13 +5,13 @@ import { articles } from "@/content/articles";
 const pages: { path: string; priority: number; modified: string }[] = [
   { path: "/", priority: 1, modified: "2026-10-28" },
   { path: "/aba-therapy", priority: 0.9, modified: "2026-10-28" },
-  { path: "/getting-started", priority: 0.9, modified: "2026-10-28" },
+  { path: "/getting-started", priority: 0.9, modified: "2026-11-06" },
   { path: "/insurance", priority: 0.9, modified: "2026-10-27" },
   { path: "/about", priority: 0.7, modified: "2026-10-28" },
   { path: "/visit", priority: 0.8, modified: "2026-10-28" },
-  { path: "/faq", priority: 0.7, modified: "2026-10-28" },
+  { path: "/faq", priority: 0.7, modified: "2026-11-06" },
   { path: "/resources", priority: 0.6, modified: "2026-10-28" },
-  { path: "/privacy", priority: 0.2, modified: "2026-10-27" },
+  { path: "/privacy", priority: 0.2, modified: "2026-11-06" },
   { path: "/accessibility", priority: 0.2, modified: "2026-10-27" },
 ];
 

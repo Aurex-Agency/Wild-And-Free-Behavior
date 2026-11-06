@@ -1,4 +1,5 @@
 import { site } from "@/config/site";
+import { intakeLive } from "@/lib/intake";
 
 // Answers stay within confirmed facts. Anything unresolved points families to a person.
 // Plain strings so the same text feeds both the page and FAQPage structured data.
@@ -13,7 +14,9 @@ export const faqGroups: FaqGroup[] = [
       {
         id: "get-started",
         q: "How do we get started?",
-        a: `Use the short form on this site or call us at ${site.phone.display}. Someone from our team will follow up to learn about your child, and then we'll set up a free conversation with Anna Claire and Jimbo.`,
+        a: intakeLive
+          ? `Use the short form on this site or call us at ${site.phone.display}. Someone from our team will follow up to learn about your child, and then we'll set up a free conversation with Anna Claire and Jimbo.`
+          : `Call us at ${site.phone.display}. We'll learn a little about your child, and then we'll set up a free conversation with Anna Claire and Jimbo.`,
         link: { href: "/getting-started", label: "See every step" },
       },
       {

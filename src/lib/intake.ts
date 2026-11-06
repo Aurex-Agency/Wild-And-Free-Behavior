@@ -1,7 +1,8 @@
 // Where screener contact requests go.
 //
-// "demo" (default): nothing leaves the browser. Used for previews and until HighLevel's HIPAA
-// add-on and Business Associate Agreement are in place.
+// "phone" (default): nothing leaves the browser. The screener shows the family their next step
+// and asks them to call. Used until HighLevel's HIPAA add-on and Business Associate Agreement
+// are in place.
 //
 // "webhook": the browser posts straight to a HighLevel inbound webhook, so intake details never
 // pass through the website host. Enable only with a HIPAA-enabled HighLevel account:
@@ -11,12 +12,15 @@
 
 import type { Answers, Result } from "./screener";
 
-export type IntakeMode = "demo" | "webhook";
+export type IntakeMode = "phone" | "webhook";
 
 const endpoint = process.env.NEXT_PUBLIC_INTAKE_WEBHOOK_URL ?? "";
 
 export const intakeMode: IntakeMode =
-  process.env.NEXT_PUBLIC_INTAKE_MODE === "webhook" && endpoint.startsWith("https://") ? "webhook" : "demo";
+  process.env.NEXT_PUBLIC_INTAKE_MODE === "webhook" && endpoint.startsWith("https://") ? "webhook" : "phone";
+
+/** True once the screener can send details to the team. Copy that mentions sending follows this. */
+export const intakeLive = intakeMode === "webhook";
 
 export type Contact = {
   name: string;

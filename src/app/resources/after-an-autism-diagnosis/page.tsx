@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { site } from "@/config/site";
+import { intakeLive } from "@/lib/intake";
 import { ArticleLayout, articleMetadata } from "@/components/ArticleLayout";
 
 const slug = "after-an-autism-diagnosis";
@@ -96,8 +97,8 @@ export default function Page() {
         process and not sure where to start, call us at{" "}
         <a href={site.phone.href} data-track="call">
           {site.phone.display}
-        </a>{" "}
-        or use the short form on our site. We&apos;ll tell you honestly whether we&apos;re a good fit, and if we&apos;re
+        </a>
+        {intakeLive ? " or use the short form on our site" : ""}. We&apos;ll tell you honestly whether we&apos;re a good fit, and if we&apos;re
         not, we&apos;ll help you figure out where to look next.
       </p>
     </ArticleLayout>
