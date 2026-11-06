@@ -7,13 +7,14 @@ import { JsonLd } from "@/components/JsonLd";
 import { Photo } from "@/components/Photo";
 import { ScreenerTrigger } from "@/components/screener/ScreenerTrigger";
 import { graph, ownerNode, partnerNode } from "@/lib/schema";
+import { openGraph } from "@/lib/share";
 
 export const metadata: Metadata = {
   title: "About Us: Anna Claire Waldrop, BCBA, and Jimbo Waldrop",
   description:
     "Meet Anna Claire Waldrop, M.S., BCBA, LBA, and her husband Jimbo, who run Wild & Free Behavior, a small ABA practice in a log cabin in New Albany, Mississippi.",
   alternates: { canonical: "/about" },
-  openGraph: { url: "/about" },
+  openGraph: openGraph({ url: "/about" }),
 };
 
 // Story facts come from 2017 coverage by TODAY, Shepherd Center, and United Spinal, and the practice's

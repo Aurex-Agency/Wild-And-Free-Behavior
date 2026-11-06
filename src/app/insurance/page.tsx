@@ -6,13 +6,14 @@ import { CtaBand, PageHeader, SectionHeading } from "@/components/PageParts";
 import { FaqList } from "@/components/FaqList";
 import { InsuranceQuestion } from "@/components/InsuranceQuestion";
 import { pickFaqs } from "@/content/faqs";
+import { openGraph } from "@/lib/share";
 
 export const metadata: Metadata = {
   title: "Paying for ABA Therapy: Insurance and Private Pay",
   description:
     "How families pay for ABA therapy at Wild & Free Behavior in New Albany, MS. We work with Blue Cross & Blue Shield of Mississippi, and private pay is an option.",
   alternates: { canonical: "/insurance" },
-  openGraph: { url: "/insurance" },
+  openGraph: openGraph({ url: "/insurance" }),
 };
 
 const otherPlans = [

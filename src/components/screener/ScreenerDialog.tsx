@@ -12,13 +12,14 @@ import {
   type Answers,
   type StepId,
 } from "@/lib/screener";
-import { intakeMode, submitIntake, validateContact, type Contact, type ContactErrors } from "@/lib/intake";
+import { intakeLive, submitIntake, validateContact, type Contact, type ContactErrors } from "@/lib/intake";
 import { track } from "@/lib/track";
 import { site } from "@/config/site";
 import { SunMark } from "@/components/brand";
 import { OPEN_EVENT, type OpenDetail } from "./events";
 import {
   ageOptions,
+  callNote,
   diagnosisOptions,
   notes as noteCopy,
   otherInsuranceOptions,
@@ -27,25 +28,18 @@ import {
   results,
 } from "./copy";
 
-const live = intakeMode === "webhook";
+// Until HighLevel's HIPAA intake is live, the screener ends on the result with a call button,
+// and the contact step is never shown.
+const live = intakeLive;
 
 const emptyContact: Contact = { name: "", phone: "", email: "", method: "", note: "" };
-
-// Obviously fictional values: 555-01xx is reserved for fiction, example.com for documentation.
-const sampleContact: Contact = {
-  name: "Sample Parent",
-  phone: "662-555-0142",
-  email: "parent@example.com",
-  method: "call",
-  note: "Sample note for the design preview.",
-};
 
 const stepTitles: Record<Exclude<StepId, "result">, string> = {
   payment: "How are you planning to pay?",
   "other-insurance": "What would help most right now?",
   child: "A little about your child",
   contact: "How should we reach you?",
-  done: live ? "Thank you. We have your details." : "That's the whole preview.",
+  done: "Thank you. We have your details.",
 };
 
 type SendState = "idle" | "sending" | "failed";
@@ -198,11 +192,8 @@ export function ScreenerDialog() {
 
   async function finish(e: SubmitEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (!live) {
-      // Preview only: nothing is sent anywhere.
-      go("done");
-      return;
-    }
+    // The contact step only renders when intake is live; this is a second guard.
+    if (!live) return;
     if (send === "sending") return;
     const errors = validateContact(contact);
     setContactErrors(errors);
@@ -250,7 +241,6 @@ export function ScreenerDialog() {
   const chosenPayment = paymentOptions.find((o) => o.value === answers.payment);
   const showEvalLink =
     result.notes.includes("diagnosis-evaluation") || result.type === "resources" || result.notes.includes("medicaid-unconfirmed");
-  const auto = (value: string) => (live ? value : "off");
 
   return (
     <dialog ref={dialogRef} className="screener tone-paper" data-lenis-prevent aria-labelledby="screener-title" onClose={onClose}>
@@ -267,12 +257,6 @@ export function ScreenerDialog() {
           Close
         </button>
       </div>
-
-      {!live && (
-        <p className="bg-sand/35 px-5 py-2 text-[0.9375rem] font-semibold text-body sm:px-8">
-          Design preview. Nothing you choose here is sent or saved.
-        </p>
-      )}
 
       <div className="flex-1 overflow-y-auto px-5 py-6 sm:px-8 sm:py-8">
         <h2
@@ -339,7 +323,7 @@ export function ScreenerDialog() {
                 className="field"
                 value={answers.town ?? ""}
                 onChange={(e) => set({ town: e.target.value })}
-                autoComplete={auto("address-level2")}
+                autoComplete="address-level2"
               />
             </div>
           </div>
@@ -347,7 +331,7 @@ export function ScreenerDialog() {
 
         {step === "result" && (
           <div className="grid gap-4">
-            <p className="lede">{results[result.type].body}</p>
+            <p className="lede">{live ? results[result.type].body : results[result.type].callBody}</p>
             {result.notes.map((n) => (
               <p key={n} className="border-l-2 border-sand pl-4">
                 {noteCopy[n]}
@@ -365,26 +349,25 @@ export function ScreenerDialog() {
                 We don&apos;t recommend a specific provider through this tool. If you&apos;d still like to talk, we&apos;re glad to.
               </p>
             )}
+            {!live && <p className="text-[0.9375rem] text-muted">{callNote}</p>}
           </div>
         )}
 
         {step === "contact" && (
           <form id="screener-contact" onSubmit={finish} noValidate className="grid gap-5">
             <p className="text-muted">
-              {live
-                ? "We'll use these details only to reach you about your child. Please leave out medical records and insurance numbers."
-                : "In the live version, these details go to our team so we can reach out. For this preview, use the sample data."}
+              We&apos;ll use these details only to reach you about your child. Please leave out medical records and insurance
+              numbers.
             </p>
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="sm:col-span-2">
                 <label htmlFor="c-name" className="mb-2 block font-semibold">
                   Parent or caregiver name
                 </label>
-                {/* Autofill is off in the preview so a reviewer's real details are never filled in. */}
                 <input
                   id="c-name"
                   className="field"
-                  autoComplete={auto("name")}
+                  autoComplete="name"
                   value={contact.name}
                   aria-invalid={contactErrors.name ? true : undefined}
                   aria-describedby={contactErrors.name ? "c-name-error" : undefined}
@@ -405,7 +388,7 @@ export function ScreenerDialog() {
                   type="tel"
                   inputMode="tel"
                   className="field nums"
-                  autoComplete={auto("tel")}
+                  autoComplete="tel"
                   value={contact.phone}
                   aria-invalid={contactErrors.reach ? true : undefined}
                   aria-describedby={contactErrors.reach ? "c-reach-error" : undefined}
@@ -420,7 +403,7 @@ export function ScreenerDialog() {
                   id="c-email"
                   type="email"
                   className="field"
-                  autoComplete={auto("email")}
+                  autoComplete="email"
                   value={contact.email}
                   aria-invalid={contactErrors.reach ? true : undefined}
                   aria-describedby={contactErrors.reach ? "c-reach-error" : undefined}
@@ -465,42 +448,19 @@ export function ScreenerDialog() {
               <label htmlFor="c-company">Company</label>
               <input id="c-company" tabIndex={-1} autoComplete="off" value={honeypot} onChange={(e) => setHoneypot(e.target.value)} />
             </div>
-            {!live && (
-              <div>
-                <button type="button" className="btn btn-ghost" onClick={() => setContact(sampleContact)}>
-                  Fill sample data
-                </button>
-              </div>
-            )}
           </form>
         )}
 
         {step === "done" && (
           <div className="grid gap-4">
-            {live ? (
-              <>
-                <p className="lede">Someone from our team will reach out to talk about your child and the next step.</p>
-                <p>
-                  Nothing has been scheduled yet, and you&apos;re not committed to anything. If you&apos;d rather talk now, call us at{" "}
-                  <a className="link nums" href={site.phone.href} data-track="call">
-                    {site.phone.display}
-                  </a>
-                  .
-                </p>
-              </>
-            ) : (
-              <>
-                <p className="lede">This is a preview. Nothing was sent or saved.</p>
-                <p>
-                  In the live version, this is where your details would go to our team, and this screen would tell you what
-                  happens next. You can also reach us at{" "}
-                  <a className="link nums" href={site.phone.href} data-track="call">
-                    {site.phone.display}
-                  </a>
-                  .
-                </p>
-              </>
-            )}
+            <p className="lede">Someone from our team will reach out to talk about your child and the next step.</p>
+            <p>
+              Nothing has been scheduled yet, and you&apos;re not committed to anything. If you&apos;d rather talk now, call us at{" "}
+              <a className="link nums" href={site.phone.href} data-track="call">
+                {site.phone.display}
+              </a>
+              .
+            </p>
           </div>
         )}
 
@@ -518,7 +478,7 @@ export function ScreenerDialog() {
               Start over
             </button>
             <button type="button" className="btn btn-primary" onClick={close}>
-              {live ? "Close" : "Close preview"}
+              Close
             </button>
           </>
         ) : (
@@ -544,8 +504,12 @@ export function ScreenerDialog() {
                 className="btn btn-primary"
                 aria-disabled={send === "sending" ? true : undefined}
               >
-                {live ? (send === "sending" ? "Sending..." : send === "failed" ? "Try again" : "Send to our team") : "Finish preview"}
+                {send === "sending" ? "Sending..." : send === "failed" ? "Try again" : "Send to our team"}
               </button>
+            ) : step === "result" && !live ? (
+              <a key="call" href={site.phone.href} className="btn btn-primary nums" data-track="call">
+                Call {site.phone.display}
+              </a>
             ) : (
               <button key="next" type="button" className="btn btn-primary" onClick={next}>
                 {step === "result"

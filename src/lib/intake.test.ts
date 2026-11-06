@@ -4,11 +4,11 @@ import { intakeMode, submitIntake, validateContact, type Contact } from "./intak
 
 const base: Contact = { name: "", phone: "", email: "", method: "", note: "" };
 
-test("defaults to demo mode when no webhook is configured", () => {
-  assert.equal(intakeMode, "demo");
+test("defaults to phone mode when no webhook is configured", () => {
+  assert.equal(intakeMode, "phone");
 });
 
-test("demo mode never sends anything", async () => {
+test("phone mode never sends anything", async () => {
   const outcome = await submitIntake({
     source: "website-screener",
     submittedAt: new Date().toISOString(),

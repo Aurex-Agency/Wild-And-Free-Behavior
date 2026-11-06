@@ -6,13 +6,14 @@ import { FaqList } from "@/components/FaqList";
 import { Photo, type ImageKey } from "@/components/Photo";
 import { ScreenerTrigger } from "@/components/screener/ScreenerTrigger";
 import { pickFaqs } from "@/content/faqs";
+import { openGraph } from "@/lib/share";
 
 export const metadata: Metadata = {
   title: "ABA Therapy for Young Children in New Albany, MS",
   description:
     "ABA therapy for young children with autism in New Albany, MS. Anna Claire, our BCBA, writes each child's plan, and sessions happen in a log cabin on Doctors Drive.",
   alternates: { canonical: "/aba-therapy" },
-  openGraph: { url: "/aba-therapy" },
+  openGraph: openGraph({ url: "/aba-therapy" }),
 };
 
 // Clinical wording on this page is flagged for BCBA review in REVIEW-NOTES.md.

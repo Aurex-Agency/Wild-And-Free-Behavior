@@ -10,6 +10,7 @@ import { TrackClicks } from "@/components/TrackClicks";
 import { JsonLd } from "@/components/JsonLd";
 import { SmoothScroll } from "@/components/motion/SmoothScroll";
 import { clinicNode, graph, websiteNode } from "@/lib/schema";
+import { openGraph } from "@/lib/share";
 import "./globals.css";
 
 const description =
@@ -23,11 +24,7 @@ export const metadata: Metadata = {
   },
   description,
   robots: site.indexable ? { index: true, follow: true } : { index: false, follow: false, nocache: true },
-  openGraph: {
-    type: "website",
-    siteName: site.name,
-    locale: "en_US",
-  },
+  openGraph: openGraph(),
   twitter: { card: "summary_large_image" },
   formatDetection: { telephone: false },
 };

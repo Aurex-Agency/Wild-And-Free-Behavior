@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import { site } from "@/config/site";
 import { PageHeader } from "@/components/PageParts";
+import { openGraph } from "@/lib/share";
 
 export const metadata: Metadata = {
   title: "Accessibility",
   description: "Wild & Free Behavior's commitment to an accessible website, and how to reach us if something doesn't work for you.",
   alternates: { canonical: "/accessibility" },
-  openGraph: { url: "/accessibility" },
+  openGraph: openGraph({ url: "/accessibility" }),
 };
 
 export default function AccessibilityPage() {

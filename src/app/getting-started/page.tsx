@@ -1,29 +1,35 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { site } from "@/config/site";
+import { intakeLive } from "@/lib/intake";
 import { CtaBand, PageHeader, SectionHeading } from "@/components/PageParts";
 import { FaqList } from "@/components/FaqList";
 import { Photo } from "@/components/Photo";
 import { ScreenerTrigger } from "@/components/screener/ScreenerTrigger";
 import { pickFaqs } from "@/content/faqs";
+import { openGraph } from "@/lib/share";
 
 export const metadata: Metadata = {
   title: "How to Start ABA Therapy in New Albany, MS",
   description:
     "How ABA therapy begins at our cabin in New Albany, MS. You reach out, we have a free conversation, Anna Claire assesses your child, and we set a weekly schedule that stays put.",
   alternates: { canonical: "/getting-started" },
-  openGraph: { url: "/getting-started" },
+  openGraph: openGraph({ url: "/getting-started" }),
 };
 
 const steps: { title: string; body: string; helps?: string }[] = [
   {
     title: "Reach out",
-    body: `Fill out the short form on this site or call ${site.phone.display}. We'll ask about your child first, then how you plan to pay.`,
+    body: intakeLive
+      ? `Fill out the short form on this site or call ${site.phone.display}. We'll ask about your child first, then how you plan to pay.`
+      : `Call us at ${site.phone.display}. We'll ask about your child first, then how you plan to pay. You can answer those questions on this site first to see your next step.`,
     helps: "Your child's age, whether they have an autism diagnosis, and your insurance plan if you have one.",
   },
   {
     title: "A quick review",
-    body: "We read what you sent and check the basics. If something needs a closer look, someone from our team will call you.",
+    body: intakeLive
+      ? "We read what you sent and check the basics. If something needs a closer look, someone from our team will call you."
+      : "We check the basics from your call. If something needs a closer look, someone from our team will call you back.",
   },
   {
     title: "A free conversation",
