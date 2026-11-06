@@ -175,17 +175,17 @@ With Cache Components on (the create-next-app default, and slated to become stan
 | Garden used in sessions | Described as "a garden" outside, nothing more |
 | Friday reminders | Described as part of the process. Needs the HighLevel workflow. |
 | Vector logo | Wordmark is traced from the 1080px PNG |
-| HighLevel HIPAA add-on, BAA, inbound webhook, CORS check | Required before live intake |
+| HighLevel HIPAA add-on, BAA, inbound webhook, CORS check | Done 2026-11-06: Kalob confirmed the HIPAA add-on and BAA; the inbound webhook exists; its CORS preflight from `https://wildandfreebehaviorllc.com` returns 204 allowing POST and any header. A real test lead is still to be sent after deploy. |
 | Aurex BAA with the practice, legal review | Recommended |
 | Google Business Profile, DMH guide listing, BCBS directory check | Plan section 6 |
 | Analytics provider | Not chosen |
-| Deployment, DNS, Search Console | Production is live on `wildandfreebehaviorllc.com` (`www` redirects to the apex; Google MX and SPF intact as of 2026-11-06). Still noindex because `SITE_INDEXABLE` is not set. Search Console not started. Never touch MX on `wildandfreebehaviorllc.com`. |
+| Deployment, DNS, Search Console | Production is live on `wildandfreebehaviorllc.com` (`www` redirects to the apex; Google MX and SPF intact as of 2026-11-06). `SITE_INDEXABLE` and the webhook variables are set for Production (2026-11-06) and take effect on the next production deploy. Search Console not started. Never touch MX on `wildandfreebehaviorllc.com`. |
 
 ## Launch steps
 
-1. HighLevel: enable the HIPAA add-on, sign the BAA, create an inbound-webhook workflow, and confirm it accepts a CORS POST from the domain.
-2. Vercel production env: `SITE_INDEXABLE=true`, `NEXT_PUBLIC_INTAKE_MODE=webhook`, `NEXT_PUBLIC_INTAKE_WEBHOOK_URL=...`. Leave previews unset so they stay noindex and in phone mode. Until HighLevel is ready, `SITE_INDEXABLE=true` alone is safe: the screener asks families to call.
-3. Deploy, then submit one real test lead end to end.
+1. Done: HighLevel HIPAA add-on and BAA (confirmed by Kalob), inbound-webhook workflow created, CORS preflight passes.
+2. Done (2026-11-06): Vercel Production has `SITE_INDEXABLE=true`, `NEXT_PUBLIC_INTAKE_MODE=webhook`, and `NEXT_PUBLIC_INTAKE_WEBHOOK_URL`. Leave previews unset so they stay noindex and in phone mode. Until HighLevel is ready, `SITE_INDEXABLE=true` alone is safe: the screener asks families to call.
+3. Deploy by merging to `main` (don't redeploy an older build: it predates the domain fix), then submit one real test lead end to end and confirm it arrives in HighLevel.
 4. Done: `wildandfreebehaviorllc.com` serves production and `www` redirects to it. With approval, also add `wildandfreebehavior.com` and its `www` in Vercel as redirects to `wildandfreebehaviorllc.com` (GoDaddy DNS), so links to the practice's old site still land. It shows a GoDaddy parking page today.
 5. Verify Search Console (a Domain property for `wildandfreebehaviorllc.com`, by DNS TXT) and Bing, submit `https://wildandfreebehaviorllc.com/sitemap.xml`, and update the Google Business Profile website link.
 

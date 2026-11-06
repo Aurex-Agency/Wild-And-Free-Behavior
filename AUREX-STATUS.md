@@ -68,7 +68,8 @@
 - Site URL moved to `https://wildandfreebehaviorllc.com`, the domain Vercel serves. Before this, every canonical, sitemap URL, and structured data URL pointed at `www.wildandfreebehavior.com`, a GoDaddy parking page.
 - Interior pages lost their link preview image because each page's `openGraph` replaced the layout's. Fixed with `src/lib/share.ts`.
 - Verified with `SITE_INDEXABLE=true`: robots.txt allows all and names the sitemap; the sitemap lists 14 URLs, all 200 with matching canonicals and `index, follow`; 404 is noindex; legacy URLs 301.
-- To go live in search: set `SITE_INDEXABLE=true` for Production in Vercel and redeploy, then Search Console. The screener no longer says it is a preview: until HighLevel is live it shows the next step and asks families to call (phone mode). BCBA and legal review below still apply.
+- The screener no longer says it is a preview: without the webhook it shows the next step and asks families to call (phone mode).
+- 2026-11-06: Vercel Production now has `SITE_INDEXABLE=true` and the HighLevel webhook variables (Kalob confirmed the HIPAA add-on and BAA; CORS preflight passes). They apply on the next production deploy, from merging this branch. Then: one real test lead, then Search Console. BCBA and legal review below still apply.
 
 ## Known issues
 
@@ -76,7 +77,7 @@
 
 ### Blockers (launch only)
 
-- HighLevel HIPAA add-on, BAA, inbound webhook, CORS check
+- One real test lead through the live HighLevel webhook after deploy (HIPAA add-on, BAA, webhook, and CORS preflight are done)
 - BCBA review of clinical copy; legal review of privacy page
 - Ages, Medicaid/CHIP, hours
 
