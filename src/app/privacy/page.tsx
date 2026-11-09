@@ -23,7 +23,7 @@ export default function PrivacyPage() {
         layout="stacked"
         intro={
           <p className="nums">
-            Last updated <time dateTime="2026-11-06">November 6, 2026</time>.
+            Last updated <time dateTime="2026-11-09">November 9, 2026</time>.
           </p>
         }
       />
@@ -62,10 +62,17 @@ export default function PrivacyPage() {
           <h2>Information collected automatically</h2>
           <p>
             Like most websites, our hosting provider may record basic technical details such as IP address, browser type,
-            and pages requested, to keep the site secure and working. We don&apos;t use advertising trackers, we don&apos;t
-            record your visit, and we don&apos;t use cookies to track you. If we count visits to understand which pages
-            are useful, we&apos;ll use a tool that doesn&apos;t collect personal or health details.
+            and pages requested, to keep the site secure and working.
           </p>
+          <p>
+            We use Google Analytics to count visits and learn which pages families find useful. It sets cookies in your
+            browser and records the pages you view, how you found us, your general location, and your device and browser
+            type. It doesn&apos;t receive your answers to the &ldquo;Find your next step&rdquo; form or anything you type
+            into it. We&apos;ve turned off Google&apos;s advertising features, so your visit isn&apos;t used to show you
+            ads. To opt out, block cookies in your browser or install the{" "}
+            <a href="https://tools.google.com/dlpage/gaoptout">Google Analytics opt-out add-on</a>.
+          </p>
+          <p>We don&apos;t use advertising pixels, and we don&apos;t use tools that replay your visit.</p>
 
           <h2>How we share information</h2>
           <p>

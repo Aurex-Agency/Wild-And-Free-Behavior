@@ -1,7 +1,7 @@
 // Conversion events with no personal or health details: step numbers and result types only.
-// No analytics provider is installed yet. When one is chosen (Plausible, Fathom, or similar
-// cookieless tool), forward events in `send` and nowhere else. Never add ad pixels or
-// session replay to this site.
+// Google Analytics 4 loads through Tag Manager in production (see the root layout), but these
+// events aren't forwarded to it yet. To do that, push them to `window.dataLayer` in `send` and
+// nowhere else. Never add ad pixels or session replay to this site.
 
 export type EventName =
   | "screener_open"
