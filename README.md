@@ -40,7 +40,7 @@ ONLY=cabin,tomato npm run images            # rebuild selected entries
 | `src/app/*` | Pages. Guides live under `src/app/resources/` |
 | `src/lib/screener.ts` | Insurance and fit routing, pure and unit tested |
 | `src/lib/intake.ts` | Phone mode (default) or HighLevel webhook submission, contact validation |
-| `src/lib/track.ts` | Privacy-safe conversion events (no provider installed) |
+| `src/lib/track.ts` | Privacy-safe conversion events (not yet forwarded to Google Analytics) |
 | `src/lib/schema.ts` | Structured data builders |
 | `src/components/brand.tsx` | Arch clip paths, sun rays, log-course rules, field notes |
 | `scripts/images.mjs` | Crops, focal points, and responsive sizes for every photo |

@@ -1,6 +1,6 @@
 import type { NextConfig } from "next";
 
-// The intake webhook (if enabled) is the only third-party origin the browser talks to.
+// The browser talks to two third parties: the intake webhook (if enabled) and Google Analytics.
 const intakeOrigin = (() => {
   try {
     return process.env.NEXT_PUBLIC_INTAKE_WEBHOOK_URL ? new URL(process.env.NEXT_PUBLIC_INTAKE_WEBHOOK_URL).origin : "";
@@ -12,11 +12,13 @@ const intakeOrigin = (() => {
 const csp = [
   "default-src 'self'",
   // Next.js inlines small bootstrap scripts in statically generated pages.
-  "script-src 'self' 'unsafe-inline'",
+  // The Google origins here and below are Google's documented list for GA4 and nothing wider,
+  // so an ad pixel added inside Tag Manager is blocked until someone changes this policy.
+  "script-src 'self' 'unsafe-inline' https://*.googletagmanager.com",
   "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data:",
+  "img-src 'self' data: https://*.google-analytics.com https://*.googletagmanager.com",
   "font-src 'self'",
-  `connect-src 'self'${intakeOrigin ? ` ${intakeOrigin}` : ""}`,
+  `connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com${intakeOrigin ? ` ${intakeOrigin}` : ""}`,
   "frame-ancestors 'none'",
   "base-uri 'self'",
   "form-action 'self'",

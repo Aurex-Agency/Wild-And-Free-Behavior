@@ -119,7 +119,7 @@ Old URLs from the previous site redirect with 301: `/abouta4ae63fc` and `/about-
 - **Fonts used fully.** Rovey draws every letter, and headings now include punctuation and numbers. The only Rovey file available is the free release, which has no numerals or punctuation, so Gilda Display (open license, chosen to match Rovey's weight and lining figures) supplies exactly those characters. It only downloads on pages that need it. If a full Rovey file is ever dropped into `src/fonts/rovey.woff2`, it takes over automatically. White Angelica now carries the brand sheet's "Subtitle" role above every section heading, as well as the handwritten notes. Raleway Medium stays the body face.
 - **Screener headings** are back in Rovey.
 - **Intake:** live mode (validation, honeypot, sending, failure with retry, success) is behind an env switch.
-- **Events:** a privacy-safe event layer with no provider installed.
+- **Events:** a privacy-safe event layer, not yet forwarded to Google Analytics.
 
 ## SEO
 
@@ -142,7 +142,8 @@ Old URLs from the previous site redirect with 301: `/abouta4ae63fc` and `/about-
 - **Live mode:** the browser posts JSON directly to the HighLevel webhook, so intake data never passes through the website host. That avoids needing Vercel's BAA. Payload: source, timestamp, page, contact (name, phone, email, method, note), screener answers, and result.
   - Before launch, check that HighLevel's inbound webhook accepts a cross-origin POST from the site's domain. It was tested here against an intercepted mock endpoint.
   - If HighLevel blocks CORS, switch to a HighLevel form embed for the contact step, or a server route with Vercel's BAA.
-- **Events** (`src/lib/track.ts`): `screener_open`, `screener_step` (number), `screener_result` (type), `contact_submit` (type), `call_click`, `directions_click`. Verified to carry no personal or health details. No provider is installed. When one is chosen (cookieless, such as Plausible), wire it in `send()` and add its origin to the CSP. Never ad pixels or session replay.
+- **Events** (`src/lib/track.ts`): `screener_open`, `screener_step` (number), `screener_result` (type), `contact_submit` (type), `call_click`, `directions_click`. Verified to carry no personal or health details. They aren't sent to Google Analytics yet; to forward them, push to `window.dataLayer` in `send()` and add matching triggers in Tag Manager. Never ad pixels or session replay.
+- **Google Analytics 4** (2026-11-09): Tag Manager container `GTM-T8RP59QW`, which holds GA4 property `G-ZF0NG2NGQK`. It loads only when `SITE_INDEXABLE=true`, so previews and local builds send nothing. A default consent line denies `ad_storage`, `ad_user_data`, and `ad_personalization` for every visitor. The CSP allows only Google's documented GA4 origins, so an ad tag added in Tag Manager stays blocked until `next.config.ts` changes. Verified on a production build with a mocked webhook: page views fire on first load and on in-app navigation, and a full screener run with test contact details sent no name, phone, email, note, or town to Google, raw or hashed.
 - **Security headers (production):** CSP, HSTS, nosniff, frame denial, strict referrer, and a permissions policy. `'unsafe-inline'` scripts are required by static Next.js pages.
 
 ## Next.js 16 note
@@ -178,7 +179,7 @@ With Cache Components on (the create-next-app default, and slated to become stan
 | HighLevel HIPAA add-on, BAA, inbound webhook, CORS check | Done 2026-11-06: Kalob confirmed the HIPAA add-on and BAA; the inbound webhook exists; its CORS preflight from `https://wildandfreebehaviorllc.com` returns 204 allowing POST and any header. A real test lead is still to be sent after deploy. |
 | Aurex BAA with the practice, legal review | Recommended |
 | Google Business Profile, DMH guide listing, BCBS directory check | Plan section 6 |
-| Analytics provider | Not chosen |
+| Analytics provider | Google Analytics 4 through Tag Manager, production only (2026-11-09). The privacy page describes it; legal review still applies. |
 | Deployment, DNS, Search Console | Production is live on `wildandfreebehaviorllc.com` (`www` redirects to the apex; Google MX and SPF intact as of 2026-11-06). `SITE_INDEXABLE` and the webhook variables are set for Production (2026-11-06) and take effect on the next production deploy. Search Console not started. Never touch MX on `wildandfreebehaviorllc.com`. |
 
 ## Launch steps

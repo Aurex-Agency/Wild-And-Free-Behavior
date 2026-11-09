@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import { site } from "@/config/site";
 import { angelica, raleway, rovey, roveyCompanion } from "./fonts";
 import { ArchClipPaths } from "@/components/brand";
@@ -60,6 +61,19 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <SmoothScroll />
         <TrackClicks />
         <JsonLd data={graph(clinicNode(), websiteNode())} />
+        {/* Google Tag Manager container holding GA4. Production only, so previews and local work stay out of the reports.
+            The consent line turns off Google's advertising signals for every visitor: this site counts visits, it doesn't run ads. */}
+        {site.indexable && (
+          <>
+            <Script id="gtag-init">{`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'granted' });
+              gtag('js', new Date());
+            `}</Script>
+            <Script src="https://www.googletagmanager.com/gtm.js?id=GTM-T8RP59QW" />
+          </>
+        )}
       </body>
     </html>
   );
