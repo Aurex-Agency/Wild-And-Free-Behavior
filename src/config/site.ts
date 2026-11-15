@@ -54,7 +54,13 @@ export const site = {
   },
 
   // Anna Claire's husband. He sits in on every first conversation; no job title has been given.
-  partner: { name: "Jimbo Waldrop", firstName: "Jimbo" },
+  // Credentials and degrees from Anna Claire's email to Kalob, 2026-11-15.
+  partner: {
+    name: "Jimbo Waldrop",
+    firstName: "Jimbo",
+    credentials: "M.A., B.S.",
+    degrees: ["Bachelor of Science in Biology", "Master of Arts in Teaching"],
+  },
 
   insurance: {
     primary: "Blue Cross & Blue Shield of Mississippi",

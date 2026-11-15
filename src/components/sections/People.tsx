@@ -61,7 +61,16 @@ export function People() {
                   <Photo image="portraitJimbo" sizes="(min-width: 48rem) 30vw, 50vw" />
                 </Parallax>
               </div>
-              <figcaption className="mt-3 text-[0.9375rem] text-muted">{site.partner.name}</figcaption>
+              <figcaption className="mt-3 text-[0.9375rem] text-muted">
+                <span className="block">
+                  {site.partner.name}, {site.partner.credentials}
+                </span>
+                {site.partner.degrees.map((degree) => (
+                  <span key={degree} className="block">
+                    {degree}
+                  </span>
+                ))}
+              </figcaption>
             </figure>
           </Reveal>
         </div>

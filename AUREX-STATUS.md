@@ -22,7 +22,7 @@
 - authentic evidence approved for publication: client photos from both Drive folders (waivers signed), except two former staff members, the two other current team members, and any photo where a child's name can be read. See "Round 3" in REVIEW-NOTES.md.
 - interface assets: traced wordmark, rebuilt logo SVGs, measured sun geometry, log-course rules, arch clip paths
 - fonts: Rovey (free release, letters only) + Gilda Display companion for numerals and punctuation; White Angelica; Raleway
-- identity: Anna Claire and Jimbo Waldrop are named on the site; Jimbo has no job title
+- identity: Anna Claire and Jimbo Waldrop are named on the site; Jimbo has no job title. His credentials, M.A., B.S. (Bachelor of Science in Biology, Master of Arts in Teaching), come from Anna Claire's email of 2026-11-15
 
 ## Most recent work
 

@@ -64,6 +64,11 @@ export function partnerNode() {
     image: `${site.url}/images/portraitJimbo-desktop-620.webp`,
     spouse: { "@id": ids.owner },
     alumniOf: { "@type": "CollegeOrUniversity", name: "Delta State University" },
+    hasCredential: site.partner.degrees.map((name) => ({
+      "@type": "EducationalOccupationalCredential",
+      credentialCategory: "degree",
+      name,
+    })),
   };
 }
 

@@ -119,7 +119,7 @@ export default function AboutPage() {
               </div>
             </div>
             <div id="jimbo-waldrop" className="mt-14">
-              <h3 className="display display-m text-ink">{site.partner.name}</h3>
+              <h3 className="display display-m text-ink">{`${site.partner.name}, ${site.partner.credentials}`}</h3>
               <div className="prose mt-4">
                 <p>
                   Jimbo has a biology degree from Delta State and a master&apos;s in teaching. He taught middle school
