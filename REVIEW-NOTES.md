@@ -169,7 +169,7 @@ With Cache Components on (the create-next-app default, and slated to become stan
 | Item | Status |
 |---|---|
 | Ages served and the "but..." exception | Copy says "young children". Screener routes under 2 and 7+ to staff. |
-| Jimbo's job title | None given. He is named as Jimbo Waldrop with his degrees and teaching years. |
+| Jimbo's job title | None given. His credentials (M.A., B.S.; Bachelor of Science in Biology, Master of Arts in Teaching) are under his homepage portrait and in his About heading, per Anna Claire's email of 2026-11-15. |
 | Who is in each portrait | Resolved: Anna Claire and Jimbo are named. Other staff are not on the site. |
 | Medicaid / CHIP acceptance | Routes to staff review |
 | Hours | Hidden until `site.hours` is set |
